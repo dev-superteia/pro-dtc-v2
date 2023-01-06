@@ -5,7 +5,7 @@
         <div class="grid p-fluid">
             <div class="col-12">
                 <div class="p-inputgroup">
-                    <Dropdown optionLabel="plant" placeholder="Select a plant" />
+                    <Dropdown optionLabel="text" v-model="plantSelected" :options="plant" placeholder="Select a plant"  @click="getPlant"/>
                 </div>
             </div>
             <div class="col-12">
@@ -23,9 +23,20 @@
                     <InputText placeholder="Product" />
                 </div>
             </div>
+            <Button @click="getPlant">Testess</Button>
         </div>
-
 </template>
 <script setup>
 import Dropdown from 'primevue/dropdown';
+import axios from "axios";
+import { useDtcStore } from '../../store/dtc';
+import { ref } from "vue";
+const dtc = useDtcStore()
+const plant = ref([]);
+const plantSelected = ref([]);
+
+const getPlant = async () => {
+  plant.value = await dtc.setPlant()
+};
+
 </script>

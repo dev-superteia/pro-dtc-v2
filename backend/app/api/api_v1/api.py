@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.api_v1.endpoints import login, users, permission, role, role_permission # noqa: E501, E261
+from app.api.api_v1.endpoints import login, users, permission, role, role_permission, multselect # noqa: E501, E261
 
 api_router = APIRouter()
 api_router.include_router(login.router, tags=["login"])
@@ -12,3 +12,6 @@ api_router.include_router(permission.router, prefix="/permissions",
 api_router.include_router(role_permission.router,
                           prefix="/role_permissions",
                           tags=["role_permissions"])
+api_router.include_router(multselect.router,
+                          prefix="/multselect",
+                          tags=["multselect"])

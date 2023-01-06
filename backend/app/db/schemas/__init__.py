@@ -5,3 +5,4 @@ from .role import Role, RoleCreate, RoleInDB, RoleUpdate # noqa: F401, E261
 from .user_role import UserRole, UserRoleCreate, UserRoleInDB, UserRoleUpdate # noqa: F401, E261, E501
 from .permission import Permission, PermissionCreate, PermissionUpdate, PermissionInDB # noqa: F401, E261 E501
 from .role_permission import RolePermission, RolePermissionBase, RolePermissionInDB, RolePermissionCreate, RolePermissionUpdate # noqa: F401, E261 E501
+from .md_plant import Plant
