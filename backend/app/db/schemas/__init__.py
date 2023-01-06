@@ -6,3 +6,4 @@ from .user_role import UserRole, UserRoleCreate, UserRoleInDB, UserRoleUpdate # 
 from .permission import Permission, PermissionCreate, PermissionUpdate, PermissionInDB # noqa: F401, E261 E501
 from .role_permission import RolePermission, RolePermissionBase, RolePermissionInDB, RolePermissionCreate, RolePermissionUpdate # noqa: F401, E261 E501
 from .md_plant import Plant
+from .market_segment import MarketSegmentSc, MarketSegmentAll

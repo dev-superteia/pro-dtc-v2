@@ -6,3 +6,4 @@ from .permission import Permission # noqa: F401, E261
 from .permission import Permission # noqa: F401, E261
 from .md_material import MdMaterial
 from .md_plant import MdPlant
+from .market_segment import MarketSegment

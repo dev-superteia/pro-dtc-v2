@@ -21,11 +21,11 @@ def upgrade() -> None:
         'market_segment',
         sa.Column('id', sa.Integer(), nullable=False),
         sa.Column('mkg_segm', sa.String(length=4), nullable=True),
-        sa.Column('line', sa.String(length=40), nullable=False),
+        sa.Column('line', sa.String(length=40), nullable=True),
         sa.Column('bu', sa.String(length=10), nullable=True),
         sa.Column('denomination', sa.String(length=40), nullable=True),
-        sa.Column('created_on', sa.TIMESTAMP(), nullable=False),
-        sa.Column('updated_on', sa.TIMESTAMP(), nullable=False),
+        sa.Column('created_on', sa.TIMESTAMP(), nullable=True),
+        sa.Column('updated_on', sa.TIMESTAMP(), nullable=True),
         sa.PrimaryKeyConstraint('id')
     )
 

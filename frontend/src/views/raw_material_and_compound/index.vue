@@ -10,12 +10,12 @@
             </div>
             <div class="col-12">
                 <div class="p-inputgroup">
-                    <Dropdown optionLabel="line" placeholder="Select a line" />
+                    <Dropdown optionLabel="text" placeholder="Select a line" v-model="mkgSelected" :options="mkg" @click="getMkg"/>
                 </div>
             </div>
             <div class="col-12">
                 <div class="p-inputgroup">
-                    <Dropdown optionLabel="segment" placeholder="Market Segment" />
+                    <Dropdown optionLabel="text" placeholder="Market Segment" v-model="lineSelected" :options="line" @click="getMkg"/>
                 </div>
             </div>
             <div class="col-12">
@@ -33,10 +33,19 @@ import { useDtcStore } from '../../store/dtc';
 import { ref } from "vue";
 const dtc = useDtcStore()
 const plant = ref([]);
+const mkg = ref([]);
+const line = ref([]);
 const plantSelected = ref([]);
+const mkgSelected = ref([]);
+const lineSelected = ref([]);
 
 const getPlant = async () => {
   plant.value = await dtc.setPlant()
+};
+const getMkg = async () => {
+    await dtc.setMkg()
+    mkg.value = dtc.mkg
+    line.value = dtc.line
 };
 
 </script>
