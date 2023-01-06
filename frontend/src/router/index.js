@@ -27,7 +27,13 @@ const routes = [
          name: 'roles', 
         component: () => import('../views/user/roles/index.vue'),
          meta: { transition: 'slide-right' },
-        }
+        },
+        { 
+          path: '/raw_material_and_compound',
+          name: 'raw_material_and_compound', 
+          component: () => import('../views/raw_material_and_compound/index.vue'),
+          meta: { transition: 'slide-right' },
+         }
     ],
   },
   { 
