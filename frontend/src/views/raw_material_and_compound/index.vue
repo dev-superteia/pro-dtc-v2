@@ -1,24 +1,28 @@
 <template>
 <h3>Raw Material and Compound</h3>
 
-<h5>Addons</h5>
+
         <div class="grid p-fluid">
             <div class="col-12">
+                <h3>{{$t('dtc.plant')}}</h3>
                 <div class="p-inputgroup">
                     <Dropdown optionLabel="text" v-model="plantSelected" :options="plant" placeholder="Select a plant"  @click="getPlant"/>
                 </div>
             </div>
             <div class="col-12">
+                <h3>Raw Material and Compound</h3>
                 <div class="p-inputgroup">
-                    <Dropdown optionLabel="text" placeholder="Select a line" v-model="mkgSelected" :options="mkg" @click="getMkg"/>
+                    <Dropdown optionLabel="text" placeholder="Select a line" v-model="lineSelected" :options="line" @click="getLine"/>
                 </div>
             </div>
             <div class="col-12">
+                <h3>Raw Material and Compound</h3>
                 <div class="p-inputgroup">
-                    <Dropdown optionLabel="text" placeholder="Market Segment" v-model="lineSelected" :options="line" @click="getMkg"/>
+                    <Dropdown optionLabel="text" placeholder="Market Segment" v-model="mkgSelected" :options="mkg" @click="getMkg"/>
                 </div>
             </div>
             <div class="col-12">
+                <h3>Raw Material and Compound</h3>
                 <div class="p-inputgroup">
                     <InputText placeholder="Product" />
                 </div>
@@ -30,7 +34,7 @@
 import Dropdown from 'primevue/dropdown';
 import axios from "axios";
 import { useDtcStore } from '../../store/dtc';
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 const dtc = useDtcStore()
 const plant = ref([]);
 const mkg = ref([]);
@@ -47,5 +51,13 @@ const getMkg = async () => {
     mkg.value = dtc.mkg
     line.value = dtc.line
 };
-
+const getLine = async () => {
+    await dtc.setLine()
+    line.value = dtc.line
+};
+onMounted(async () => {
+    getPlant()
+    getMkg()
+    getLine()
+})
 </script>

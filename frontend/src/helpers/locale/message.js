@@ -29,6 +29,12 @@ const messages = {
       toast: {
         delete_summary: 'deleted',
         delete_detail: 'record has been deleted!'
+      },
+      dtc : {
+        plant: 'Plant',
+        line: '',
+        mkg: '',
+        product: '',  
       }
     },
     pt: {
@@ -61,6 +67,12 @@ const messages = {
       toast: {
         delete_summary: 'registro foi deletado!',
         delete_detail: 'Deletado'
+      },
+      dtc : {
+        plant: 'Fábrica',
+        line: 'Linha',
+        mkg: 'Segmento de Market',
+        product: 'Produtos',
       }
     },
     es: {

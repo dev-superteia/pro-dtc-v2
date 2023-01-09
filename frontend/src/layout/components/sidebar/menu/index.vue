@@ -15,81 +15,9 @@
 <script setup>
 import { ref } from 'vue';
 import PanelMenu from 'primevue/panelmenu';
+import {getMenuData} from '@/helpers/menu/index.js'
         const expandedKeys = ref({});
-        const items = ref([
-            {
-                key: '0',
-                label: 'File',
-                icon: 'pi pi-fw pi-file',
-                items: [{
-                        key: '0_0',
-                        label: 'New',
-                        icon: 'pi pi-fw pi-plus',                       
-                    },
-                    {
-                        key: '0_1',
-                        label: 'Delete',
-                        icon: 'pi pi-fw pi-trash'
-                    },
-                    {
-                        key: '0_2',
-                        label: 'Export',
-                        icon: 'pi pi-fw pi-external-link'
-                    }
-                ]
-            },
-            {
-                key: '1',
-                label: 'user',
-                icon: 'pi pi-fw pi-pencil',
-                items: [{
-                        key: '1_0',
-                        label: 'Left',
-                        icon: 'pi pi-fw pi-align-left'
-                    },
-                    {
-                        key: '1_1',
-                        label: 'Right',
-                        icon: 'pi pi-fw pi-align-right'
-                    },
-                    {
-                        key: '1_2',
-                        label: 'Center',
-                        icon: 'pi pi-fw pi-align-center'
-                    },
-                    {
-                        key: '1_3',
-                        label: 'Justify',
-                        icon: 'pi pi-fw pi-align-justify'
-                    }
-                ]
-            },{
-                key: '2',
-                label: 'user',
-                icon: 'pi pi-fw pi-pencil',
-                items: [{
-                        key: '2_0',
-                        label: 'Left',
-                        icon: 'pi pi-fw pi-align-left'
-                    },
-                    {
-                        key: '2_1',
-                        label: 'Right',
-                        icon: 'pi pi-fw pi-align-right'
-                    },
-                    {
-                        key: '3_2',
-                        label: 'Center',
-                        icon: 'pi pi-fw pi-align-center'
-                    },
-                    {
-                        key: '3_3',
-                        label: 'Justify',
-                        icon: 'pi pi-fw pi-align-justify'
-                    }
-                ]
-            },
-        ]);
+        const items = ref(getMenuData);
 
         const expandAll = () => {
             for (let node of nodes.value) {
