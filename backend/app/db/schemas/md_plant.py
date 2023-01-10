@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Any, Optional
 from pydantic import BaseModel
 
 
@@ -10,3 +10,7 @@ class Plant(BaseModel):
     class Config:
         orm_mode = True
 
+class PlantInDBBase(BaseModel):
+    material: Any
+    plant: Any
+    year: Any

@@ -2,7 +2,7 @@ from app.db.base_class import Base
 from sqlalchemy import Column, DateTime, String, Text, Integer, DECIMAL
 
 
-class MarketCost(Base):  
+class MaterialCost(Base):  
     __tablename__ = "material_cost"
 
     year = Column(Integer, nullable=False, primary_key=True)

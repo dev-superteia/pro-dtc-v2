@@ -5,3 +5,4 @@ from .crud_role_permissions import role_permission # noqa: F401, E261
 from .md_plant import MDplantRepository
 from .market_segment import MarketSegmentRepository
 from .md_material import MdMaterialRepository
+from .material_cost import MaterialCostRepository
