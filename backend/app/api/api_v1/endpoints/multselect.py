@@ -88,7 +88,7 @@ async def get_raw_material(
     return raw
 
 
-@router.get("/raw", response_model=List[schemas.Material])
+@router.get("/raw", response_model=List)
 async def get_raw(
     db: AsyncSession = Depends(deps.get_db)
 ) -> Any:
