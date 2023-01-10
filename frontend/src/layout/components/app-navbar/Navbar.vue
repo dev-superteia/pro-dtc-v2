@@ -61,7 +61,7 @@ export default {
 
 <style>
 .header {
-  position: absolute;
+  position: fixed;
   padding: 0 12px;
   min-height: 50px;
   background: linear-gradient(

@@ -18,6 +18,7 @@ import DataTable from 'primevue/datatable';
 import Toolbar from 'primevue/toolbar';
 import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from 'primevue/toastservice';
+import Tooltip from 'primevue/tooltip';
 
 const pinia = createPinia()
 const app = createApp(App);
@@ -32,6 +33,7 @@ app.use(pinia);
 app.use(i18n);
 app.use(router);
 app.use(ToastService);
+app.directive('tooltip', Tooltip);
 app.component('Button', Button);
 app.component('Card', Card);
 app.component('InputText', InputText);

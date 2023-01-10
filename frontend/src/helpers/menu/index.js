@@ -13,44 +13,44 @@ export const getMenuData = [
         {
               key: '1_0',
               label: 'DTC',
-              icon: 'pi pi-fw pi-align-left',
-              url:'/raw_material_and_compound'
+              icon: 'pi pi-chart-bar',
+              to:'/raw_material_and_compound'
         },          
         {
             key: '1_1',
             label: 'Product One-Level',
-            icon: 'pi pi-fw pi-align-left',
-            url:'/product_one_level'
+            icon: 'pi pi-chart-bar',
+            to:'/product_one_level'
         },          
         {
             key: '1_2',
             label: 'Compound & Fabric',
-            icon: 'pi pi-fw pi-align-left',
-            url:'/compound_and_fabric'
+            icon: 'pi pi-chart-bar',
+            to:'/compound_and_fabric'
         },          
         {
             key: '1_3',
             label: 'Product-Raw Material',
-            icon: 'pi pi-fw pi-align-left',
-            url:'/product_raw_material'
+            icon: 'pi pi-chart-bar',
+            to:'/product_raw_material'
         },          
         {
             key: '1_4',
             label: 'Raw Material and Compound',
-            icon: 'pi pi-fw pi-align-left',
-            url:'/raw_material_and_compound'
+            icon: 'pi pi-chart-bar',
+            to:'/raw_material_and_compound'
         },          
         {
             key: '1_5',
             label: 'Tissue Month',
-            icon: 'pi pi-fw pi-align-left',
-            url:'/tissue_month'
+            icon: 'pi pi-chart-bar',
+            to:'/tissue_month'
         },          
         {
           key: '1_6',
           label: 'Raw Material Without Cost',
-          icon: 'pi pi-fw pi-align-left',
-          url:'/raw_material_without_cost'
+          icon: 'pi pi-chart-bar',
+          to:'/raw_material_without_cost'
         },          
 
       ]

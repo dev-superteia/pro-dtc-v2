@@ -15,7 +15,7 @@ const changeTheme = (event) => {
 <template>
     <section :class="toolbar ? 'section-toggle' : ''"> 
         <router-view />
-        <Button  @click="changeTheme()"> testegggggggggggggggggggggggg</Button>
+        <!-- <Button  @click="changeTheme()"> testegggggggggggggggggggggggg</Button> -->
     </section>
     <Navbar> </Navbar>
     <Sidebar></Sidebar>    

@@ -1,9 +1,9 @@
 <template>   
   <PanelMenu :model="items"  v-model:expandedKeys="expandedKeys">
     <template class="mb-2" #item="{item}">       
-        <router-link v-if="item.to" :to=item.to><i :class=item.icon></i
+        <router-link v-if="item.to" :to=item.to><i v-tooltip.left=item.label :class=item.icon ></i
             ><span
-              class="link"
+              class="link"              
             >{{item.label}}</span
           ></router-link>
         <a v-else><i :class=item.icon></i
@@ -66,5 +66,8 @@ import {getMenuData} from '@/helpers/menu/index.js'
     padding-left: 10px;
     cursor: pointer;
     margin-bottom: 5px;
+}
+.p-tooltip{
+    left: 50px !important;
 }
 </style>

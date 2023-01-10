@@ -41,7 +41,13 @@ aside {
   color: var(--text-color);
 }
 .link{
-  margin-left: 10px;
+  margin-left: 10px;  
+}
+.p-component, .p-component * , .link {
+  text-decoration: none !important;
+}
+.p-panelmenu .p-panelmenu-content .p-menuitem > .p-menuitem-content{
+  margin-bottom: 10px;
 }
 .logo_name {
   font-size: 25px;
