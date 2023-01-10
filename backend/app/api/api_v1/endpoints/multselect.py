@@ -84,5 +84,16 @@ async def get_raw_material(
     """
     Retrieve all available user roles.
     """
-    tissue = await repositories.MdMaterialRepository.get_raw_material(db=db)
-    return tissue
+    raw = await repositories.MdMaterialRepository.get_raw_material(db=db)
+    return raw
+
+
+@router.get("/raw", response_model=List[schemas.Material])
+async def get_raw(
+    db: AsyncSession = Depends(deps.get_db)
+) -> Any:
+    """
+    Retrieve all available user roles.
+    """
+    raw = await repositories.MdMaterialRepository.get_raw(db=db)
+    return raw

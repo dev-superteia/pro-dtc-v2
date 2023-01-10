@@ -1,5 +1,5 @@
 from typing import Any, Optional
-from sqlalchemy import select, and_, or_
+from sqlalchemy import select, and_, or_, text
 from app.db.models.md_material import MdMaterial
 from app.db.schemas import Material
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -26,6 +26,12 @@ class MdMaterialRepository():
         stmt = select(MdMaterial).filter(or_(MdMaterial.subclass == 'MPMP',MdMaterial.subclass == None,MdMaterial.subclass == ''))
         result = await db.execute(stmt)
         return result.scalars().all()
+    
+    async def get_raw(db: AsyncSession) -> Optional[Material]:
+        query = f"""select * from md_material"""
+        sqlQuery = text(query)
+        resultQuery = await db.execute(sqlQuery)
+        return resultQuery
     
 
 permission = MdMaterialRepository()
