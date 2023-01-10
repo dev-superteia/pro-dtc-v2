@@ -19,7 +19,10 @@
             <InputText placeholder="Year" v-model="year"/>
         </div>
     </div>
-    <Button @click="getPlant">Testess</Button>
+    <div class="col-2 mt-3">
+        <Button label="Enviar" @click="getPlant" icon="pi pi-send" iconPos="right" ></Button>
+    </div>
+    
 </div>
 </template>
 <script setup>
