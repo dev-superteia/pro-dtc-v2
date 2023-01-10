@@ -8,3 +8,7 @@ from .role_permission import RolePermission, RolePermissionBase, RolePermissionI
 from .md_plant import Plant
 from .market_segment import MarketSegmentSc, MarketSegmentAll
 from .md_material import Material
+from .material_espec_std import MaterialEspecStdSc
+from .material_espec_zp45 import MaterialEspecZp45Sc
+from .material_espec_zp78 import MaterialEspecZp78Sc
+
