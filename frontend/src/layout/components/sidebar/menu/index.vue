@@ -1,16 +1,18 @@
-<template>
+<template>   
   <PanelMenu :model="items"  v-model:expandedKeys="expandedKeys">
-    <template class="mb-2" #item="{item}">
-        <a
-         :href="item.url">
-         <i :class=item.icon></i
+    <template class="mb-2" #item="{item}">       
+        <router-link v-if="item.to" :to=item.to><i :class=item.icon></i
+            ><span
+              class="link"
+            >{{item.label}}</span
+          ></router-link>
+        <a v-else><i :class=item.icon></i
             ><span
               class="link"
             >{{item.label}}</span
           ></a>
     </template>
 </PanelMenu>
-
 </template>
 <script setup>
 import { ref } from 'vue';
