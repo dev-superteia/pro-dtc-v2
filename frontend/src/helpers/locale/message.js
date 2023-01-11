@@ -9,7 +9,9 @@ const messages = {
         role:'Role',
         user:'User',
         new:'New',
-        save:'Save',       
+        save:'Save',  
+        submit:'Submit',
+        search:'Search'     
       },
       new_dialog : {        
         message_permission_save:'Registered permission',
@@ -34,7 +36,8 @@ const messages = {
         plant: 'Plant',
         line: '',
         mkg: '',
-        product: '',  
+        product: '',
+        year:'Year'  
       }
     },
     pt: {
@@ -47,7 +50,10 @@ const messages = {
         role:'Regra',
         user:'Usuário',
         new:'Novo',
-        save:'Salvar',         
+        save:'Salvar',  
+        submit:'Enviar',    
+        search:'Buscar',
+             
       },
       new_dialog : {        
         message_permission_save:'Permissão cadastrada com sucesso',
@@ -73,6 +79,7 @@ const messages = {
         line: 'Linha',
         mkg: 'Segmento de Market',
         product: 'Produtos',
+        year:'Ano' 
       }
     },
     es: {
