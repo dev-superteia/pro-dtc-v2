@@ -1,3 +1,4 @@
 postgres-data
 __pycache__/
 */__pycache__
+backend/app/logs/app.log
