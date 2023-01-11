@@ -34,9 +34,10 @@ const messages = {
       },
       dtc : {
         plant: 'Plant',
-        line: '',
-        mkg: '',
-        product: '',
+        line: 'Line',
+        mkg: 'Market Segment',
+        product: 'Products',
+        type: 'Type',
         year:'Year'  
       }
     },
@@ -77,8 +78,9 @@ const messages = {
       dtc : {
         plant: 'Fábrica',
         line: 'Linha',
-        mkg: 'Segmento de Market',
+        mkg: 'Segmento de Mercado',
         product: 'Produtos',
+        type: 'Tipo',
         year:'Ano' 
       }
     },

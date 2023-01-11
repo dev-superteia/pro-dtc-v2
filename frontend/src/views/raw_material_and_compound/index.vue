@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="col-2 mt-3">
-        <Button label="Enviar" @click="getPlant" icon="pi pi-send" iconPos="right" ></Button>
+        <Button :label="$t('message.search')" @click="getPlant" icon="pi pi-send" iconPos="right" ></Button>
     </div>
     
 </div>
