@@ -14,13 +14,13 @@
         </div>
     </div>
     <div class="col-12">
-        <h3>Year</h3>
+        <h3>{{$t('dtc.year')}}</h3>
         <div class="p-inputgroup">
             <InputText placeholder="Year" v-model="year"/>
         </div>
     </div>
     <div class="col-12">
-        <h3>Type</h3>
+        <h3>{{$t('dtc.type')}}</h3>
         <div class="p-inputgroup">
             <Dropdown optionLabel="text" placeholder="Select a Type" v-model="lineSelected" :options="line" @click="getMaterial"/>
         </div>
