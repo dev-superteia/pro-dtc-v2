@@ -193,7 +193,8 @@ class MdMaterialRepository():
             """
         sqlQuery = text(query)
         resultQuery = await db.execute(sqlQuery)
-        return resultQuery
+        result = list(resultQuery)
+        return result
     
 
 permission = MdMaterialRepository()
