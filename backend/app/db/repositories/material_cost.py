@@ -1,6 +1,6 @@
 from typing import Any, Optional
 from sqlalchemy import select, and_, or_, text
-from app.db.models.material_cost import MarketCost
+from app.db.models.material_cost import MaterialCost
 from app.db.schemas import PlantInDBBase
 from sqlalchemy.ext.asyncio import AsyncSession
 
