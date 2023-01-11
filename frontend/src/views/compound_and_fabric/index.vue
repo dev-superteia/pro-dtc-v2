@@ -41,7 +41,6 @@ const plant = ref([]);
 const mkg = ref([]);
 const line = ref([]);
 const plantSelected = ref([]);
-const mkgSelected = ref([]);
 const lineSelected = ref([]);
 const year = ref([]);
 

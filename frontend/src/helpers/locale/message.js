@@ -36,6 +36,7 @@ const messages = {
         plant: 'Plant',
         line: 'Line',
         mkg: 'Market Segment',
+        material: 'Material',
         product: 'Products',
         type: 'Type',
         year:'Year'  
@@ -79,6 +80,7 @@ const messages = {
         plant: 'Fábrica',
         line: 'Linha',
         mkg: 'Segmento de Mercado',
+        material: 'Material',
         product: 'Produtos',
         type: 'Tipo',
         year:'Ano' 
