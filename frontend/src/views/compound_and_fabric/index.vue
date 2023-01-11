@@ -1,5 +1,5 @@
 <template>
-<h3>Raw Material and Compound</h3>
+<h3>Compound and Fabric</h3>
 <div class="grid p-fluid">
     <div class="col-12">
         <h3>{{$t('dtc.plant')}}</h3>
@@ -17,6 +17,12 @@
         <h3>Year</h3>
         <div class="p-inputgroup">
             <InputText placeholder="Year" v-model="year"/>
+        </div>
+    </div>
+    <div class="col-12">
+        <h3>Type</h3>
+        <div class="p-inputgroup">
+            <Dropdown optionLabel="text" placeholder="Select a Type" v-model="lineSelected" :options="line" @click="getMaterial"/>
         </div>
     </div>
     <div class="col-2 mt-3">
