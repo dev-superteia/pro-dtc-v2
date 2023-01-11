@@ -11,6 +11,6 @@ class Plant(BaseModel):
         orm_mode = True
 
 class PlantInDBBase(BaseModel):
-    material: Any
+    component: Any
     plant: Any
     year: Any
