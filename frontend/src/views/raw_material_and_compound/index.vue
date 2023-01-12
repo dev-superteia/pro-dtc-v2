@@ -14,25 +14,25 @@
         </div>
     </div>
     <div class="col-12">
-        <h3>Market Segment</h3>
+        <h3>{{$t('dtc.mkg')}}</h3>
         <div class="p-inputgroup">
             <Dropdown optionLabel="text" placeholder="Market Segment" v-model="mkgSelected" :options="mkg" @click="getMkg"/>
         </div>
     </div>
     <div class="col-12">
-        <h3>Type</h3>
+        <h3>{{$t('dtc.type')}}</h3>
         <div class="p-inputgroup">
             <InputText placeholder="Type" />
         </div>
     </div>
     <div class="col-12">
-        <h3>List of Type Selected</h3>
+        <h3>{{$t('dtc.type')}}</h3>
         <div class="p-inputgroup">
             <InputText placeholder="List of Type Selected" />
         </div>
     </div>
     <div class="col-12">
-        <h3>Year</h3>
+        <h3>{{$t('dtc.year')}}</h3>
         <div class="p-inputgroup">
             <InputText placeholder="Year" v-model="year"/>
         </div>

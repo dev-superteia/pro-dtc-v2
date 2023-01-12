@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="col-12">
-        <h3>Year</h3>
+        <h3>{{$t('dtc.year')}}</h3>
         <div class="p-inputgroup">
             <InputText placeholder="Year" v-model="year"/>
         </div>
