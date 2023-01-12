@@ -48,7 +48,7 @@
                             <td>{{slotProps.data.array_agg[0]}}</td>
                         </tr>
                         <tr>
-                            <td>KG</td>
+                            <td>{{slotProps.data.array_agg[0][1]}}</td>
                         </tr>
                         <tr>
                             <td>MT</td>
@@ -58,7 +58,7 @@
                 <Column field="value" header="JAN">
                     <template #body="slotProps">
                         <tr>
-                            <td>STD</td>
+                            <td>{{slotProps.data.array_agg[1]}}</td>
                         </tr>
                         <tr>
                             <td>KG</td>

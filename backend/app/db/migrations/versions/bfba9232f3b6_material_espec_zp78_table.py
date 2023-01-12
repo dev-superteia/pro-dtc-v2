@@ -39,6 +39,8 @@ def upgrade() -> None:
         sa.Column('status', sa.String(length=4), nullable=False),
         sa.Column('created_on', sa.TIMESTAMP(), nullable=False),
         sa.Column('updated_on', sa.TIMESTAMP(), nullable=False),
+        sa.Column('year', sa.NUMERIC(), nullable=True),
+        sa.Column('month', sa.NUMERIC(), nullable=True),
         sa.PrimaryKeyConstraint('plant'),
         sa.PrimaryKeyConstraint('material'),
         sa.PrimaryKeyConstraint('mat_mp'),
