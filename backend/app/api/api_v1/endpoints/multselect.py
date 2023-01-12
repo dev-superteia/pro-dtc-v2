@@ -1,9 +1,10 @@
 from typing import Any, List
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Response
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.db import repositories, schemas, models
 from app.api import deps
-
+from fastapi_redis_cache import FastApiRedisCache, cache, cache_one_day
+from fastapi.encoders import jsonable_encoder
 router = APIRouter()
 
 @router.get("/plant", response_model=List[schemas.Plant])
@@ -88,12 +89,14 @@ async def get_raw_material(
     return raw
 
 
-@router.get("/raw", response_model=List)
+@router.get("/raw", response_model=List[schemas.Tissue])
+@cache_one_day()
 async def get_raw(
+    response: Response,
     db: AsyncSession = Depends(deps.get_db)
 ) -> Any:
     """
     Retrieve all available user roles.
     """
     raw = await repositories.MdMaterialRepository.get_raw(db=db)
-    return raw
+    return jsonable_encoder(raw)

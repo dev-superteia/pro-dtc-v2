@@ -11,4 +11,5 @@ from .md_material import Material
 from .material_espec_std import MaterialEspecStdSc
 from .material_espec_zp45 import MaterialEspecZp45Sc
 from .material_espec_zp78 import MaterialEspecZp78Sc
+from .tissue import Tissue
 
