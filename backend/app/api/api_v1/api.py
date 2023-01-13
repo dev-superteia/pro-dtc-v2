@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.api_v1.endpoints import login, users, permission, role, role_permission, multselect, report_raw_material # noqa: E501, E261
+from app.api.api_v1.endpoints import login, users, permission, role, role_permission, multselect, report_raw_material, raw_material_and_compound # noqa: E501, E261
 
 api_router = APIRouter()
 api_router.include_router(login.router, tags=["login"])
@@ -18,3 +18,6 @@ api_router.include_router(multselect.router,
 api_router.include_router(report_raw_material.router,
                           prefix="/report_raw_material_null",
                           tags=["report_raw_material_null"])
+api_router.include_router(raw_material_and_compound.router,
+                          prefix="/raw_material_and_compound",
+                          tags=["raw_material_and_compound"])

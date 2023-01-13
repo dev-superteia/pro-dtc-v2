@@ -39,6 +39,7 @@ const messages = {
         material: 'Material',
         product: 'Products',
         type: 'Type',
+        type_list: 'List of Type Selected',
         year:'Year'  
       }
     },
@@ -83,6 +84,7 @@ const messages = {
         material: 'Material',
         product: 'Produtos',
         type: 'Tipo',
+        type_list: 'Lista do Tipo Selecionado',
         year:'Ano' 
       }
     },

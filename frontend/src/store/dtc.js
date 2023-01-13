@@ -6,6 +6,9 @@ export const useDtcStore = defineStore({
         plant: [],
         mkg: [],
         line: [],
+        type: [],
+        typeListMat: [],
+        typeListRaw: [],
     }),
     actions: {
         async setPlant() {
@@ -54,6 +57,35 @@ export const useDtcStore = defineStore({
                         value: response.data[i].line,
                     });
                 }
+            }
+        },
+        async setType() {
+            if (this.plant.length == 0) {
+                this.type.push({ text: "Material", value: "material" });
+                this.type.push({ text: "Raw Material", value: "raw" });
+            }
+        },
+        async setTypeListMat() {
+            const response = await axios.get(
+                "http://localhost:8000/api/v1/multselect/mass"
+            );
+            
+            for (let i = 0; i < response.data.length; i++) {
+                this.typeListMat.push({
+                    text: response.data[i].material,
+                    value: response.data[i].material,
+                });
+            }
+        },
+        async setTypeListRaw() {
+            const response = await axios.get(
+                "http://localhost:8000/api/v1/multselect/raw_material"
+            );
+            for (let i = 0; i < response.data.length; i++) {
+                this.typeListRaw.push({
+                    text: response.data[i].material,
+                    value: response.data[i].material,
+                });
             }
         },
         getters: {
