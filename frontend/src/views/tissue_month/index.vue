@@ -240,8 +240,11 @@ onMounted(async () => {
     year.value = d.getFullYear()
 })
 const submit = async () => {
-    progress.value = !progress.value
-    const response = await axios.get("http://localhost:8000/api/v1/multselect/raw");
+    // const response = await axios.get("http://localhost:8000/api/v1/multselect/raw");
+    const response = await axios.get("http://localhost:8000/api/v1/multselect/market_segment", {
+        withCredentials: true,
+        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/html'
+    }});
     table.value = response.data
     table.value.forEach((element, index) => {
         var array = []
@@ -258,6 +261,5 @@ const submit = async () => {
         element.array_agg = array
         console.log(element)
     });
-    progress.value = false
 }
 </script>
