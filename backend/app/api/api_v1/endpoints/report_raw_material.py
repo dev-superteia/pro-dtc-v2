@@ -6,7 +6,7 @@ from app.api import deps
 
 router = APIRouter()
 
-@router.get("/report_raw_material_null", response_model=List[schemas.PlantInDBBase])
+@router.get("/", response_model=List[schemas.PlantInDBBase])
 async def get(
     *,
     db: AsyncSession = Depends(deps.get_db),

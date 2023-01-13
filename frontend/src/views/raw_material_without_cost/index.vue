@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="col-2 mt-3">
-        <Button label="Enviar" @click="getResult" icon="pi pi-send" iconPos="right" ></Button>
+        <Button :label="$t('message.search')" @click="getResult" icon="pi pi-send" iconPos="right" ></Button>
     </div>    
 </div>
 <DataTable :value="material" responsiveLayout="scroll">
@@ -40,7 +40,7 @@ const getPlant = async () => {
 };
 
 const getResult = async () => {
-    const response = await axios.get('http://localhost:8000/api/v1/report_raw_material_null/report_raw_material_null?plant=' + plantSelected.value.value + '&year=' + year.value )
+    const response = await axios.get('http://localhost:8000/api/v1/report_raw_material_null?plant=' + plantSelected.value.value + '&year=' + year.value )
     material.value = response.data
 }
 

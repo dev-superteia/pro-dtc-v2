@@ -22,13 +22,13 @@
     <div class="col-12">
         <h3>{{$t('dtc.type')}}</h3>
         <div class="p-inputgroup">
-            <InputText placeholder="Type" />
+            <Dropdown optionLabel="text" placeholder="Type" v-model="typeSelected" :options="type"/>
         </div>
     </div>
     <div class="col-12">
-        <h3>{{$t('dtc.type')}}</h3>
+        <h3>{{$t('dtc.type_list')}}</h3>
         <div class="p-inputgroup">
-            <InputText placeholder="List of Type Selected" />
+            <Dropdown editable optionLabel="text" placeholder="List of Type Selected" v-model="listSelected" :options="listType" @click="getTypeList"/>
         </div>
     </div>
     <div class="col-12">
@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="col-2 mt-3">
-        <Button :label="$t('message.search')" @click="getPlant" icon="pi pi-send" iconPos="right" ></Button>
+        <Button :label="$t('message.search')" @click="getResult" icon="pi pi-send" iconPos="right" ></Button>
     </div>
     
 </div>
@@ -54,8 +54,13 @@ const mkg = ref([]);
 const line = ref([]);
 const plantSelected = ref([]);
 const mkgSelected = ref([]);
+const typeSelected = ref([]);
 const lineSelected = ref([]);
+const listSelected = ref([]);
 const year = ref([]);
+const type = ref([]);
+const listType = ref([]);
+const material = ref([]);
 
 const getPlant = async () => {
   plant.value = await dtc.setPlant()
@@ -63,16 +68,37 @@ const getPlant = async () => {
 const getMkg = async () => {
     await dtc.setMkg()
     mkg.value = dtc.mkg
-    line.value = dtc.line
 };
 const getLine = async () => {
     await dtc.setLine()
     line.value = dtc.line
 };
+const getType = async () => {
+    await dtc.setType()
+    type.value = dtc.type
+};
+const getTypeList = async () => {
+    if (typeSelected.value.value === 'material') {
+        console.log(typeSelected.value);
+        await dtc.setTypeListMat()
+        listType.value = dtc.typeListMat
+    }
+    if (typeSelected.value.value === 'raw') {
+        console.log(typeSelected.value);
+        await dtc.setTypeListRaw()
+        listType.value = dtc.typeListRaw
+    }
+};
+const getResult = async () => {
+    const response = await axios.get('http://localhost:8000/api/v1/')
+    material.value = response.data
+    console.log(material.value);
+};
 onMounted(async () => {
     getPlant()
     getMkg()
     getLine()
+    getType()
     const d = new Date()
     year.value = d.getFullYear()
 })
