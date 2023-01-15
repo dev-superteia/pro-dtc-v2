@@ -21,7 +21,7 @@
                 animationDuration=".5s" aria-label="Custom ProgressSpinner" />
         </div>
         <div class="col-12">
-            <DataTable :value="table" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single"
+            <DataTable :value="table" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single" :loading="progress"
             sortField="product.teste" :sortOrder="1">
                 <Column field="material" header="Material"></Column>
                 <Column field="year" header="Year"></Column>
@@ -240,11 +240,8 @@ onMounted(async () => {
     year.value = d.getFullYear()
 })
 const submit = async () => {
-    // const response = await axios.get("http://localhost:8000/api/v1/multselect/raw");
-    const response = await axios.get("http://localhost:8000/api/v1/multselect/market_segment", {
-        withCredentials: true,
-        headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/html'
-    }});
+    progress.value = true
+    const response = await axios.get("http://localhost:8000/api/v1/multselect/raw")
     table.value = response.data
     table.value.forEach((element, index) => {
         var array = []
@@ -259,7 +256,7 @@ const submit = async () => {
           }         
         }
         element.array_agg = array
-        console.log(element)
     });
+    progress.value = false
 }
 </script>

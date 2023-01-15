@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 
 
-class Tissue(BaseModel):
+class Tissue(BaseModel):    
     comp: str
     mat_desc: str
     material: str
