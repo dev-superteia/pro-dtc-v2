@@ -1,5 +1,5 @@
 <template>
-    <h3>Tissue Month</h3>
+    <h2>{{$t('dtc.tissue_month')}}</h2>
     <div class="grid p-fluid">
         <div class="col-12">
             <h3>{{$t('dtc.plant')}}</h3>
@@ -24,12 +24,12 @@
             <DataTable :value="table" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single" :loading="progress"
             sortField="product.teste" :sortOrder="1">
                 <Column field="material" header="Material"></Column>
-                <Column field="year" header="Year"></Column>
-                <Column field="mat_desc" header="Descrição"></Column>
-                <Column field="plant" header="Plant"></Column>
-                <Column field="comp" header="Massa"></Column>
-                <Column field="raw" header="Materia Prima"></Column>
-                <Column field="value" header="Values">
+                <Column field="year" :header="$t('dtc.year')"></Column>
+                <Column field="mat_desc" :header="$t('dtc.description')"></Column>
+                <Column field="plant" :header="$t('dtc.plant')"></Column>
+                <Column field="comp" :header="$t('dtc.mass')"></Column>
+                <Column field="raw" :header="$t('dtc.raw_material')"></Column>
+                <Column field="value" :header="$t('dtc.values')">
                     <template #body="slotProps">
                         <tr>
                             <td>STD</td>
@@ -214,7 +214,7 @@
             </DataTable>
         </div>
     </div>
-
+    <Toast />
 </template>
 <script setup>
 import Dropdown from 'primevue/dropdown';
@@ -225,12 +225,16 @@ import ProgressSpinner from 'primevue/progressspinner';
 import axios from "axios";
 import { useDtcStore } from '../../store/dtc';
 import { ref, onMounted } from "vue";
+import Toast from 'primevue/toast';
+import { useToast } from "primevue/usetoast";
 const dtc = useDtcStore()
 const plant = ref([]);
 const plantSelected = ref([]);
 const year = ref([]);
 const table = ref([])
 const progress = ref(false)
+const toast = useToast();
+
 const getPlant = async () => {
     plant.value = await dtc.setPlant()
 };
@@ -238,25 +242,12 @@ onMounted(async () => {
     getPlant()
     const d = new Date()
     year.value = d.getFullYear()
+    table.value = dtc.tissue
 })
 const submit = async () => {
     progress.value = true
-    const response = await axios.get("http://localhost:8000/api/v1/multselect/raw")
-    table.value = response.data
-    table.value.forEach((element, index) => {
-        var array = []
-        for (let index = 0; index < 13; index++) {
-           var searchFind = element.array_agg.find(el => {
-            return el[0] == index || (el[0] == 'std' && index == 0)
-        })
-          if(searchFind){
-            array.push(searchFind)
-          }else{
-            array.push([index,'-','-','-','-','-','-'])
-          }         
-        }
-        element.array_agg = array
-    });
+    table.value = await dtc.setTissue(plantSelected.value, year.value)
+    toast.add({severity:'success', summary: 'Atualizado conforme solicitado', detail:'Permissoes atualizadas para a regra', life: 3000}); 
     progress.value = false
 }
 </script>

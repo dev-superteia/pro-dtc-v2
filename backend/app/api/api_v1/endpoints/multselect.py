@@ -92,17 +92,4 @@ async def get_raw_material(
     raw = await repositories.MdMaterialRepository.get_raw_material(db=db)
     return jsonable_encoder(raw)
     
-
-# TODO:Colocar em um novo arquivo
-@router.get("/raw", response_model=List[schemas.Tissue])
-@cache_one_day()
-async def get_raw(
-    response: Response,
-    db: AsyncSession = Depends(deps.get_db)
-) -> Any:
-    """
-    Retrieve all available user roles.
-    """
-    raw = await repositories.MdMaterialRepository.get_raw(db=db)
-    return jsonable_encoder(raw)
    

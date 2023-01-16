@@ -40,7 +40,12 @@ const messages = {
         product: 'Products',
         type: 'Type',
         type_list: 'List of Type Selected',
-        year:'Year'  
+        year:'Year',
+        description: 'Description',
+        mass:'Mass',
+        raw_material: 'Raw material',
+        values:'Values',
+        tissue_month:'Tissue per month'  
       }
     },
     pt: {
@@ -85,7 +90,12 @@ const messages = {
         product: 'Produtos',
         type: 'Tipo',
         type_list: 'Lista do Tipo Selecionado',
-        year:'Ano' 
+        year:'Ano',
+        description: 'Descrição',
+        mass:'Massa',
+        raw_material: 'Matéria Prima',
+        values:'Valores' ,        
+        tissue_month:'Tecido por mês'
       }
     },
     es: {
