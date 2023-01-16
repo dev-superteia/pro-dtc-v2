@@ -43,7 +43,9 @@
     <div class="col-12">
             <DataTable :value="table" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single"
             sortField="product.teste" :sortOrder="1">
-                <Column field="component" header="Material"></Column>
+                <Column v-if="typeSelected.value === 'raw'" field="component" header="Material"></Column>
+                <Column v-else field="material" header="Material"></Column>
+                <Column v-if="typeSelected.value !== 'raw'" field='plant'  header="Plant"></Column>
                 <Column field="value" header="Values">
                     <template #body="slotProps">
                         <tr>
@@ -58,7 +60,7 @@
                     </template>
                 </Column>
                  <Column field="value" header="JAN">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[0][0]}}</td>
                         </tr>
@@ -69,9 +71,20 @@
                             <td>{{slotProps.data.array_agg[0][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[0][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[0][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[0][2] * slotProps.data.array_agg[0][2]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                 <Column field="value" header="FEB">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[1][0]}}</td>
                         </tr>
@@ -82,9 +95,20 @@
                             <td>{{slotProps.data.array_agg[1][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[1][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[1][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[1][2] * slotProps.data.array_agg[1][1]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                 <Column field="value" header="MAR">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[2][0]}}</td>
                         </tr>
@@ -95,9 +119,20 @@
                             <td>{{slotProps.data.array_agg[2][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[2][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[2][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[2][2] * slotProps.data.array_agg[2][1]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                  <Column field="value" header="APR">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[3][0]}}</td>
                         </tr>
@@ -108,9 +143,20 @@
                             <td>{{slotProps.data.array_agg[3][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[3][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[3][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[3][2] * slotProps.data.array_agg[3][1]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                 <Column field="value" header="MAI">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[4][0]}}</td>
                         </tr>
@@ -121,9 +167,20 @@
                             <td>{{slotProps.data.array_agg[4][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[4][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[4][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[4][2] * slotProps.data.array_agg[4][1]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                 <Column field="value" header="JUN">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[5][0]}}</td>
                         </tr>
@@ -134,9 +191,20 @@
                             <td>{{slotProps.data.array_agg[5][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[5][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[5][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[5][2] * slotProps.data.array_agg[5][1]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                 <Column field="value" header="JUL">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[6][0]}}</td>
                         </tr>
@@ -147,9 +215,20 @@
                             <td>{{slotProps.data.array_agg[6][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[6][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[6][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[6][2] * slotProps.data.array_agg[6][1]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                 <Column field="value" header="AUG">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[7][0]}}</td>
                         </tr>
@@ -160,9 +239,20 @@
                             <td>{{slotProps.data.array_agg[7][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[7][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[7][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[7][2] * slotProps.data.array_agg[7][1]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                 <Column field="value" header="SEP">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[8][0]}}</td>
                         </tr>
@@ -173,9 +263,20 @@
                             <td>{{slotProps.data.array_agg[8][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[8][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[8][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[8][2] * slotProps.data.array_agg[8][1]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                 <Column field="value" header="OCT">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[9][0]}}</td>
                         </tr>
@@ -186,9 +287,20 @@
                             <td>{{slotProps.data.array_agg[9][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[9][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[9][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[9][2] * slotProps.data.array_agg[9][1]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                 <Column field="value" header="NOV">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[10][0]}}</td>
                         </tr>
@@ -199,9 +311,20 @@
                             <td>{{slotProps.data.array_agg[10][2]}}</td>
                         </tr>
                     </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[10][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[10][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[10][2] * slotProps.data.array_agg[10][1]}}</td>
+                        </tr>
+                    </template>
                 </Column>
                 <Column field="value" header="DEC">
-                    <template #body="slotProps">
+                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
                         <tr>
                             <td>{{slotProps.data.array_agg[11][0]}}</td>
                         </tr>
@@ -210,6 +333,17 @@
                         </tr>
                         <tr>
                             <td>{{slotProps.data.array_agg[11][2]}}</td>
+                        </tr>
+                    </template>
+                    <template v-else #body="slotProps">
+                        <tr>
+                            <td>{{slotProps.data.array_agg[11][1]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[11][2]}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{slotProps.data.array_agg[11][2] * slotProps.data.array_agg[11][1]}}</td>
                         </tr>
                     </template>
                 </Column>
@@ -267,22 +401,38 @@ const getTypeList = async () => {
 };
 const submit = async () => {
     const response = await axios.get('http://localhost:8000/api/v1/raw_material_and_compound?type='+typeSelected.value.value + '&plant=' +plantSelected.value.value + '&market_segment=' + mkgSelected.value.value + '&year=' + year.value + '&line=' + lineSelected + '&type_selected=' + listSelected.value.value)
-    console.table(response.data)
     table.value = response.data
-    table.value.forEach((element, index) => {
-        var array = []
-        for (let index = 0; index < 12; index++) {
-           var searchFind = element.array_agg.find(el => {
-            return el[3] == index
-        })
-          if(searchFind){
-            array.push(searchFind)
-          }else{
-            array.push(['-', '-', index])
-          }         
-        }
-        element.array_agg = array
-    });
+    if ( typeSelected.value.value === 'raw' ) {
+        table.value.forEach((element, index) => {
+            var array = []
+            for (let index = 1; index < 13; index++) {
+               var searchFind = element.array_agg.find(el => {
+                return el[3] == index
+            })
+              if(searchFind){
+                array.push(searchFind)
+              }else{
+                array.push(['-', '-', '-'])
+              }         
+            }
+            element.array_agg = array
+        });
+    } else {
+        table.value.forEach((element, index) => {
+            var array = []
+            for (let index = 1; index < 13; index++) {
+               var searchFind = element.array_agg.find(el => {
+                return el[0] == index
+            })
+              if(searchFind){
+                array.push(searchFind)
+              }else{
+                array.push(['-', '-', '-'])
+              }         
+            }
+            element.array_agg = array
+        });
+    }
     console.table(table)
 };
 onMounted(async () => {
