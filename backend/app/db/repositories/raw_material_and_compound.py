@@ -5,14 +5,14 @@ from app.db.schemas import RawMaterialAndCompound
 from sqlalchemy.ext.asyncio import AsyncSession
 
 class RawMaterialAndCompoundRepository():
-    async def listComponents(db: AsyncSession, type, plant, market_segment, line, year, type_selected) -> Optional[RawMaterialAndCompound]:
-        filter_plant = f"""and mez.plant = '{plant}'""" if plant else ''       
+    async def listComponents(db: AsyncSession, type, plant, market_segment, line, year, type_selected):
+        filter_plant = f"""and mez.plant = '{plant}'""" if plant else ''
         filter_plant_raw = f"""and plant = '{plant}'""" if plant else ''
-        filter_plant_comp = f"""and comp.plant = '{plant}'""" if plant else ''           
+        filter_plant_comp = f"""and comp.plant = '{plant}'""" if plant else ''
         filter_line = f"""and ms.line = '{line}'""" if line else ''
         
         
-        if type == 'raw_material':  
+        if type == 'raw':  
             filter_type = f"""and mez2.component  = '{type_selected}'""" if type_selected else ''      
             query = f"""select component, array_agg(jsonb_build_array(utilization,volume,total,month))  from (select mez.component,sum(utilization) utilization, comp."month", comp.volume, sum(utilization) * comp.volume as total from  material_espec_zp45 mez inner join md_material mm on 
                         mm.material  = mez.material left join market_segment ms on mm.mkg_segm = ms.mkg_segm, 
@@ -29,6 +29,7 @@ class RawMaterialAndCompoundRepository():
                         ms on mm.mkg_segm = ms.mkg_segm where
                         mm.subclass = 'IPAA'{filter_line}) as mx, material_espec_zp45 mez where mez.material = mx.material 
                         {filter_plant} {filter_type} and mez.year = """+year+""" group by mx.material, plant, mx.line, mx.mat_desc"""
+            print("23571113")
         sqlQuery = text(query)
         resultQuery = await db.execute(sqlQuery)
         result = list(resultQuery)

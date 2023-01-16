@@ -6,7 +6,7 @@ from app.api import deps
 
 router = APIRouter()
 
-@router.get("/", response_model=List[schemas.RawMaterialAndCompound])
+@router.get("/", response_model=List)
 async def get(
     *,
     db: AsyncSession = Depends(deps.get_db),
@@ -17,5 +17,5 @@ async def get(
     line: str,
     type_selected: str,
 ) -> Any:
-    result = await repositories.RawMaterialAndCompoundRepository.listComponents(db=db, type=type, plant=plant, market_segment=market_segment, line=line, year=year, type_selected=type_selected)
+    result = await repositories.RawMaterialAndCompoundRepository.listComponents(db=db, type=type, plant=plant, market_segment=None, line=None, year=year, type_selected=type_selected)
     return result
