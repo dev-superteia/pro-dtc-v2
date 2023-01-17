@@ -23,7 +23,7 @@ class MdMaterialRepository():
                                               MdMaterial.subclass != 'MPMP',MdMaterial.subclass != None,
                                               MdMaterial.subclass != '',MdMaterial.subclass != 'G1TM',
                                               MdMaterial.subclass != 'G1TT', MdMaterial.material.not_like('CQ%'),
-                                              MdMaterial.material.not_like('CW%'),MdMaterial.material.not_like('%0011')
+                                              MdMaterial.material.not_like('CW%'),MdMaterial.material.not_like('%0011'),
                                               MdMaterial.material.not_like('%0012')))
         result = await db.execute(stmt)
         return result.scalars().all()
