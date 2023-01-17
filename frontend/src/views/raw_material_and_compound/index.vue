@@ -4,19 +4,19 @@
     <div class="col-12">
         <h3>{{$t(`dtc.plant`)}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" v-model="plantSelected" :options="plant" placeholder="Select a plant"  @click="getPlant"/>
+            <Dropdown optionLabel="text" v-model="plantSelected" :options="plant" placeholder="Select a plant"/>
         </div>
     </div>
     <div class="col-12">
         <h3>{{$t(`dtc.line`)}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" placeholder="Select a line" v-model="lineSelected" :options="line" @click="getLine"/>
+            <Dropdown optionLabel="text" placeholder="Select a line" v-model="lineSelected" :options="line"/>
         </div>
     </div>
     <div class="col-12">
         <h3>{{$t('dtc.mkg')}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" placeholder="Market Segment" v-model="mkgSelected" :options="mkg" @click="getMkg"/>
+            <Dropdown optionLabel="text" placeholder="Market Segment" v-model="mkgSelected" :options="mkg"/>
         </div>
     </div>
     <div class="col-12">
@@ -433,7 +433,8 @@ const submit = async () => {
             element.array_agg = array
         });
     }
-    console.table(table)
+    console.table(table.value)
+    response.data = []
 };
 onMounted(async () => {
     getPlant()
