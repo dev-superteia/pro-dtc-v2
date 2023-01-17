@@ -19,7 +19,12 @@ class MdMaterialRepository():
         result = await db.execute(stmt)
         return result.scalars().all()
     async def get_mass(db: AsyncSession) -> Optional[Material]:
-        stmt = select(MdMaterial).filter(and_(MdMaterial.subclass != 'IPAA',MdMaterial.subclass != 'MPMP',MdMaterial.subclass != None,MdMaterial.subclass != '',MdMaterial.subclass != 'G1TM',MdMaterial.subclass != 'G1TT'))
+        stmt = select(MdMaterial).filter(and_(MdMaterial.subclass != 'IPAA',
+                                              MdMaterial.subclass != 'MPMP',MdMaterial.subclass != None,
+                                              MdMaterial.subclass != '',MdMaterial.subclass != 'G1TM',
+                                              MdMaterial.subclass != 'G1TT', MdMaterial.material.not_like('CQ%'),
+                                              MdMaterial.material.not_like('CW%'),MdMaterial.material.not_like('%0011')
+                                              MdMaterial.material.not_like('%0012')))
         result = await db.execute(stmt)
         return result.scalars().all()
     async def get_raw_material(db: AsyncSession) -> Optional[Material]:
@@ -27,7 +32,7 @@ class MdMaterialRepository():
         result = await db.execute(stmt)
         return result.scalars().all()
     
-    async def get_raw(db: AsyncSession) -> Optional[Material]:
+    async def get_tissues(db: AsyncSession) -> Optional[Material]:
         year = '2021'
         query = f"""with mass as (
         select mes.tm_material, mes.plant,mes."year" from material_espec_std mes where mes."year" = {year} union 
