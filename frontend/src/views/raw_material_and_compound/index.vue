@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="col-12">
-        <h3>Line</h3>
+        <h3>{{$t(`dtc.line`)}}</h3>
         <div class="p-inputgroup">
             <Dropdown optionLabel="text" placeholder="Select a line" v-model="lineSelected" :options="line" @click="getLine"/>
         </div>
