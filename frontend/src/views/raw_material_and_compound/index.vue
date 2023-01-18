@@ -39,10 +39,22 @@
     </div>
     <div class="col-2 mt-3">
         <Button :label="$t('message.search')" @click="submit" icon="pi pi-send" iconPos="right" ></Button>
+        <Button label="CONFUSÃO" @click="test" icon="pi pi-send" iconPos="right" ></Button>
     </div>
     <div class="col-12">
             <DataTable :value="table" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single"
             sortField="product.teste" :sortOrder="1" :paginator="true" :rows="10">
+            <template #header>
+                <div class="grid">
+                    <div class="col-12 md:col-6">
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"/>
+                            <InputText  style="max-width: 200px;"/>
+                        </span>
+                    </div>       
+                    <div class="col-12 md:col-6"><Dropdown optionLabel="text" placeholder="Precission value" style="max-width: 200px; float: right;"/></div>       
+                </div>
+            </template>
                 <Column v-if="typeSelected.value === 'raw'" field="component" header="Material"></Column>
                 <Column v-else field="material" header="Material"></Column>
                 <Column v-if="typeSelected.value !== 'raw'" field='plant'  header="Plant"></Column>
@@ -427,15 +439,25 @@ const submit = async () => {
               if(searchFind){
                 array.push(searchFind)
               }else{
-                array.push(['-', '-', '-'])
+                array.push([0, 0, 0])
               }         
             }
             element.array_agg = array
         });
     }
     console.table(table.value)
-    response.data = []
 };
+
+let arr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+const test = async () => {
+    table.value.forEach((element, index) => {
+        element.array_agg.forEach(el => {
+            arr[el[0]] = arr[el[0]] + (el[1] * el[2])
+        })
+    })
+    console.table(arr);
+}
+
 onMounted(async () => {
     getPlant()
     getMkg()

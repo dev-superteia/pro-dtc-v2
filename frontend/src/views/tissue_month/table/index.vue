@@ -7,7 +7,7 @@
                             <InputText  style="max-width: 200px;"/>
                         </span></div>       
             <div class="col-12 md:col-6"><Dropdown optionLabel="text" placeholder="Precission value" style="max-width: 200px; float: right;"/></div>       
-                </div>
+        </div>
     </template>
     <Column field="material" header="Material" sortable="true"></Column>
     <Column field="mat_desc" :header="$t('dtc.description')"></Column>
