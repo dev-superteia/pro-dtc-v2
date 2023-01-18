@@ -42,7 +42,7 @@
     </div>
     <div class="col-12">
             <DataTable :value="table" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single"
-            sortField="product.teste" :sortOrder="1">
+            sortField="product.teste" :sortOrder="1" :paginator="true" :rows="10">
                 <Column v-if="typeSelected.value === 'raw'" field="component" header="Material"></Column>
                 <Column v-else field="material" header="Material"></Column>
                 <Column v-if="typeSelected.value !== 'raw'" field='plant'  header="Plant"></Column>
@@ -79,7 +79,7 @@
                             <td>{{slotProps.data.array_agg[0][2]}}</td>
                         </tr>
                         <tr>
-                            <td>{{slotProps.data.array_agg[0][2] * slotProps.data.array_agg[0][2]}}</td>
+                            <td>{{slotProps.data.array_agg[0][2] * slotProps.data.array_agg[0][1]}}</td>
                         </tr>
                     </template>
                 </Column>
