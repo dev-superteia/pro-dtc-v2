@@ -23,7 +23,7 @@ class MdMaterialRepository():
                                               MdMaterial.subclass != 'MPMP',MdMaterial.subclass != None,
                                               MdMaterial.subclass != '',MdMaterial.subclass != 'G1TM',
                                               MdMaterial.subclass != 'G1TT', MdMaterial.material.not_like('CQ%'),
-                                              MdMaterial.material.not_like('CW%'),MdMaterial.material.not_like('%0011')
+                                              MdMaterial.material.not_like('CW%'),MdMaterial.material.not_like('%0011'),
                                               MdMaterial.material.not_like('%0012')))
         result = await db.execute(stmt)
         return result.scalars().all()
@@ -32,12 +32,12 @@ class MdMaterialRepository():
         result = await db.execute(stmt)
         return result.scalars().all()
     
-    async def get_tissues(db: AsyncSession) -> Optional[Material]:
-        year = '2021'
+    async def get_tissues(db: AsyncSession, plant, year)-> Optional[Material]:
         query = f"""with mass as (
         select mes.tm_material, mes.plant,mes."year" from material_espec_std mes where mes."year" = {year} union 
         select mest.material, mest.plant,mest."year" from material_espec_std_tm mest where mest."year" = {year} union
-        select mesm.material, mesm.plant,mesm."year" from material_espec_std_me mesm where mesm."year" = {year}
+        select mesm.material, mesm.plant,mesm."year" from material_espec_std_me mesm where mesm."year" = {year} union 
+        select mez.material, mez.plant,mez."year" from material_espec_zp78 mez where mez."year" = {year} 
         ),
         totalcoststandard as(select distinct mes.tm_material, mes.plant, mes."year",
                        (case when mes.tm_material like 'C%' then (select
@@ -183,18 +183,18 @@ class MdMaterialRepository():
             ),
             tissue as(
                     select mm.material, mm.mat_desc,mest.plant,mest."year",'std' as month,  mest.comp_material as comp ,mest.raw_material as raw, mest.raw_weight, mest.comp_weight from md_material mm right join material_espec_std_tm mest
-                    on mm.material = mest.material where mm.material like 'S%' or mm.material like 'Y%'
+                    on mm.material = mest.material and mest."year" = {year} where mm.material like 'S%' or mm.material like 'Y%'
                     union
                     select mm.material, mm.mat_desc,mez.plant,mez."year", text(mez."month"), mez.mat_me as comp, mez.componente as raw, mez.mp_weight, mez.me_weight from md_material mm right join material_espec_zp58 mez
-                    on mm.material = mez.material where mm.material like 'S%' or mm.material like 'Y%'
+                    on mm.material = mez.material and mez."year" = {year} where mm.material like 'S%' or mm.material like 'Y%'
                     union
                     select mm.material, mm.mat_desc,mez78.plant,mez78."year", text(mez78."month"), mez78.mat_me as comp, mez78.mat_mp as raw, mez78.mp_weight, mez78.me_weight from md_material mm right join material_espec_zp78 mez78
-                    on mm.material = mez78.material where mm.material like 'S%' or mm.material like 'Y%')
+                    on mm.material = mez78.material and mez78."year" = {year} where mm.material like 'S%' or mm.material like 'Y%')
             select material, year, mat_desc, plant,comp, raw,array_agg(jsonb_build_array("month",raw_weight,comp_weight,
             coalesce((select t.cost_std from totalcoststandard t where t.tm_material = tissue.material and t.plant = tissue.plant and tissue."month" = 'std' limit 1),0),
             coalesce((select t.cost_std from totalcoststandard t where t.tm_material = tissue.comp and t.plant = tissue.plant and tissue."month" = 'std' limit 1) * comp_weight,0),
             coalesce((select t2.cost_eff from totalcostseffective t2 where t2.component  = tissue.material and t2.plant = tissue.plant and text(t2."month") = tissue."month" limit 1),0),
-            coalesce((select t2.cost_eff from totalcostseffective t2 where t2.component  = tissue.comp and t2.plant = tissue.plant and text(t2."month") = tissue."month" limit 1) * comp_weight,0))) from tissue group by material, year, mat_desc, plant,comp, raw 
+            coalesce((select t2.cost_eff from totalcostseffective t2 where t2.component  = tissue.comp and t2.plant = tissue.plant and text(t2."month") = tissue."month" limit 1) * comp_weight,0))) from tissue group by material, year, mat_desc, plant,comp, raw
             """
         sqlQuery = text(query)
         resultQuery = await db.execute(sqlQuery)

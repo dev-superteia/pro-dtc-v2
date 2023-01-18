@@ -3,8 +3,6 @@ from fastapi import APIRouter, Depends, Response, Request
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.db import repositories, schemas
 from app.api import deps
-from fastapi_redis_cache import cache_one_day, cache_one_day
-from fastapi.encoders import jsonable_encoder
 
 
 router = APIRouter()
@@ -90,6 +88,6 @@ async def get_raw_material(
     Retrieve all available user roles.
     """
     raw = await repositories.MdMaterialRepository.get_raw_material(db=db)
-    return jsonable_encoder(raw)
+    return raw
     
    

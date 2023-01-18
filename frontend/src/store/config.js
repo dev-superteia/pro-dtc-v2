@@ -6,6 +6,7 @@ export const useConfigStore = defineStore({
     state: () => ({
         config: store.get('accessToken') !== undefined,
         toolbar: store.get('toolbar') !== true,
+        fixed: 3,
     }),
     actions: {
         async setLocation() {            
@@ -15,6 +16,9 @@ export const useConfigStore = defineStore({
         console.log(this.toolbar)              
         store.set('toolbar', !this.toolbar)
         this.toolbar = store.get('toolbar')
+    },
+    async setFixed(value) {  
+        this.fixed = value
     },
     getters: {
         async getLocation() {

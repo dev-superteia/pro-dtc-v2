@@ -90,10 +90,6 @@ export const useDtcStore = defineStore({
       }
     },
     async setTissue(plant, year) {
-        console.log(plant.value,year);
-      if (this.tissue.length > 0) {
-        return this.tissue;
-      } else {
         const response = await axios.get("http://localhost:8000/api/v1/tissue/?plant="+plant.value+"&year="+year);
         this.tissue = response.data;
         this.tissue.forEach((element, index) => {
@@ -110,8 +106,9 @@ export const useDtcStore = defineStore({
           }
           element.array_agg = array;
         });
+        console.log(this.tissue)
         return this.tissue;
-      }
+
     },
     getters: {
       async getPlant() {
