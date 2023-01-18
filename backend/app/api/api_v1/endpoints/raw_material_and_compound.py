@@ -17,5 +17,5 @@ async def get(
     line: str,
     type_selected: str,
 ) -> Any:
-    result = await repositories.RawMaterialAndCompoundRepository.listComponents(db=db, type=type, plant=plant, market_segment=None, line=None, year=year, type_selected=type_selected)
+    result = await repositories.RawMaterialAndCompoundRepository.listComponents(db=db, type=type, plant=None, market_segment=None, line=None, year=year, type_selected=type_selected)
     return result

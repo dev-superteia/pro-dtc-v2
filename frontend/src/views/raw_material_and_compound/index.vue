@@ -4,19 +4,19 @@
     <div class="col-12">
         <h3>{{$t(`dtc.plant`)}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" v-model="plantSelected" :options="plant" placeholder="Select a plant"  @click="getPlant"/>
+            <Dropdown optionLabel="text" v-model="plantSelected" :options="plant" placeholder="Select a plant"/>
         </div>
     </div>
     <div class="col-12">
         <h3>{{$t(`dtc.line`)}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" placeholder="Select a line" v-model="lineSelected" :options="line" @click="getLine"/>
+            <Dropdown optionLabel="text" placeholder="Select a line" v-model="lineSelected" :options="line"/>
         </div>
     </div>
     <div class="col-12">
         <h3>{{$t('dtc.mkg')}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" placeholder="Market Segment" v-model="mkgSelected" :options="mkg" @click="getMkg"/>
+            <Dropdown optionLabel="text" placeholder="Market Segment" v-model="mkgSelected" :options="mkg"/>
         </div>
     </div>
     <div class="col-12">
@@ -42,7 +42,7 @@
     </div>
     <div class="col-12">
             <DataTable :value="table" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single"
-            sortField="product.teste" :sortOrder="1">
+            sortField="product.teste" :sortOrder="1" :paginator="true" :rows="10">
                 <Column v-if="typeSelected.value === 'raw'" field="component" header="Material"></Column>
                 <Column v-else field="material" header="Material"></Column>
                 <Column v-if="typeSelected.value !== 'raw'" field='plant'  header="Plant"></Column>
@@ -79,7 +79,7 @@
                             <td>{{slotProps.data.array_agg[0][2]}}</td>
                         </tr>
                         <tr>
-                            <td>{{slotProps.data.array_agg[0][2] * slotProps.data.array_agg[0][2]}}</td>
+                            <td>{{slotProps.data.array_agg[0][2] * slotProps.data.array_agg[0][1]}}</td>
                         </tr>
                     </template>
                 </Column>
@@ -433,7 +433,8 @@ const submit = async () => {
             element.array_agg = array
         });
     }
-    console.table(table)
+    console.table(table.value)
+    response.data = []
 };
 onMounted(async () => {
     getPlant()

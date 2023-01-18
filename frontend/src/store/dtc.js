@@ -61,32 +61,42 @@ export const useDtcStore = defineStore({
       }
     },
     async setType() {
-      if (this.plant.length == 0) {
+      if (this.type.length > 0) {
+        return this.type
+      } else {
         this.type.push({ text: "Material", value: "material" });
         this.type.push({ text: "Raw Material", value: "raw" });
       }
     },
     async setTypeListMat() {
-      const response = await axios.get(
-        "http://localhost:8000/api/v1/multselect/mass"
-      );
-
-      for (let i = 0; i < response.data.length; i++) {
-        this.typeListMat.push({
-          text: response.data[i].material,
-          value: response.data[i].material,
-        });
+      if (this.typeListMat.length > 0) {
+        return this.typeListMat
+      } else{
+        const response = await axios.get(
+          "http://localhost:8000/api/v1/multselect/mass"
+        );
+  
+        for (let i = 0; i < response.data.length; i++) {
+          this.typeListMat.push({
+            text: response.data[i].material,
+            value: response.data[i].material,
+          });
+        }
       }
     },
     async setTypeListRaw() {
-      const response = await axios.get(
-        "http://localhost:8000/api/v1/multselect/raw_material"
-      );
-      for (let i = 0; i < response.data.length; i++) {
-        this.typeListRaw.push({
-          text: response.data[i].material,
-          value: response.data[i].material,
-        });
+      if (this.typeListRaw.length > 0) {
+        return this.typeListRaw;
+      } else {
+        const response = await axios.get(
+          "http://localhost:8000/api/v1/multselect/raw_material"
+        );
+        for (let i = 0; i < response.data.length; i++) {
+          this.typeListRaw.push({
+            text: response.data[i].material,
+            value: response.data[i].material,
+          });
+        }
       }
     },
     async setTissue(plant, year) {
