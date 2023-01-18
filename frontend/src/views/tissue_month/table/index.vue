@@ -1,10 +1,10 @@
 <template>   
-<DataTable :value='props.tableValue' responsiveLayout="scroll" :paginator="true" :rows="10" :rowsPerPageOptions="[10,20,50]" >
+<DataTable ref="dt" :value='props.tableValue' responsiveLayout="scroll" :paginator="true" :rows="10" :rowsPerPageOptions="[10,20,50]" :filters="filters">
     <template #header>
         <div class="grid">
             <div class="col-12 md:col-6"><span class="p-input-icon-left">
                             <i class="pi pi-search"/>
-                            <InputText  style="max-width: 200px;"/>
+                            <InputText v-model="filters['global'].value" placeholder="Search..."  style="max-width: 200px;"/>
                         </span></div>       
             <div class="col-12 md:col-6"><Dropdown optionLabel="text" placeholder="Precission value" style="max-width: 200px; float: right;"/></div>       
                 </div>
@@ -199,8 +199,10 @@
 </DataTable>
 </template>
 <script setup>
+import { ref } from "vue";
 import Column from "primevue/column";
 import { useConfigStore } from '@/store/config';
+import { FilterMatchMode } from 'primevue/api';
 import Dropdown from 'primevue/dropdown';
 const config = useConfigStore()
 const props = defineProps({
@@ -209,4 +211,8 @@ const props = defineProps({
 const changeFixed = () => {
     config.setFixed(4)
 }
+const dt = ref();
+const filters = ref({
+            'global': {value: null, matchMode: FilterMatchMode.CONTAINS},
+        });
 </script>
