@@ -41,12 +41,13 @@
         <Button :label="$t('message.search')" @click="submit" icon="pi pi-send" iconPos="right" ></Button>
     </div>
     <div class="col-12">
-        <DataTable :value="[0]">
-            <Column v-for="el in 12" :key=el>
+        <DataTable :value="table" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single"
+        sortField="product.teste" :sortOrder="1">
+            <Column field="total" v-for="el in 12" :key=el>
                 <template #body="slotProps">
-                    {{ tableTotal[el] }}
+                    {{ slotProps.data[el].total }}
                 </template>
-            </Column> 
+            </Column>
         </DataTable>
             <DataTable :value="tableResult" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single"
             sortField="product.teste" :sortOrder="1" :paginator="true" :rows="10">
