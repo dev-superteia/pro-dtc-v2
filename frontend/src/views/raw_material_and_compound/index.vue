@@ -39,7 +39,6 @@
     </div>
     <div class="col-2 mt-3">
         <Button :label="$t('message.search')" @click="submit" icon="pi pi-send" iconPos="right" ></Button>
-        <Button label="CONFUSÃO" @click="test" icon="pi pi-send" iconPos="right" ></Button>
     </div>
     <div class="col-12">
             <DataTable :value="table" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single"
@@ -383,6 +382,7 @@ const year = ref([]);
 const type = ref([]);
 const listType = ref([]);
 const table = ref([]);
+const month = []
 
 const getPlant = async () => {
   plant.value = await dtc.setPlant()
@@ -446,10 +446,11 @@ const submit = async () => {
         });
     }
     console.table(table.value)
+    somaTotal()
 };
 
-let arr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-const test = async () => {
+let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+const somaTotal = async () => {
     table.value.forEach((element, index) => {
         element.array_agg.forEach(el => {
             arr[el[0]] = arr[el[0]] + (el[1] * el[2])
