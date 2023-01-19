@@ -45,7 +45,11 @@ const messages = {
         mass:'Mass',
         raw_material: 'Raw material',
         values:'Values',
-        tissue_month:'Tissue per month'  
+        tissue_month:'Tissue per month',
+        raw_material_compoound: 'Raw Material and Compound',
+        volume: 'Volume',
+        total_volume: 'Total Volume',
+        material_volume: 'Material Volume'
       }
     },
     pt: {
@@ -95,7 +99,11 @@ const messages = {
         mass:'Massa',
         raw_material: 'Matéria Prima',
         values:'Valores' ,        
-        tissue_month:'Tecido por mês'
+        tissue_month:'Tecido por mês',
+        raw_material_compoound: 'Matéria Prima e Composto',
+        volume: 'Volume',
+        total_volume: 'Volume Total',
+        material_volume: 'Volume do Material'
       }
     },
     es: {

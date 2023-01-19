@@ -1,373 +1,387 @@
 <template>
-<h3>Raw Material and Compound</h3>
+<h3>{{$t(`dtc.raw_material_compoound`)}}</h3>
 <div class="grid p-fluid">
     <div class="col-12">
         <h3>{{$t(`dtc.plant`)}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" v-model="plantSelected" :options="plant" placeholder="Select a plant"/>
+            <Dropdown optionLabel="text" :placeholder="$t('dtc.plant')" v-model="plantSelected" :options="plant"/>
         </div>
     </div>
     <div class="col-12">
         <h3>{{$t(`dtc.line`)}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" placeholder="Select a line" v-model="lineSelected" :options="line"/>
+            <Dropdown optionLabel="text" :placeholder="$t('dtc.line')" v-model="lineSelected" :options="line"/>
         </div>
     </div>
     <div class="col-12">
         <h3>{{$t('dtc.mkg')}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" placeholder="Market Segment" v-model="mkgSelected" :options="mkg"/>
+            <Dropdown optionLabel="text" :placeholder="$t('dtc.mkg')" v-model="mkgSelected" :options="mkg"/>
         </div>
     </div>
     <div class="col-12">
         <h3>{{$t('dtc.type')}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" placeholder="Type" v-model="typeSelected" :options="type"/>
+            <Dropdown optionLabel="text" :placeholder="$t('dtc.type')" v-model="typeSelected" :options="type"/>
         </div>
     </div>
     <div class="col-12">
         <h3>{{$t('dtc.type_list')}}</h3>
         <div class="p-inputgroup">
-            <Dropdown editable optionLabel="text" placeholder="List of Type Selected" v-model="listSelected" :options="listType" @click="getTypeList"/>
+            <Dropdown editable optionLabel="text" :placeholder="$t('dtc.type_list')" v-model="listSelected" :options="listType" @click="getTypeList"/>
         </div>
     </div>
     <div class="col-12">
         <h3>{{$t('dtc.year')}}</h3>
         <div class="p-inputgroup">
-            <InputText placeholder="Year" v-model="year"/>
+            <InputText :placeholder="$t('dtc.year')" v-model="year"/>
         </div>
     </div>
     <div class="col-2 mt-3">
         <Button :label="$t('message.search')" @click="submit" icon="pi pi-send" iconPos="right" ></Button>
     </div>
     <div class="col-12">
-        <DataTable :value="table" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single"
-        sortField="product.teste" :sortOrder="1">
+        <DataTable v-if="typeSelected.value === 'material'" :value="table" responsiveLayout="scroll">
             <Column field="total" v-for="el in 12" :key=el>
                 <template #body="slotProps">
                     {{ slotProps.data[el].total }}
                 </template>
             </Column>
         </DataTable>
-            <DataTable :value="tableResult" responsiveLayout="scroll" groupRowsBy="product.teste" sortMode="single"
-            sortField="product.teste" :sortOrder="1" :paginator="true" :rows="10">
+        <DataTable ref="dt" :value="tableResult" responsiveLayout="scroll" :rowsPerPageOptions="[10, 20, 50]" :filters="filters" :paginator="true" :rows="10">
             <template #header>
-                <div class="grid">
-                    <div class="col-12 md:col-6">
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-search"/>
-                            <InputText  style="max-width: 200px;"/>
-                        </span>
-                    </div>       
-                    <div class="col-12 md:col-6"><Dropdown optionLabel="text" placeholder="Precission value" style="max-width: 200px; float: right;"/></div>       
+                <div class="flex justify-content-between flex-wrap">
+                <div><span class="p-input-icon-left">
+                        <i class="pi pi-search" />
+                        <InputText v-model="filters['global'].value" placeholder="Search..."
+                            style="max-width: 200px;" />
+                    </span>
                 </div>
+                <div class="flex justify-content-between flex-wrap align-items-center gap-2">
+                    <Dropdown optionLabel="text" v-model="fixed" placeholder="Precission value" style="max-width: 200px; float: right;"
+                        :options="[
+                            { value: 0, text: '0 - precision' },
+                            { value: 1, text: '1 - precision' },
+                            { value: 2, text: '2 - precision' },
+                            { value: 3, text: '3 - precision' },
+                            { value: 4, text: '4 - precision' },
+                            { value: 5, text: '5 - precision' },
+                            { value: 6, text: '6 - precision' },
+                            { value: 7, text: '7 - precision' }
+                        ]" />
+                    <div style="text-align: left; width: 200px;">
+                        <Button icon="pi pi-external-link" label="Export" @click="exportCSV($event)" />
+                    </div>
+
+                </div>
+            </div>
             </template>
-                <Column v-if="typeSelected.value === 'raw'" field="component" header="Material"></Column>
-                <Column v-else field="material" header="Material"></Column>
-                <Column v-if="typeSelected.value !== 'raw'" field='plant'  header="Plant"></Column>
-                <Column field="items" header="Values">
-                    <template #body="slotProps">
-                        <tr>
-                            <td>Material Volume</td>
-                        </tr>
-                        <tr>
-                            <td>Volume</td>
-                        </tr>
-                        <tr>
-                            <td>Total Volume</td>
-                        </tr>
-                    </template>
-                </Column>
-                 <Column field="items" header="JAN">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[0][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[0][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[0][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[0][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[0][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[0][2] * slotProps.data.array_agg[0][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                <Column field="items" header="FEB">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[1][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[1][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[1][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[1][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[1][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[1][2] * slotProps.data.array_agg[1][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                <Column field="items" header="MAR">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[2][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[2][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[2][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[2][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[2][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[2][2] * slotProps.data.array_agg[2][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                 <Column field="items" header="APR">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[3][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[3][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[3][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[3][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[3][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[3][2] * slotProps.data.array_agg[3][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                <Column field="items" header="MAI">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[4][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[4][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[4][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[4][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[4][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[4][2] * slotProps.data.array_agg[4][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                <Column field="items" header="JUN">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[5][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[5][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[5][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[5][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[5][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[5][2] * slotProps.data.array_agg[5][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                <Column field="items" header="JUL">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[6][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[6][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[6][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[6][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[6][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[6][2] * slotProps.data.array_agg[6][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                <Column field="items" header="AUG">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[7][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[7][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[7][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[7][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[7][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[7][2] * slotProps.data.array_agg[7][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                <Column field="items" header="SEP">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[8][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[8][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[8][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[8][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[8][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[8][2] * slotProps.data.array_agg[8][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                <Column field="items" header="OCT">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[9][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[9][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[9][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[9][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[9][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[9][2] * slotProps.data.array_agg[9][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                <Column field="items" header="NOV">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[10][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[10][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[10][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[10][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[10][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[10][2] * slotProps.data.array_agg[10][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-                <Column field="items" header="DEC">
-                    <template v-if="typeSelected.value === 'raw'" #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[11][0]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[11][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[11][2]}}</td>
-                        </tr>
-                    </template>
-                    <template v-else #body="slotProps">
-                        <tr>
-                            <td>{{slotProps.data.array_agg[11][1]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[11][2]}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{slotProps.data.array_agg[11][2] * slotProps.data.array_agg[11][1]}}</td>
-                        </tr>
-                    </template>
-                </Column>
-            </DataTable>
-        </div>
+            <Column v-if="typeSelected.value === 'raw'" field="component" :header="$t('dtc.material')"></Column>
+            <Column v-else field="material" :header="$t('dtc.material')"></Column>
+            <Column v-if="typeSelected.value !== 'raw'" field='plant'  :header="$t('dtc.plant')"></Column>
+            <Column field="items" :header="$t('dtc.values')">
+                <template #body="slotProps">
+                    <tr>
+                        <td>Material Volume</td>
+                    </tr>
+                    <tr>
+                        <td>Volume</td>
+                    </tr>
+                    <tr>
+                        <td>Total Volume</td>
+                    </tr>
+                </template>
+            </Column>
+                <Column field="items" header="JAN">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[0][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[0][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[0][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[0][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[0][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[0][2] * slotProps.data.array_agg[0][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="items" header="FEB">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[1][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[1][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[1][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[1][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[1][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[1][2] * slotProps.data.array_agg[1][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="items" header="MAR">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[2][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[2][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[2][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[2][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[2][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[2][2] * slotProps.data.array_agg[2][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+                <Column field="items" header="APR">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[3][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[3][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[3][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[3][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[3][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[3][2] * slotProps.data.array_agg[3][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="items" header="MAI">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[4][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[4][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[4][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[4][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[4][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[4][2] * slotProps.data.array_agg[4][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="items" header="JUN">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[5][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[5][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[5][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[5][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[5][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[5][2] * slotProps.data.array_agg[5][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="items" header="JUL">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[6][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[6][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[6][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[6][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[6][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[6][2] * slotProps.data.array_agg[6][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="items" header="AUG">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[7][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[7][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[7][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[7][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[7][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[7][2] * slotProps.data.array_agg[7][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="items" header="SEP">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[8][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[8][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[8][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[8][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[8][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[8][2] * slotProps.data.array_agg[8][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="items" header="OCT">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[9][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[9][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[9][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[9][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[9][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[9][2] * slotProps.data.array_agg[9][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="items" header="NOV">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[10][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[10][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[10][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[10][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[10][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[10][2] * slotProps.data.array_agg[10][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="items" header="DEC">
+                <template v-if="typeSelected.value === 'raw'" #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[11][0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[11][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[11][2]}}</td>
+                    </tr>
+                </template>
+                <template v-else #body="slotProps">
+                    <tr>
+                        <td>{{slotProps.data.array_agg[11][1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[11][2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{slotProps.data.array_agg[11][2] * slotProps.data.array_agg[11][1]}}</td>
+                    </tr>
+                </template>
+            </Column>
+        </DataTable>
+    </div>
 </div>
 </template>
 <script setup>
@@ -375,6 +389,7 @@ import Dropdown from 'primevue/dropdown';
 import Column from "primevue/column";
 import axios from "axios";
 import { useDtcStore } from '../../store/dtc';
+import { FilterMatchMode } from 'primevue/api';
 import { ref, onMounted } from "vue";
 
 const dtc = useDtcStore()
@@ -392,6 +407,11 @@ const listType = ref([]);
 const table = ref([]);
 const tableResult = ref([]);
 const tableTotal = ref([]);
+const dt = ref();
+const fixed = ref();
+const filters = ref({
+    'global': { value: null, matchMode: FilterMatchMode.CONTAINS },
+});
 
 const getPlant = async () => {
   plant.value = await dtc.setPlant()
