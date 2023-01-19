@@ -201,5 +201,227 @@ class MdMaterialRepository():
         result = list(resultQuery)
         return result
     
+async def listRawMaterialRecipesByMonth(db: AsyncSession,plant, product, year)-> Optional[Material]:
+    sqlQuery = """
+            select
+                distinct component,
+                (
+                    select
+                        raw_weight
+                    from
+                        material_espec_std_me mesmstd
+                    where
+                        mesmstd.plant = '"""+plant+"""' and 
+                        mesmstd.material = '"""+product+"""' and 
+                        mesmstd.raw_material = tcomp.component and
+                        mesmstd.year = """+year+""" limit 1
+                ) as STD,
+                (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 01 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M01,
+                (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 02 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M02,
+                    (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 03 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M03,
+                    (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 04 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M04,
+                    (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 05 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M05,
+                (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 06 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M06,
+                (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 06 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M06,
+                (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 07 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M07,
+                (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 08 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M08,
+                (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 09 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M09,
+                (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 10 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M10,
+                (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 11 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M11,
+                (
+                    select
+                        qtd_without
+                    from
+                        material_espec_zp45 mez2 
+                    where
+                        mez2.plant = '"""+plant+"""' and 
+                        mez2.material = '"""+product+"""' and 
+                        mez2.component = tcomp.component and
+                        mez2.subclass = 'MPMP' and 
+                        mez2."month" = 12 and
+                        mez2."year" = """+year+""" limit 1
+                ) as M12
+            from
+                (
+                select
+                    raw_material as component
+                from
+                    material_espec_std_me mesm
+                where
+                    mesm.plant = '"""+plant+"""' and 
+                    mesm.material = '"""+product+"""' and 
+                    mesm."year" = """+year+"""
+                union all
+                select
+                    component
+                from
+                    material_espec_zp45 mez left join md_material mm on mez.material = mm.material  left join market_segment ms on mm.mkg_segm = ms.mkg_segm
+                where                
+                mez.plant = '"""+plant+"""' and 
+                mez.material = '"""+product+"""' and 
+                mez."year" = """+year+""" and
+            mez.subclass = 'MPMP') tcomp
+        """    
+    sqlQuery = text(query)
+    resultQuery = await db.execute(sqlQuery)
+    result = []
 
+    for row in resultQuery:
+        child = {'rawmaterial': row[0], 'months': []}
+        for childrow in row:
+            if(childrow is None):
+                child['months'].append({'material': 'undefined', 'cost_standard': '--', 'cost_effective': '--' , 'raw_weight': '--', 'total_cost_standard': '--', 'total_cost_effective': '--'})
+            else:
+                child['months'].append({'material': row[0], 'cost_standard': 0, 'cost_effective': 0 , 'raw_weight': childrow, 'total_cost_standard': 0, 'total_cost_effective': 0})
+        result.append(child)
+
+
+    return result
+    
+    
+    
 permission = MdMaterialRepository()

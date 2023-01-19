@@ -22,7 +22,7 @@
     <div class="col-12">
         <h3>{{$t('dtc.type')}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" placeholder="Select a Type" v-model="lineSelected" :options="line" @click="getMaterial"/>
+            <Dropdown optionLabel="text" placeholder="Select a Type" v-model="selectMaterialBreakdown" :options="itemsMaterialBreakdown" selectOnFocus="true"/>
         </div>
     </div>
     <div class="col-2 mt-3">
@@ -43,6 +43,9 @@ const line = ref([]);
 const plantSelected = ref([]);
 const lineSelected = ref([]);
 const year = ref([]);
+const selectMaterialBreakdown= ref({ id: 1, text: 'Without Recycle' })
+const itemsMaterialBreakdown = ref([{ id: 1, text: 'Without Recycle' }, { id: 2, text: 'With Recycle (no explosion)' }, { id: 3, text: 'With Recycle (explosion)' }])
+ 
 
 const getPlant = async () => {
   plant.value = await dtc.setPlant()
