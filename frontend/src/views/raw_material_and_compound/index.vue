@@ -409,6 +409,11 @@ const tableResult = ref([]);
 const tableTotal = ref([]);
 const dt = ref();
 const fixed = ref();
+
+const exportCSV = () => {
+    dt.value.exportCSV();
+};   
+
 const filters = ref({
     'global': { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
