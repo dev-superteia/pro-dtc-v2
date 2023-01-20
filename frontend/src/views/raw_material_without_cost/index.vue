@@ -14,7 +14,10 @@
         </div>
     </div>
     <div class="col-2 mt-3">
-        <Button :label="$t('message.search')" @click="getResult" icon="pi pi-send" iconPos="right" ></Button>
+        <Button v-if="!progress" :label="$t('message.search')" @click="submit()" icon="pi pi-send"
+                iconPos="right"></Button>
+        <ProgressSpinner v-if="progress" style="width:50px;height:50px" strokeWidth="8" fill="var(--surface-ground)"
+                animationDuration=".5s" aria-label="Custom ProgressSpinner" />
     </div>    
 </div>
 <DataTable :value="material" responsiveLayout="scroll">
@@ -22,6 +25,7 @@
     <Column field="plant" header="Plant"></Column>
     <Column field="year" header="Year"></Column>
 </DataTable>
+<Toast />
 </template>
 <script setup>
 import Dropdown from 'primevue/dropdown';
@@ -29,19 +33,31 @@ import Column from "primevue/column";
 import axios from "axios";
 import { useDtcStore } from '../../store/dtc';
 import { ref, onMounted } from "vue";
+import ProgressSpinner from 'primevue/progressspinner';
+import Toast from 'primevue/toast';
+import { useToast } from "primevue/usetoast";
+
 const dtc = useDtcStore()
 const plant = ref([]);
 const plantSelected = ref([]);
 const year = ref([]);
 const material = ref([]);
+const progress = ref(false)
+const toast = useToast();
 
 const getPlant = async () => {
   plant.value = await dtc.setPlant()
 };
 
-const getResult = async () => {
+const submit = async () => {
+    progress.value = true
+    if (plantSelected.value.value === undefined) {
+        plantSelected.value.value = ''
+    }
     const response = await axios.get('http://localhost:8000/api/v1/report_raw_material_null?plant=' + plantSelected.value.value + '&year=' + year.value )
     material.value = response.data
+    toast.add({severity:'success', summary: 'Atualizado conforme solicitado', detail:'Permissoes atualizadas para a regra', life: 3000});
+    progress.value = false
 }
 
 onMounted(async () => {

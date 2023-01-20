@@ -38,7 +38,10 @@
         </div>
     </div>
     <div class="col-2 mt-3">
-        <Button :label="$t('message.search')" @click="submit" icon="pi pi-send" iconPos="right" ></Button>
+        <Button v-if="!progress" :label="$t('message.search')" @click="submit()" icon="pi pi-send"
+                iconPos="right"></Button>
+        <ProgressSpinner v-if="progress" style="width:50px;height:50px" strokeWidth="8" fill="var(--surface-ground)"
+                animationDuration=".5s" aria-label="Custom ProgressSpinner" />
     </div>
     <div class="col-12">
         <DataTable v-if="typeSelected.value === 'material'" :value="[0]" responsiveLayout="scroll">
@@ -383,11 +386,15 @@
         </DataTable>
     </div>
 </div>
+<Toast />
 </template>
 <script setup>
 import Dropdown from 'primevue/dropdown';
 import Column from "primevue/column";
+import ProgressSpinner from 'primevue/progressspinner';
 import axios from "axios";
+import Toast from 'primevue/toast';
+import { useToast } from "primevue/usetoast";
 import { useDtcStore } from '../../store/dtc';
 import { FilterMatchMode } from 'primevue/api';
 import { ref, onMounted } from "vue";
@@ -409,6 +416,8 @@ const tableResult = ref([]);
 const tableTotal = ref([]);
 const dt = ref();
 const fixed = ref();
+const progress = ref(false)
+const toast = useToast();
 
 const exportCSV = () => {
     dt.value.exportCSV();
@@ -445,6 +454,7 @@ const getTypeList = async () => {
     }
 };
 const submit = async () => {
+    progress.value = true
     if (plantSelected.value.value === undefined) {
         plantSelected.value.value = ''
     }
@@ -483,6 +493,8 @@ const submit = async () => {
     }
     tableResult.value = table.value.items
     tableTotal.value = table.value.total
+    toast.add({severity:'success', summary: 'Atualizado conforme solicitado', detail:'Permissoes atualizadas para a regra', life: 3000});
+    progress.value = false
 };
 
 
