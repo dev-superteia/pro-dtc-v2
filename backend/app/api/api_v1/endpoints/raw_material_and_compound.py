@@ -17,8 +17,8 @@ async def get(
     line: str,
     type_selected: str,
 ) -> Any:
-    itens = await repositories.RawMaterialAndCompoundRepository.listComponents(db=db, type=type, plant=None, market_segment=None, line=None, year=year, type_selected=type_selected)
-    total = await repositories.RawMaterialAndCompoundRepository.totalComponents(db=db, type=type, plant=None, market_segment=None, line=None, year=year, type_selected=type_selected)
+    itens = await repositories.RawMaterialAndCompoundRepository.listComponents(db=db, type=type, plant=plant, market_segment=None, line=None, year=year, type_selected=type_selected)
+    total = await repositories.RawMaterialAndCompoundRepository.totalComponents(db=db, type=type, plant=plant, market_segment=None, line=None, year=year, type_selected=type_selected)
     response = {
         'total': jsonable_encoder(total),
         'items': jsonable_encoder(itens),

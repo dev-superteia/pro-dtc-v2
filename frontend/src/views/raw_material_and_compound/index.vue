@@ -41,10 +41,10 @@
         <Button :label="$t('message.search')" @click="submit" icon="pi pi-send" iconPos="right" ></Button>
     </div>
     <div class="col-12">
-        <DataTable v-if="typeSelected.value === 'material'" :value="table" responsiveLayout="scroll">
+        <DataTable v-if="typeSelected.value === 'material'" :value="[0]" responsiveLayout="scroll">
             <Column field="total" v-for="el in 12" :key=el>
                 <template #body="slotProps">
-                    {{ slotProps.data[el].total }}
+                    <td>{{ tableTotal[el] ? tableTotal[el].total : '-'}}</td>
                 </template>
             </Column>
         </DataTable>
@@ -434,18 +434,20 @@ const getType = async () => {
     type.value = dtc.type
 };
 const getTypeList = async () => {
+    listType.value.text = ""
     if (typeSelected.value.value === 'material') {
-        console.log(typeSelected.value);
         await dtc.setTypeListMat()
         listType.value = dtc.typeListMat
     }
     if (typeSelected.value.value === 'raw') {
-        console.log(typeSelected.value);
         await dtc.setTypeListRaw()
         listType.value = dtc.typeListRaw
     }
 };
 const submit = async () => {
+    if (plantSelected.value.value === undefined) {
+        plantSelected.value.value = ''
+    }
     const response = await axios.get('http://localhost:8000/api/v1/raw_material_and_compound?type='+typeSelected.value.value + '&plant=' +plantSelected.value.value + '&market_segment=' + mkgSelected.value.value + '&year=' + year.value + '&line=' + lineSelected + '&type_selected=' + listSelected.value.value)
     table.value = response.data
     if ( typeSelected.value.value === 'raw' ) {
@@ -481,7 +483,6 @@ const submit = async () => {
     }
     tableResult.value = table.value.items
     tableTotal.value = table.value.total
-    console.table(tableTotal.value);
 };
 
 
