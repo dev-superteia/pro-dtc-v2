@@ -5,23 +5,54 @@ from app.db import repositories, schemas, models
 from app.api import deps
 from fastapi_redis_cache import cache_one_day,cache_one_minute
 from fastapi.encoders import jsonable_encoder
-
+from decimal import Decimal
 router = APIRouter()
 
 
 # TODO:Colocar em um novo arquivo
-@router.get("/", response_model=List[schemas.Tissue])
+@router.get("/")
 #@cache_one_minute()
 async def get_raw(
     response: Response,
     plant: str,
     year: str,
+    material: str,
+    type: str,
     db: AsyncSession = Depends(deps.get_db)
 ) -> Any:
-    """
-    Retrieve all available user roles.
-    """
-    print(plant == 'undefined')
-    raw = await repositories.MdMaterialRepository.get_tissues(db=db, plant=plant,year=year)
-    #raw = {}
-    return jsonable_encoder(raw)
+    month = '02'
+
+    table = await repositories.MdMaterialRepository.listRawMaterialRecipesByMonth(db=db,plant=plant, product=material, year=year)
+
+    density = await repositories.MdMaterialRepository.find_density(db, plant, material, year, month)
+
+    total_weights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    
+    for years in table:
+        years['rawmaterial'] = years['rawmaterial']  + ' - ' 
+        for idx, months in enumerate(years['months']):
+            if months['material'] != 'undefined':
+                months['raw_weight'] = await repositories.MdMaterialRepository.rawWeightCalculate(db,plant, material, months['material'], month, year, type, months['raw_weight'])
+                if idx == 1:
+                    months['cost_standard'] = await repositories.MaterialCostRepository.find_by_material(db,material=months['material'], cost='cost_std')
+                    months['cost_effective'] = await repositories.MaterialCostRepository.find_by_material(db,material=months['material'], cost='cost_std')
+                    months['total_cost_standard'] = Decimal(months['cost_standard']) * Decimal(months['raw_weight']) 
+                    months['total_cost_effective'] = Decimal(months['cost_effective']) * Decimal(months['raw_weight']) 
+                    months['measure_unit'] = 'KG'
+                    total_weights[0] += months['raw_weight']
+                elif idx >= 2:
+                    months['cost_standard'] = await repositories.MaterialCostRepository.find_by_material(db,material=months['material'], cost='cost_std')
+                    months['cost_effective'] = await repositories.MaterialCostRepository.find_by_material(db,material=months['material'], cost='cost_m02')
+                    months['total_cost_standard'] = Decimal(months['cost_standard']) * Decimal(months['raw_weight']) 
+                    months['total_cost_effective'] = Decimal(months['cost_effective']) * Decimal(months['raw_weight']) 
+                    months['measure_unit'] = 'KG'
+                    total_weights[idx-2] += months['raw_weight']
+                    
+    response = {
+        'name': 'ok',
+        'density': density,
+        'weights': total_weights,
+        'table': table
+    }
+
+    return response

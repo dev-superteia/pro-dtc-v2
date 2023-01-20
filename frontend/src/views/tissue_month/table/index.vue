@@ -1,6 +1,6 @@
 <template>
     <DataTable ref="dt" :value='props.tableValue' responsiveLayout="scroll" :paginator="true" :rows="10"
-        :rowsPerPageOptions="[10, 20, 50]" :filters="filters">
+        :rowsPerPageOptions="[-1,10, 20, 50]" :filters="filters">
         <template #header>
             <div class="flex justify-content-between flex-wrap">
                 <div><span class="p-input-icon-left">

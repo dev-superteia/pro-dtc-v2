@@ -7,6 +7,7 @@ export const useDtcStore = defineStore({
     mkg: [],
     line: [],
     type: [],
+    mass_all: [],
     typeListMat: [],
     typeListRaw: [],
     tissue: [],
@@ -99,6 +100,21 @@ export const useDtcStore = defineStore({
         }
       }
     },
+    async setMassAll() {
+        if (this.mass_all.length > 0) {
+          return this.mass_all;
+        } else {
+          const response = await axios.get(
+            "http://localhost:8000/api/v1/multselect/all_mass"
+          );
+          for (let i = 0; i < response.data.length; i++) {
+            this.mass_all.push({
+              text: response.data[i].material,
+              value: response.data[i].material,
+            });
+          }
+        }
+      },
     async setTissue(plant, year) {
         const response = await axios.get("http://localhost:8000/api/v1/tissue/?plant="+plant.value+"&year="+year);
         this.tissue = response.data;

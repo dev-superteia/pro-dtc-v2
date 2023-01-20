@@ -3,7 +3,7 @@ from sqlalchemy import select, and_, or_, text
 from app.db.models.material_cost import MaterialCost
 from app.db.schemas import PlantInDBBase
 from sqlalchemy.ext.asyncio import AsyncSession
-
+from fastapi.encoders import jsonable_encoder
 class MaterialCostRepository():
     async def is_cost_null(db: AsyncSession, plant, year) -> Optional[PlantInDBBase]:
         filter_plant = f"""and mez.plant = '{plant}'""" if plant else ''  
@@ -16,3 +16,24 @@ class MaterialCostRepository():
         resultQuery = await db.execute(sqlQuery)
         result = list(resultQuery)
         return result
+      
+    async def find_by_material(db: AsyncSession, material:str, cost:str):
+        stmt = select(MaterialCost).filter(MaterialCost.material == material)
+        result = await db.execute(stmt)    
+        result = result.scalars().first()  
+        result = jsonable_encoder(result)
+        return result[cost]
+    
+    async def description(db: AsyncSession, material):
+        query = f"""select
+                        description 
+                    from
+                        material_cost mc 
+                    where
+                        mc.material = '{material}'"""
+        sqlQuery = text(query)
+        resultQuery = await db.execute(sqlQuery)
+        resultQuery = list(resultQuery)       
+        return resultQuery  
+      
+material_cost = MaterialCostRepository()      

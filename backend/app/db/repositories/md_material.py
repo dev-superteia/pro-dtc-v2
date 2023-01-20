@@ -3,36 +3,52 @@ from sqlalchemy import select, and_, or_, text
 from app.db.models.md_material import MdMaterial
 from app.db.schemas import Material
 from sqlalchemy.ext.asyncio import AsyncSession
+import re
+from decimal import Decimal
 
+from app.db.models.material_espec_zp45 import MaterialEspecZp45
 
 class MdMaterialRepository():
     async def get_tires(db: AsyncSession) -> Optional[Material]:
         stmt = select(MdMaterial).filter(MdMaterial.subclass == 'IPAA')
         result = await db.execute(stmt)
         return result.scalars().all()
+
     async def all_mass(db: AsyncSession) -> Optional[Material]:
-        stmt = select(MdMaterial).filter(and_(MdMaterial.subclass != 'IPAA',MdMaterial.subclass != 'MPMP',MdMaterial.subclass != None,MdMaterial.subclass != '' ))
-        result = await db.execute(stmt)
-        return result.scalars().all()
-    async def get_tissue(db: AsyncSession) -> Optional[Material]:
-        stmt = select(MdMaterial).filter(or_(MdMaterial.subclass == 'G1TM',MdMaterial.subclass == 'G1TT'))
-        result = await db.execute(stmt)
-        return result.scalars().all()
-    async def get_mass(db: AsyncSession) -> Optional[Material]:
-        stmt = select(MdMaterial).filter(and_(MdMaterial.subclass != 'IPAA',
-                                              MdMaterial.subclass != 'MPMP',MdMaterial.subclass != None,
-                                              MdMaterial.subclass != '',MdMaterial.subclass != 'G1TM',
-                                              MdMaterial.subclass != 'G1TT', MdMaterial.material.not_like('CQ%'),
-                                              MdMaterial.material.not_like('CW%'),MdMaterial.material.not_like('%0011'),
+        stmt = select(MdMaterial).filter(and_(MdMaterial.subclass != 'IPAA', MdMaterial.subclass !=
+                                              'MPMP', MdMaterial.subclass != None, MdMaterial.subclass != '',MdMaterial.material.not_like(
+                                                  'CQ%'),
+                                              MdMaterial.material.not_like(
+                                                  'CW%'), MdMaterial.material.not_like('%0011'),
                                               MdMaterial.material.not_like('%0012')))
         result = await db.execute(stmt)
         return result.scalars().all()
-    async def get_raw_material(db: AsyncSession) -> Optional[Material]:
-        stmt = select(MdMaterial).filter(or_(MdMaterial.subclass == 'MPMP',MdMaterial.subclass == None,MdMaterial.subclass == ''))
+
+    async def get_tissue(db: AsyncSession) -> Optional[Material]:
+        stmt = select(MdMaterial).filter(
+            or_(MdMaterial.subclass == 'G1TM', MdMaterial.subclass == 'G1TT'))
         result = await db.execute(stmt)
         return result.scalars().all()
-    
-    async def get_tissues(db: AsyncSession, plant, year)-> Optional[Material]:
+
+    async def get_mass(db: AsyncSession) -> Optional[Material]:
+        stmt = select(MdMaterial).filter(and_(MdMaterial.subclass != 'IPAA',
+                                              MdMaterial.subclass != 'MPMP', MdMaterial.subclass != None,
+                                              MdMaterial.subclass != '', MdMaterial.subclass != 'G1TM',
+                                              MdMaterial.subclass != 'G1TT', MdMaterial.material.not_like(
+                                                  'CQ%'),
+                                              MdMaterial.material.not_like(
+                                                  'CW%'), MdMaterial.material.not_like('%0011'),
+                                              MdMaterial.material.not_like('%0012')))
+        result = await db.execute(stmt)
+        return result.scalars().all()
+
+    async def get_raw_material(db: AsyncSession) -> Optional[Material]:
+        stmt = select(MdMaterial).filter(or_(MdMaterial.subclass == 'MPMP',
+                                             MdMaterial.subclass == None, MdMaterial.subclass == ''))
+        result = await db.execute(stmt)
+        return result.scalars().all()
+
+    async def get_tissues(db: AsyncSession, plant, year) -> Optional[Material]:
         query = f"""with mass as (
         select mes.tm_material, mes.plant,mes."year" from material_espec_std mes where mes."year" = {year} union 
         select mest.material, mest.plant,mest."year" from material_espec_std_tm mest where mest."year" = {year} union
@@ -200,9 +216,10 @@ class MdMaterialRepository():
         resultQuery = await db.execute(sqlQuery)
         result = list(resultQuery)
         return result
-    
-async def listRawMaterialRecipesByMonth(db: AsyncSession,plant, product, year)-> Optional[Material]:
-    sqlQuery = """
+
+
+    async def listRawMaterialRecipesByMonth(db: AsyncSession, plant, product, year) -> Optional[Material]:
+        sqlQuery = """
             select
                 distinct component,
                 (
@@ -405,23 +422,58 @@ async def listRawMaterialRecipesByMonth(db: AsyncSession,plant, product, year)->
                 mez.material = '"""+product+"""' and 
                 mez."year" = """+year+""" and
             mez.subclass = 'MPMP') tcomp
-        """    
-    sqlQuery = text(query)
-    resultQuery = await db.execute(sqlQuery)
-    result = []
+        """
+        resultQuery = await db.execute(sqlQuery)
+        result = []
 
-    for row in resultQuery:
-        child = {'rawmaterial': row[0], 'months': []}
-        for childrow in row:
-            if(childrow is None):
-                child['months'].append({'material': 'undefined', 'cost_standard': '--', 'cost_effective': '--' , 'raw_weight': '--', 'total_cost_standard': '--', 'total_cost_effective': '--'})
-            else:
-                child['months'].append({'material': row[0], 'cost_standard': 0, 'cost_effective': 0 , 'raw_weight': childrow, 'total_cost_standard': 0, 'total_cost_effective': 0})
-        result.append(child)
+        for row in resultQuery:
+            child = {'rawmaterial': row[0], 'months': []}
+            for childrow in row:
+                if(childrow is None):
+                    child['months'].append({'material': 'undefined', 'cost_standard': '--', 'cost_effective': '--',
+                                       'raw_weight': '--', 'total_cost_standard': '--', 'total_cost_effective': '--'})
+                else:
+                    child['months'].append({'material': row[0], 'cost_standard': 0, 'cost_effective': 0,
+                                       'raw_weight': childrow, 'total_cost_standard': 0, 'total_cost_effective': 0})
+            result.append(child)
 
+        return result
 
-    return result
+    async def find_density(db: AsyncSession, plant, material, year, month) -> Optional[Material]:
+        month = 'std'
+        if(month == 'std'):
+            sqlQuery = """ select coalesce (mez.dens_real ,mez.dens_theor) as DENSIDADE from material_espec_zp88 mez where mez.material = '""" + material + """' and mez.plant = '"""+ plant +"""' order by mez.dt_release desc limit 1 """
+        else:
+            sqlQuery = """SELECT
+                                mesm.density
+                            from
+                                material_espec_std_me mesm
+                            where
+                                mesm.plant = '"""+ str(plant) +"""'
+                                and mesm.material = '""" + str(material) + """'
+                                and mesm."year" = '"""+ str(year) +"""' limit 1
+                        """                
+       
+
+        result = await db.execute(sqlQuery)
+        
+        cost = [row[0] for row in result]
+        if len(cost) <= 0 or cost[0] is None:
+            return 0
+        return cost[0]   
     
+    
+    async def rawWeightCalculate(db: AsyncSession, plant, material, rawMaterial, month, year, filterType, result) -> Optional[Material]:
+        if(int(filterType) == 1 and re.search("^RG.+$",rawMaterial)):
+            result = 0
+
+        if(int(filterType) == 3):
+            try:
+                result = await MaterialEspecZp45.find_material_utilization(db,plant, material, rawMaterial, '02', year)
+            except:
+                result = Decimal(0)
+        return result    
+
     
     
 permission = MdMaterialRepository()

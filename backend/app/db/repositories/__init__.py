@@ -7,3 +7,4 @@ from .market_segment import MarketSegmentRepository
 from .md_material import MdMaterialRepository
 from .material_cost import MaterialCostRepository
 from .raw_material_and_compound import RawMaterialAndCompoundRepository
+from .material_especZp45 import MaterialEspecZp45
