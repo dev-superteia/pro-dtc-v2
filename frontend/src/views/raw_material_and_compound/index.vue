@@ -434,7 +434,7 @@ const getType = async () => {
     type.value = dtc.type
 };
 const getTypeList = async () => {
-    listType.value.text = ""
+    listSelected.value = []
     if (typeSelected.value.value === 'material') {
         await dtc.setTypeListMat()
         listType.value = dtc.typeListMat
