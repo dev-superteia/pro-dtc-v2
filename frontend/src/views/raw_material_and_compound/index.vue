@@ -82,7 +82,7 @@
             <Column v-if="typeSelected.value === 'raw'" field="component" :header="$t('dtc.material')"></Column>
             <Column v-else field="material" :header="$t('dtc.material')"></Column>
             <Column v-if="typeSelected.value !== 'raw'" field='plant'  :header="$t('dtc.plant')"></Column>
-            <Column field="items" :header="$t('dtc.values')">
+            <Column field="items" :header="$t('dtc.values')" style="min-width:150px">
                 <template #body="slotProps">
                     <tr>
                         <td>Material Volume</td>
