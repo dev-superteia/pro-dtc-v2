@@ -37,7 +37,7 @@
                 animationDuration=".5s" aria-label="Custom ProgressSpinner" />
     </div>
     <div class="col-12">
-        <DataTable ref="dt" :value="[table.items]" responsiveLayout="scroll" :rowsPerPageOptions="[10, 20, 50]" :filters="filters" :paginator="true" :rows="10">
+        <DataTable ref="dt" :value="table" responsiveLayout="scroll" :rowsPerPageOptions="[10, 20, 50]" :filters="filters" :paginator="true" :rows="10">
             <template #header>
                 <div class="flex justify-content-between flex-wrap">
                 <div><span class="p-input-icon-left">
@@ -64,7 +64,6 @@
                 </div>
             </div>
             </template>
-            <Column field="" :header="$t('dtc.raw_material')"></Column>
             <Column :header="$t('dtc.values')">
                 <template #body="slotProps">
                     <tr>
@@ -80,199 +79,7 @@
                         <td>DTC</td>
                     </tr>
                 </template>
-            </Column>
-            <Column field="values" header="Standard">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data}}</td>
-                    </tr>
-                    <!-- <tr>
-                        <td>{{slotProps.data}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data}}</td>
-                    </tr> -->
-                </template>
-            </Column>
-            <!-- <Column header="JAN">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data}}</td>
-                    </tr>
-                </template>
-            </Column> -->
-            <!-- <Column field="items" header="FEB">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data.values[12].totaltm}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].raw_weight_volum}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcoststandard}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcosteffective}}</td>
-                    </tr>
-                </template>
-            </Column>
-            <Column field="items" header="MAR">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data.values[12].totaltm}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].raw_weight_volum}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcoststandard}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcosteffective}}</td>
-                    </tr>
-                </template>
-            </Column>
-                <Column field="items" header="APR">
-                    <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data.values[12].totaltm}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].raw_weight_volum}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcoststandard}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcosteffective}}</td>
-                    </tr>
-                </template>
-            </Column>
-            <Column field="items" header="MAI">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data.values[12].totaltm}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].raw_weight_volum}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcoststandard}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcosteffective}}</td>
-                    </tr>
-                </template>
-            </Column>
-            <Column field="items" header="JUN">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data.values[12].totaltm}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].raw_weight_volum}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcoststandard}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcosteffective}}</td>
-                    </tr>
-                </template>
-            </Column>
-            <Column field="items" header="JUL">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data.values[12].totaltm}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].raw_weight_volum}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcoststandard}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcosteffective}}</td>
-                    </tr>
-                </template>
-            </Column>
-            <Column field="items" header="AUG">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data.values[12].totaltm}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].raw_weight_volum}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcoststandard}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcosteffective}}</td>
-                    </tr>
-                </template>
-            </Column>
-            <Column field="items" header="SEP">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data.values[12].totaltm}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].raw_weight_volum}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcoststandard}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcosteffective}}</td>
-                    </tr>
-                </template>
-            </Column>
-            <Column field="items" header="NOV">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data.values[12].totaltm}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].raw_weight_volum}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcoststandard}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcosteffective}}</td>
-                    </tr>
-                </template>
-            </Column>
-            <Column field="items" header="DEC">
-                <template #body="slotProps">
-                    <tr>
-                        <td>{{slotProps.data.values[12].totaltm}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].raw_weight_volum}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcoststandard}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{slotProps.data.values[12].totalcosteffective}}</td>
-                    </tr>
-                </template>
-            </Column> -->
+            </Column>            
         </DataTable>
     </div>
     <Toast />
@@ -336,7 +143,10 @@ const submit = async () => {
         plantSelected.value.value = ''
     }
     const response = await axios.get('http://localhost:8000/api/v1/product_one_level/?plant='+plantSelected.value.value + '&product=' +tireSelected.value.value + '&market_segment=' + mkgSelected.value.value + '&year=' + year.value + '&line=' + lineSelected)
-    table.value = response.data
+    response.data.items
+    const entries = Object.entries(response.data.items);
+    console.log(entries);
+    table.value = entries
     toast.add({severity:'success', summary: 'Atualizado conforme solicitado', detail:'Permissoes atualizadas para a regra', life: 3000});
     progress.value = false
 };

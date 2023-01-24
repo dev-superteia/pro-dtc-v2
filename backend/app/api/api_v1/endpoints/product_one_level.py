@@ -113,6 +113,6 @@ async def get(
     response = {
             'volumTotais': materialVolumTotals,
             # 'itemsC': list(result),
-            'items': result,
+            'items': jsonable_encoder(result),
     }
     return jsonable_encoder(response)
