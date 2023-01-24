@@ -8,3 +8,6 @@ from .md_material import MdMaterialRepository
 from .material_cost import MaterialCostRepository
 from .raw_material_and_compound import RawMaterialAndCompoundRepository
 from .material_especZp45 import MaterialEspecZp45
+from .product_raw_material import ProductRawMaterialRepository
+from .material_espec_std import MaterialEspecStdRepository
+from .material_volum import MaterialVolumRepository

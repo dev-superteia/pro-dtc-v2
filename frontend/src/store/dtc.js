@@ -11,6 +11,7 @@ export const useDtcStore = defineStore({
     typeListMat: [],
     typeListRaw: [],
     tissue: [],
+    tires: [],
   }),
   actions: {
     async setPlant() {
@@ -134,7 +135,20 @@ export const useDtcStore = defineStore({
         });
         console.log(this.tissue)
         return this.tissue;
-
+    },
+    async setTires() {
+      if (this.tires.length > 0) {
+        return this.tires;
+      } else {
+        const response = await axios.get("http://localhost:8000/api/v1/multselect/tires");
+        for (let i = 0; i < response.data.length; i++) {
+          this.tires.push({
+            text: response.data[i].material + " - " + response.data[i].mat_desc,
+            value: response.data[i].material,
+          })
+        }
+        return this.tires;
+      }
     },
     getters: {
       async getPlant() {
