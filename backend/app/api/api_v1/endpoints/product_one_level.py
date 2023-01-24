@@ -110,9 +110,9 @@ async def get(
             values[row['month']] = row['value']
 
     materialVolumTotals = {'volum': volums, 'value': values}
-
     response = {
             'volumTotais': materialVolumTotals,
+            # 'itemsC': list(result),
             'items': result,
     }
     return jsonable_encoder(response)
