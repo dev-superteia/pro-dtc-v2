@@ -29,7 +29,8 @@ async def get_raw(
     total_weights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     
     for years in table:
-        years['rawmaterial'] = years['rawmaterial']  + ' - ' 
+        text = await repositories.MaterialCostRepository.description(db,years['rawmaterial'])
+        years['rawmaterial'] = years['rawmaterial']  + ' - ' +  str(text[0][0])
         for idx, months in enumerate(years['months']):
             if months['material'] != 'undefined':
                 months['raw_weight'] = await repositories.MdMaterialRepository.rawWeightCalculate(db,plant, material, months['material'], month, year, type, months['raw_weight'])

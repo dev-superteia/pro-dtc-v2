@@ -21,7 +21,6 @@ async def get_raw(
     """
     Retrieve all available user roles.
     """
-    print(plant == 'undefined')
     raw = await repositories.MdMaterialRepository.get_tissues(db=db, plant=plant,year=year)
     #raw = {}
     return jsonable_encoder(raw)
