@@ -15,7 +15,6 @@ async def get_plant(
     Retrieve all available user roles.
     """
     plant = await repositories.MDplantRepository.get(db=db)
-    print(plant)
     return plant
 
 @router.get("/market_segment", response_model=List[schemas.MarketSegmentAll])
