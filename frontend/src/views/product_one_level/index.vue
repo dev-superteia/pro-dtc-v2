@@ -68,7 +68,7 @@
             <Column :header="$t('dtc.values')">
                 <template #body="slotProps">
                     <tr>
-                        <td>amount Used</td>
+                        <td>Amount Used</td>
                     </tr>
                     <tr>
                         <td>Cost Std</td>
