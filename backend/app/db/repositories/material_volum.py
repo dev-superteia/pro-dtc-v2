@@ -42,7 +42,7 @@ class MaterialVolumRepository():
                                 and mez.year = {year}
                         ) as products on products.material = mv.material and products.plant = mv.plant and products.year = mv.year group by mv.month
                     """
-        
+        print(query)
         sqlQuery = text(query)
         resultQuery = await db.execute(sqlQuery)
         result = list(resultQuery)

@@ -103,8 +103,8 @@ async def get(
     values = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     # Calculate volum of materials
 
-    resul = await repositories.MaterialVolumRepository.list_volum_by_month(db=db, plant=plant, product=product, year=year, market_segment=market_segment, line=line)
-    
+    resul = await repositories.MaterialVolumRepository.list_volum_by_month(db=db, plant=plant, product=product, year=year, market_segment=None, line=None)
+    print(resul, 'RESULT AA')
     for row in resul:
             volums[row['month']] = row['volum']
             values[row['month']] = row['value']
