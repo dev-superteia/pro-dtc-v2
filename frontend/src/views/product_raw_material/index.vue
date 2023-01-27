@@ -67,13 +67,19 @@
             </div>
             </template>
             <Column field="material" :header="$t('dtc.raw_material')"></Column>
-            <Column field="value" :header="$t('dtc.values')">
+            <Column field="value" :header="$t('dtc.values')" style="min-width: 150px;">
                 <template #body="slotProps">
                     <tr>
                         <td>Total Materials</td>
                     </tr>
                     <tr>
                         <td>Raw Weight</td>
+                    </tr>
+                    <tr>
+                        <td>Cost per Unit Std</td>
+                    </tr>
+                    <tr>
+                        <td>Cost per Unit Eff</td>
                     </tr>
                     <tr>
                         <td>Total Cost Std</td>

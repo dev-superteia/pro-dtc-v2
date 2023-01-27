@@ -42,7 +42,7 @@ class MaterialEspecStdRepository():
                      mesm.plant,
                      mesm.material,
                      mesm.raw_material,
-                     case when mesm.raw_material like 'RG%' then 0 else mesm.raw_weight end raw_weight,
+                     case when mesm.raw_material like 'RG%' then 0 else mesm.raw_weight * componentes.weight end raw_weight,
                      cost_std,
                      '1' as type
                     from componentes
@@ -84,7 +84,7 @@ class MaterialEspecStdRepository():
                     count(distinct(material)) as totaltm, array_agg(distinct(material)) as materials, array_agg(distinct(tm_composition)) as tm_composition
                     from materials group by raw_material
         """
-
+        print(query, 'JTaa')
         sqlQuery = text(query)
         resultQuery = await db.execute(sqlQuery)
         result = list(resultQuery)
