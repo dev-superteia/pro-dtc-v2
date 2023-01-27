@@ -39,7 +39,316 @@
     
 </div>
 <div class="col-12">
-
+        <DataTable :value="total" responsiveLayout="scroll">
+        <Column :header="$t('dtc.values')" style="min-width: 150px;">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>Total Materials</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>Cost per Unit Std</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>Cost per Unit Eff</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>Raw Weight</td>
+                </tr>
+                <tr>
+                    <td>Total Cost Std</td>
+                </tr>
+                <tr>
+                    <td>Total Cost Eff</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Standard">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[0]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[0]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[0]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[0]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[0]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[0]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Jan">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[1]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[1]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[1]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[1]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[1]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[1]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Feb">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[2]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[2]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[2]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[2]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[2]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[2]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Mar">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[3]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[3]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[3]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[3]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[3]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[3]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Apr">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[4]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[4]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[4]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[4]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[4]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[4]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="May">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[5]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[5]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[5]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[5]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[5]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[5]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Jun">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[6]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[6]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[6]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[6]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[6]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[6]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Jul">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[7]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[7]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[7]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[7]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[7]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[7]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Aug">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[8]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[8]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[8]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[8]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[8]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[8]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Sep">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[9]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[9]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[9]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[9]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[9]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[9]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Out">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[10]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[10]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[10]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[10]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[10]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[10]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Nov">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[11]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[11]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[11]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[11]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[11]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[11]}}</td>
+                </tr>
+            </template>
+        </Column>
+        <Column header="Dez">
+            <template #body="slotProps">
+                <tr v-if="showTotalMaterial">
+                    <td>{{slotProps.data.tm[12]}}</td>
+                </tr>
+                <tr v-if="showCostStd">
+                    <td>{{slotProps.data.coststd[12]}}</td>
+                </tr>
+                <tr v-if="showCostEff">
+                    <td>{{slotProps.data.costeff[12]}}</td>
+                </tr>
+                <tr v-if="showRawWeight">
+                    <td>{{slotProps.data.raw[12]}}</td>
+                </tr>
+                <tr v-if="showTotalCostStd">
+                    <td>{{slotProps.data.totalstd[12]}}</td>
+                </tr>
+                <tr v-if="showTotalCostEff">
+                    <td>{{slotProps.data.totaleff[12]}}</td>
+                </tr>
+            </template>
+        </Column>
+    </DataTable>
     <div style="display: flex; margin: 50px 0; justify-content: center;">
         <div style="display: flex">
             <InputSwitch v-model="showTotalValue"/>
@@ -57,6 +366,8 @@
             <InputSwitch v-model="showRawWeight"/>
             <h3 style="margin: 0 10px;">Raw Weight</h3>
         </div>
+    </div>
+    <div style="display: flex; margin: 50px 0; justify-content: center;">
         <div style="display: flex">
             <InputSwitch v-model="showCostStd"/>
             <h3 style="margin: 0 10px;">Cost per Unit Std</h3>
@@ -611,7 +922,7 @@ const showCostStd = ref(false)
 const showCostEff = ref(false)
 const showTotalCostStd = ref(true)
 const showTotalCostEff = ref(true)
-
+const total = ref([]);
 
 
 const exportCSV = () => {
@@ -644,11 +955,35 @@ const submit = async () => {
     const response = await axios.get('http://localhost:8000/api/v1/product_raw_material/?plant='+plantSelected.value.value + '&product=' +tireSelected.value.value + '&year=' + year.value + '&market_segment=' + mkgSelected.value.value + '&line=' + lineSelected.value.value)
     table.value = response.data
     console.log(table.value)
-    // table.value.forEach(element => {
-    //     // console.log(element.values[12]);
-    //     const entries = Object.entries(element.values[12]);
-    //     element.values.push(entries)
-    // })
+    var tm = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    var cs = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    var ce = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    var rw = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    var ts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    var te = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    
+    table.value.forEach((element, index) => {
+        element.values.forEach((el, index) => {
+            tm[index] = tm[index] + (el.totaltm ? el.totaltm : 0)
+            cs[index] = cs[index] + (el.costperunitstandard ? el.costperunitstandard : 0)
+            ce[index] = ce[index] + (el.costperuniteffective ? el.costperuniteffective : 0)
+            rw[index] = rw[index] + (el.rawweight ? el.rawweight : 0)
+            ts[index] = ts[index] + (el.totalcoststandard ? el.totalcoststandard : 0)
+            te[index] = te[index] + (el.totalcosteffective ? el.totalcosteffective : 0)
+        })
+    })
+
+    total.value.push({
+        tm: tm,
+        coststd: cs,
+        costeff: ce,
+        raw: rw,
+        totalstd: ts,
+        totaleff: te,
+    })
+
+    console.log(total)
+
     toast.add({severity:'success', summary: 'Atualizado conforme solicitado', detail:'Permissoes atualizadas para a regra', life: 3000});
     progress.value = false
 }
