@@ -438,28 +438,28 @@
             <Column v-if="!showTotalValue" field="values" header="Standard">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[0].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-for="el, ind in slotProps.data.values[0].materials" :key="ind">
                             {{slotProps.data.values[0].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
-                    <tr v-if="showTotalMaterial">
+                    <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showTotalMaterial">
                         <td>{{slotProps.data.values[0].totaltm}}</td>
                     </tr>
-                    <tr v-if="showCostStd">
+                    <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showCostStd">
                         <td>{{slotProps.data.values[0].costperunitstandard}}</td>
                     </tr>
-                    <tr v-if="showCostEff">
+                    <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showCostEff">
                         <td>{{slotProps.data.values[0].costperuniteffective}}</td>
                     </tr>
-                    <tr v-if="showRawWeight">
+                    <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showRawWeight">
                         <td>{{slotProps.data.values[0].rawweight}}</td>
                     </tr>
-                    <tr v-if="showTotalCostStd">
+                    <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showTotalCostStd">
                         <td>{{slotProps.data.values[0].totalcoststandard}}</td>
                     </tr>
-                    <tr v-if="showTotalCostEff">
+                    <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showTotalCostEff">
                         <td>{{slotProps.data.values[0].totalcosteffective}}</td>
                     </tr>
                 </template>
@@ -467,428 +467,474 @@
             <Column field="values" header="Jan">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[1].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-for="el, ind in slotProps.data.values[1].materials" :key="ind">
                             {{slotProps.data.values[1].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
-                    <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[1].totaltm ? slotProps.data.values[1].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[1].totaltm ? slotProps.data.values[1].totaltm : '-'}}</td>
+                    <tr @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition)" v-if="showTotalMaterial">
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].totaltm ? slotProps.data.values[1].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else>{{slotProps.data.values[1].totaltm ? slotProps.data.values[1].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[1].costperunitstandard_volum ? slotProps.data.values[1].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[1].costperunitstandard ? slotProps.data.values[1].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].costperunitstandard_volum ? slotProps.data.values[1].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else>{{slotProps.data.values[1].costperunitstandard ? slotProps.data.values[1].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[1].costperuniteffective_volum ? slotProps.data.values[1].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[1].costperuniteffective ? slotProps.data.values[1].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].costperuniteffective_volum ? slotProps.data.values[1].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else>{{slotProps.data.values[1].costperuniteffective ? slotProps.data.values[1].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[1].raw_weight_volum ? slotProps.data.values[1].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[1].rawweight ? slotProps.data.values[1].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].raw_weight_volum ? slotProps.data.values[1].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else>{{slotProps.data.values[1].rawweight ? slotProps.data.values[1].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[1].totalcoststandard_volum ? slotProps.data.values[1].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[1].totalcoststandard ? slotProps.data.values[1].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].totalcoststandard_volum ? slotProps.data.values[1].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else>{{slotProps.data.values[1].totalcoststandard ? slotProps.data.values[1].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[1].totalcosteffective_volum ? slotProps.data.values[1].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[1].totalcosteffective ? slotProps.data.values[1].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].totalcosteffective_volum ? slotProps.data.values[1].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else>{{slotProps.data.values[1].totalcosteffective ? slotProps.data.values[1].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="Feb">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[2].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-for="el, ind in slotProps.data.values[2].materials" :key="ind">
                             {{slotProps.data.values[2].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[2].totaltm ? slotProps.data.values[2].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[2].totaltm ? slotProps.data.values[2].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].totaltm ? slotProps.data.values[2].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else>{{slotProps.data.values[2].totaltm ? slotProps.data.values[2].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[2].costperunitstandard_volum ? slotProps.data.values[2].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[2].costperunitstandard ? slotProps.data.values[2].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].costperunitstandard_volum ? slotProps.data.values[2].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else>{{slotProps.data.values[2].costperunitstandard ? slotProps.data.values[2].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[2].costperuniteffective_volum ? slotProps.data.values[2].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[2].costperuniteffective ? slotProps.data.values[2].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].costperuniteffective_volum ? slotProps.data.values[2].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else>{{slotProps.data.values[2].costperuniteffective ? slotProps.data.values[2].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[2].raw_weight_volum ? slotProps.data.values[2].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[2].rawweight ? slotProps.data.values[2].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].raw_weight_volum ? slotProps.data.values[2].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else>{{slotProps.data.values[2].rawweight ? slotProps.data.values[2].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[2].totalcoststandard_volum ? slotProps.data.values[2].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[2].totalcoststandard ? slotProps.data.values[2].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].totalcoststandard_volum ? slotProps.data.values[2].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else>{{slotProps.data.values[2].totalcoststandard ? slotProps.data.values[2].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[2].totalcosteffective_volum ? slotProps.data.values[2].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[2].totalcosteffective ? slotProps.data.values[2].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].totalcosteffective_volum ? slotProps.data.values[2].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else>{{slotProps.data.values[2].totalcosteffective ? slotProps.data.values[2].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="Mar">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[3].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-for="el, ind in slotProps.data.values[3].materials" :key="ind">
                             {{slotProps.data.values[3].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[3].totaltm ? slotProps.data.values[3].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[3].totaltm ? slotProps.data.values[3].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].totaltm ? slotProps.data.values[3].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else>{{slotProps.data.values[3].totaltm ? slotProps.data.values[3].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[3].costperunitstandard_volum ? slotProps.data.values[3].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[3].costperunitstandard ? slotProps.data.values[3].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].costperunitstandard_volum ? slotProps.data.values[3].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else>{{slotProps.data.values[3].costperunitstandard ? slotProps.data.values[3].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[3].costperuniteffective_volum ? slotProps.data.values[3].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[3].costperuniteffective ? slotProps.data.values[3].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].costperuniteffective_volum ? slotProps.data.values[3].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else>{{slotProps.data.values[3].costperuniteffective ? slotProps.data.values[3].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[3].raw_weight_volum ? slotProps.data.values[3].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[3].rawweight ? slotProps.data.values[3].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].raw_weight_volum ? slotProps.data.values[3].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else>{{slotProps.data.values[3].rawweight ? slotProps.data.values[3].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[3].totalcoststandard_volum ? slotProps.data.values[3].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[3].totalcoststandard ? slotProps.data.values[3].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].totalcoststandard_volum ? slotProps.data.values[3].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else>{{slotProps.data.values[3].totalcoststandard ? slotProps.data.values[3].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[3].totalcosteffective_volum ? slotProps.data.values[3].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[3].totalcosteffective ? slotProps.data.values[3].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].totalcosteffective_volum ? slotProps.data.values[3].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else>{{slotProps.data.values[3].totalcosteffective ? slotProps.data.values[3].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="Apr">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[4].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-for="el, ind in slotProps.data.values[4].materials" :key="ind">
                             {{slotProps.data.values[4].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[4].totaltm ? slotProps.data.values[4].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[4].totaltm ? slotProps.data.values[4].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].totaltm ? slotProps.data.values[4].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else>{{slotProps.data.values[4].totaltm ? slotProps.data.values[4].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[4].costperunitstandard_volum ? slotProps.data.values[4].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[4].costperunitstandard ? slotProps.data.values[4].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].costperunitstandard_volum ? slotProps.data.values[4].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else>{{slotProps.data.values[4].costperunitstandard ? slotProps.data.values[4].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[4].costperuniteffective_volum ? slotProps.data.values[4].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[4].costperuniteffective ? slotProps.data.values[4].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].costperuniteffective_volum ? slotProps.data.values[4].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else>{{slotProps.data.values[4].costperuniteffective ? slotProps.data.values[4].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[4].raw_weight_volum ? slotProps.data.values[4].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[4].rawweight ? slotProps.data.values[4].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].raw_weight_volum ? slotProps.data.values[4].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else>{{slotProps.data.values[4].rawweight ? slotProps.data.values[4].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[4].totalcoststandard_volum ? slotProps.data.values[4].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[4].totalcoststandard ? slotProps.data.values[4].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].totalcoststandard_volum ? slotProps.data.values[4].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else>{{slotProps.data.values[4].totalcoststandard ? slotProps.data.values[4].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[4].totalcosteffective_volum ? slotProps.data.values[4].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[4].totalcosteffective ? slotProps.data.values[4].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].totalcosteffective_volum ? slotProps.data.values[4].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else>{{slotProps.data.values[4].totalcosteffective ? slotProps.data.values[4].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="May">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[5].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-for="el, ind in slotProps.data.values[5].materials" :key="ind">
                             {{slotProps.data.values[5].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td>{{slotProps.data.values[5].totaltm ? slotProps.data.values[5].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].totaltm ? slotProps.data.values[5].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else>{{slotProps.data.values[5].totaltm ? slotProps.data.values[5].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[5].costperunitstandard_volum ? slotProps.data.values[5].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[5].costperunitstandard ? slotProps.data.values[5].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].costperunitstandard_volum ? slotProps.data.values[5].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else>{{slotProps.data.values[5].costperunitstandard ? slotProps.data.values[5].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[5].costperuniteffective_volum ? slotProps.data.values[5].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[5].costperuniteffective ? slotProps.data.values[5].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].costperuniteffective_volum ? slotProps.data.values[5].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else>{{slotProps.data.values[5].costperuniteffective ? slotProps.data.values[5].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[5].raw_weight_volum ? slotProps.data.values[5].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[5].rawweight ? slotProps.data.values[5].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].raw_weight_volum ? slotProps.data.values[5].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else>{{slotProps.data.values[5].rawweight ? slotProps.data.values[5].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[5].totalcoststandard_volum ? slotProps.data.values[5].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[5].totalcoststandard ? slotProps.data.values[5].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].totalcoststandard_volum ? slotProps.data.values[5].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else>{{slotProps.data.values[5].totalcoststandard ? slotProps.data.values[5].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[5].totalcosteffective_volum ? slotProps.data.values[5].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[5].totalcosteffective ? slotProps.data.values[5].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].totalcosteffective_volum ? slotProps.data.values[5].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else>{{slotProps.data.values[5].totalcosteffective ? slotProps.data.values[5].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="Jun">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[6].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-for="el, ind in slotProps.data.values[6].materials" :key="ind">
                             {{slotProps.data.values[6].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[6].totaltm ? slotProps.data.values[6].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[6].totaltm ? slotProps.data.values[6].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].totaltm ? slotProps.data.values[6].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else>{{slotProps.data.values[6].totaltm ? slotProps.data.values[6].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[6].costperunitstandard_volum ? slotProps.data.values[6].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[6].costperunitstandard ? slotProps.data.values[6].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].costperunitstandard_volum ? slotProps.data.values[6].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else>{{slotProps.data.values[6].costperunitstandard ? slotProps.data.values[6].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[6].costperuniteffective_volum ? slotProps.data.values[6].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[6].costperuniteffective ? slotProps.data.values[6].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].costperuniteffective_volum ? slotProps.data.values[6].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else>{{slotProps.data.values[6].costperuniteffective ? slotProps.data.values[6].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[6].raw_weight_volum ? slotProps.data.values[6].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[6].rawweight ? slotProps.data.values[6].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].raw_weight_volum ? slotProps.data.values[6].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else>{{slotProps.data.values[6].rawweight ? slotProps.data.values[6].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[6].totalcoststandard_volum ? slotProps.data.values[6].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[6].totalcoststandard ? slotProps.data.values[6].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].totalcoststandard_volum ? slotProps.data.values[6].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else>{{slotProps.data.values[6].totalcoststandard ? slotProps.data.values[6].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[6].totalcosteffective_volum ? slotProps.data.values[6].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[6].totalcosteffective ? slotProps.data.values[6].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].totalcosteffective_volum ? slotProps.data.values[6].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else>{{slotProps.data.values[6].totalcosteffective ? slotProps.data.values[6].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="Jul">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[7].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-for="el, ind in slotProps.data.values[7].materials" :key="ind">
                             {{slotProps.data.values[7].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[7].totaltm ? slotProps.data.values[7].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[7].totaltm ? slotProps.data.values[7].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].totaltm ? slotProps.data.values[7].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else>{{slotProps.data.values[7].totaltm ? slotProps.data.values[7].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[7].costperunitstandard_volum ? slotProps.data.values[7].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[7].costperunitstandard ? slotProps.data.values[7].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].costperunitstandard_volum ? slotProps.data.values[7].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else>{{slotProps.data.values[7].costperunitstandard ? slotProps.data.values[7].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[7].costperuniteffective_volum ? slotProps.data.values[7].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[7].costperuniteffective ? slotProps.data.values[7].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].costperuniteffective_volum ? slotProps.data.values[7].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else>{{slotProps.data.values[7].costperuniteffective ? slotProps.data.values[7].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[7].raw_weight_volum ? slotProps.data.values[7].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[7].rawweight ? slotProps.data.values[7].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].raw_weight_volum ? slotProps.data.values[7].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else>{{slotProps.data.values[7].rawweight ? slotProps.data.values[7].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[7].totalcoststandard_volum ? slotProps.data.values[7].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[7].totalcoststandard ? slotProps.data.values[7].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].totalcoststandard_volum ? slotProps.data.values[7].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else>{{slotProps.data.values[7].totalcoststandard ? slotProps.data.values[7].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[7].totalcosteffective_volum ? slotProps.data.values[7].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[7].totalcosteffective ? slotProps.data.values[7].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].totalcosteffective_volum ? slotProps.data.values[7].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else>{{slotProps.data.values[7].totalcosteffective ? slotProps.data.values[7].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="Aug">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[8].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-for="el, ind in slotProps.data.values[8].materials" :key="ind">
                             {{slotProps.data.values[8].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[8].totaltm ? slotProps.data.values[8].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[8].totaltm ? slotProps.data.values[8].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].totaltm ? slotProps.data.values[8].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else>{{slotProps.data.values[8].totaltm ? slotProps.data.values[8].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[8].costperunitstandard_volum ? slotProps.data.values[8].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[8].costperunitstandard ? slotProps.data.values[8].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].costperunitstandard_volum ? slotProps.data.values[8].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else>{{slotProps.data.values[8].costperunitstandard ? slotProps.data.values[8].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[8].costperuniteffective_volum ? slotProps.data.values[8].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[8].costperuniteffective ? slotProps.data.values[8].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].costperuniteffective_volum ? slotProps.data.values[8].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else>{{slotProps.data.values[8].costperuniteffective ? slotProps.data.values[8].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[8].raw_weight_volum ? slotProps.data.values[8].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[8].rawweight ? slotProps.data.values[8].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].raw_weight_volum ? slotProps.data.values[8].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else>{{slotProps.data.values[8].rawweight ? slotProps.data.values[8].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[8].totalcoststandard_volum ? slotProps.data.values[8].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[8].totalcoststandard ? slotProps.data.values[8].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].totalcoststandard_volum ? slotProps.data.values[8].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else>{{slotProps.data.values[8].totalcoststandard ? slotProps.data.values[8].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[8].totalcosteffective_volum ? slotProps.data.values[8].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[8].totalcosteffective ? slotProps.data.values[8].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].totalcosteffective_volum ? slotProps.data.values[8].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else>{{slotProps.data.values[8].totalcosteffective ? slotProps.data.values[8].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="Sep">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[9].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-for="el, ind in slotProps.data.values[9].materials" :key="ind">
                             {{slotProps.data.values[9].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[9].totaltm ? slotProps.data.values[9].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[9].totaltm ? slotProps.data.values[9].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].totaltm ? slotProps.data.values[9].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else>{{slotProps.data.values[9].totaltm ? slotProps.data.values[9].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[9].costperunitstandard_volum ? slotProps.data.values[9].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[9].costperunitstandard ? slotProps.data.values[9].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].costperunitstandard_volum ? slotProps.data.values[9].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else>{{slotProps.data.values[9].costperunitstandard ? slotProps.data.values[9].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[9].costperuniteffective_volum ? slotProps.data.values[9].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[9].costperuniteffective ? slotProps.data.values[9].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].costperuniteffective_volum ? slotProps.data.values[9].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else>{{slotProps.data.values[9].costperuniteffective ? slotProps.data.values[9].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[9].raw_weight_volum ? slotProps.data.values[9].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[9].rawweight ? slotProps.data.values[9].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].raw_weight_volum ? slotProps.data.values[9].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else>{{slotProps.data.values[9].rawweight ? slotProps.data.values[9].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[9].totalcoststandard_volum ? slotProps.data.values[9].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[9].totalcoststandard ? slotProps.data.values[9].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].totalcoststandard_volum ? slotProps.data.values[9].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else>{{slotProps.data.values[9].totalcoststandard ? slotProps.data.values[9].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[9].totalcosteffective_volum ? slotProps.data.values[9].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[9].totalcosteffective ? slotProps.data.values[9].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].totalcosteffective_volum ? slotProps.data.values[9].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else>{{slotProps.data.values[9].totalcosteffective ? slotProps.data.values[9].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="Out">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[10].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-for="el, ind in slotProps.data.values[10].materials" :key="ind">
                             {{slotProps.data.values[10].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[10].totaltm ? slotProps.data.values[10].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[10].totaltm ? slotProps.data.values[10].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].totaltm ? slotProps.data.values[10].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else>{{slotProps.data.values[10].totaltm ? slotProps.data.values[10].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[10].costperunitstandard_volum ? slotProps.data.values[10].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[10].costperunitstandard ? slotProps.data.values[10].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].costperunitstandard_volum ? slotProps.data.values[10].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else>{{slotProps.data.values[10].costperunitstandard ? slotProps.data.values[10].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[10].costperuniteffective_volum ? slotProps.data.values[10].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[10].costperuniteffective ? slotProps.data.values[10].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].costperuniteffective_volum ? slotProps.data.values[10].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else>{{slotProps.data.values[10].costperuniteffective ? slotProps.data.values[10].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[10].raw_weight_volum ? slotProps.data.values[10].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[10].rawweight ? slotProps.data.values[10].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].raw_weight_volum ? slotProps.data.values[10].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else>{{slotProps.data.values[10].rawweight ? slotProps.data.values[10].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[10].totalcoststandard_volum ? slotProps.data.values[10].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[10].totalcoststandard ? slotProps.data.values[10].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].totalcoststandard_volum ? slotProps.data.values[10].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else>{{slotProps.data.values[10].totalcoststandard ? slotProps.data.values[10].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[10].totalcosteffective_volum ? slotProps.data.values[10].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[10].totalcosteffective ? slotProps.data.values[10].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].totalcosteffective_volum ? slotProps.data.values[10].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else>{{slotProps.data.values[10].totalcosteffective ? slotProps.data.values[10].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="Nov">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[11].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-for="el, ind in slotProps.data.values[11].materials" :key="ind">
                             {{slotProps.data.values[11].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[11].totaltm ? slotProps.data.values[11].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[11].totaltm ? slotProps.data.values[11].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].totaltm ? slotProps.data.values[11].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else>{{slotProps.data.values[11].totaltm ? slotProps.data.values[11].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[11].costperunitstandard_volum ? slotProps.data.values[11].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[11].costperunitstandard ? slotProps.data.values[11].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].costperunitstandard_volum ? slotProps.data.values[11].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else>{{slotProps.data.values[11].costperunitstandard ? slotProps.data.values[11].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[11].costperuniteffective_volum ? slotProps.data.values[11].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[11].costperuniteffective ? slotProps.data.values[11].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].costperuniteffective_volum ? slotProps.data.values[11].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else>{{slotProps.data.values[11].costperuniteffective ? slotProps.data.values[11].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[11].raw_weight_volum ? slotProps.data.values[11].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[11].rawweight ? slotProps.data.values[11].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].raw_weight_volum ? slotProps.data.values[11].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else>{{slotProps.data.values[11].rawweight ? slotProps.data.values[11].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[11].totalcoststandard_volum ? slotProps.data.values[11].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[11].totalcoststandard ? slotProps.data.values[11].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].totalcoststandard_volum ? slotProps.data.values[11].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else>{{slotProps.data.values[11].totalcoststandard ? slotProps.data.values[11].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[11].totalcosteffective_volum ? slotProps.data.values[11].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[11].totalcosteffective ? slotProps.data.values[11].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].totalcosteffective_volum ? slotProps.data.values[11].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else>{{slotProps.data.values[11].totalcosteffective ? slotProps.data.values[11].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
             <Column field="values" header="Dez">
                 <template v-if="showMaterial" #body="slotProps">
                     <tr>
-                        <tr v-for="el, ind in slotProps.data.values[12].materials" :key="ind">
+                        <tr @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-for="el, ind in slotProps.data.values[12].materials" :key="ind">
                             {{slotProps.data.values[12].materials[ind].slice(0, -2)}}
                         </tr>
                     </tr>
                 </template>
                 <template v-else #body="slotProps">
                     <tr v-if="showTotalMaterial">
-                        <td v-if="showTotalValue">{{slotProps.data.values[12].totaltm ? slotProps.data.values[12].totaltm : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[12].totaltm ? slotProps.data.values[12].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].totaltm ? slotProps.data.values[12].totaltm : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else>{{slotProps.data.values[12].totaltm ? slotProps.data.values[12].totaltm : '-'}}</td>
                     </tr>
                     <tr v-if="showCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[12].costperunitstandard_volum ? slotProps.data.values[12].costperunitstandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[12].costperunitstandard ? slotProps.data.values[12].costperunitstandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].costperunitstandard_volum ? slotProps.data.values[12].costperunitstandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else>{{slotProps.data.values[12].costperunitstandard ? slotProps.data.values[12].costperunitstandard : '-'}}</td>
                     </tr>
                     <tr v-if="showCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[12].costperuniteffective_volum ? slotProps.data.values[12].costperuniteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[12].costperuniteffective ? slotProps.data.values[12].costperuniteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].costperuniteffective_volum ? slotProps.data.values[12].costperuniteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else>{{slotProps.data.values[12].costperuniteffective ? slotProps.data.values[12].costperuniteffective : '-'}}</td>
                     </tr>
                     <tr v-if="showRawWeight">
-                        <td v-if="showTotalValue">{{slotProps.data.values[12].raw_weight_volum ? slotProps.data.values[12].raw_weight_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[12].rawweight ? slotProps.data.values[12].rawweight : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].raw_weight_volum ? slotProps.data.values[12].raw_weight_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else>{{slotProps.data.values[12].rawweight ? slotProps.data.values[12].rawweight : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{slotProps.data.values[12].totalcoststandard_volum ? slotProps.data.values[12].totalcoststandard_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[12].totalcoststandard ? slotProps.data.values[12].totalcoststandard : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].totalcoststandard_volum ? slotProps.data.values[12].totalcoststandard_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else>{{slotProps.data.values[12].totalcoststandard ? slotProps.data.values[12].totalcoststandard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{slotProps.data.values[12].totalcosteffective_volum ? slotProps.data.values[12].totalcosteffective_volum : '-'}}</td>
-                        <td v-else>{{slotProps.data.values[12].totalcosteffective ? slotProps.data.values[12].totalcosteffective : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].totalcosteffective_volum ? slotProps.data.values[12].totalcosteffective_volum : '-'}}</td>
+                        <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else>{{slotProps.data.values[12].totalcosteffective ? slotProps.data.values[12].totalcosteffective : '-'}}</td>
                     </tr>
                 </template>
             </Column>
         </DataTable>
     </div>
     <Toast />
+    <Dialog :modal="true" v-model:visible="display">
+        <template #header>
+            <h2>Raw Material Composition</h2>
+            <h3>{{ rawMaterial }}</h3>
+        </template>
+        <DataTable :value="comp" responsiveLayout="scroll">
+            <Column field="value" :header="$t('dtc.raw_material')">
+                <template #body="slotProps">
+                    <tr>
+                        <td>{{ slotProps.data[0] }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="value" header="Unit">
+                <template #body="slotProps">
+                    <tr>
+                        <td>{{ unity }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="value" header="Raw Weight">
+                <template #body="slotProps">
+                    <tr>
+                        <td>{{ slotProps.data[1].raw_weight }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="value" header="Total Cost (EFF)">
+                <template #body="slotProps">
+                    <tr>
+                        <td>{{ slotProps.data[1].totalcosteffective }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column field="value" header="Total Cost (STD)">
+                <template #body="slotProps">
+                    <tr>
+                        <td>{{ slotProps.data[1].totalcoststandard }}</td>
+                    </tr>
+                </template>
+            </Column>
+        </DataTable>
+        
+    </Dialog>
 </template>
 <script setup>
 import Dropdown from 'primevue/dropdown';
+import Dialog from 'primevue/dialog'
 import Column from "primevue/column";
 import ProgressSpinner from 'primevue/progressspinner';
 import InputSwitch from 'primevue/inputswitch'
@@ -899,6 +945,7 @@ import { useDtcStore } from '../../store/dtc';
 import { FilterMatchMode } from 'primevue/api';
 import { ref, onMounted } from "vue";
 
+const display = ref(false)
 const dtc = useDtcStore()
 const plant = ref([]);
 const mkg = ref([]);
@@ -923,7 +970,18 @@ const showCostEff = ref(false)
 const showTotalCostStd = ref(true)
 const showTotalCostEff = ref(true)
 const total = ref([]);
+const modalTable = ref([]);
+let rawMaterial = ref('')
+let comp = ref([])
+let tires = ref('')
+let unity = ref('')
 
+const showContent = (rm, tm_cs, unit) => {
+    display.value = true
+    rawMaterial = rm
+    comp.value = Object.entries(tm_cs)
+    unity.value = unit
+}
 
 const exportCSV = () => {
     dt.value.exportCSV();
@@ -950,11 +1008,10 @@ const getTire = async () => {
 const submit = async () => {
     progress.value = true
     if (plantSelected.value.value === undefined) {
-        plantSelected.value.value = ''
+        plantSelected.value.value = 'JI61'
     }
     const response = await axios.get('http://localhost:8000/api/v1/product_raw_material/?plant='+plantSelected.value.value + '&product=' +tireSelected.value.value + '&year=' + year.value + '&market_segment=' + mkgSelected.value.value + '&line=' + lineSelected.value.value)
     table.value = response.data
-    console.log(table.value)
     var tm = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     var cs = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     var ce = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -981,10 +1038,8 @@ const submit = async () => {
         totalstd: ts,
         totaleff: te,
     })
-
-    console.log(total)
-
     toast.add({severity:'success', summary: 'Atualizado conforme solicitado', detail:'Permissoes atualizadas para a regra', life: 3000});
+    console.log(table.value);
     progress.value = false
 }
 onMounted(async () => {
