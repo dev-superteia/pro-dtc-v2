@@ -428,6 +428,12 @@
                         <td>Raw Weight</td>
                     </tr>
                     <tr>
+                        <td>Cost per Unit Std</td>
+                    </tr>
+                    <tr>
+                        <td>Cost per Unit Eff</td>
+                    </tr>
+                    <tr>
                         <td>Total Cost Std</td>
                     </tr>
                     <tr>
