@@ -427,16 +427,10 @@
                     <tr v-if="showRawWeight">
                         <td>Raw Weight</td>
                     </tr>
-                    <tr>
-                        <td>Cost per Unit Std</td>
-                    </tr>
-                    <tr>
-                        <td>Cost per Unit Eff</td>
-                    </tr>
-                    <tr>
+                    <tr v-if="showTotalCostStd">
                         <td>Total Cost Std</td>
                     </tr>
-                    <tr>
+                    <tr v-if="showTotalCostEff">
                         <td>Total Cost Eff</td>
                     </tr>
                 </template>
@@ -1014,7 +1008,7 @@ const getTire = async () => {
 const submit = async () => {
     progress.value = true
     if (plantSelected.value.value === undefined) {
-        plantSelected.value.value = 'JI61'
+        plantSelected.value.value = ''
     }
     const response = await axios.get('http://localhost:8000/api/v1/product_raw_material/?plant='+plantSelected.value.value + '&product=' +tireSelected.value.value + '&year=' + year.value + '&market_segment=' + mkgSelected.value.value + '&line=' + lineSelected.value.value)
     table.value = response.data
