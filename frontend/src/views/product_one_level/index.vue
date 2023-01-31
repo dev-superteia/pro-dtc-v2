@@ -1205,7 +1205,7 @@ let volumTotals = ref([]);
 const submit = async () => {
     progress.value = true
     if (plantSelected.value.value === undefined) {
-        plantSelected.value.value = 'JI61'
+        plantSelected.value.value = ''
     }
     const response = await axios.get('http://localhost:8000/api/v1/product_one_level/?plant='+plantSelected.value.value + '&product=' +tireSelected.value.value + '&market_segment=' + mkgSelected.value.value + '&year=' + year.value + '&line=' + lineSelected)
     response.data.items
