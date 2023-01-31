@@ -44,6 +44,10 @@
                 animationDuration=".5s" aria-label="Custom ProgressSpinner" />
     </div>
     <div class="col-12">
+        <div style="display: flex">
+            <InputSwitch v-model="showDesc"/>
+            <h3 style="margin: 0 10px;">Description</h3>
+        </div>
         <DataTable v-if="typeSelected.value === 'material'" :value="[0]" responsiveLayout="scroll">
             <Column field="total" v-for="el in 12" :key=el>
                 <template #body="slotProps">
@@ -80,8 +84,21 @@
             </div>
             </template>
             <Column v-if="typeSelected.value === 'raw'" field="component" :header="$t('dtc.material')"></Column>
-            <Column v-else field="material" :header="$t('dtc.material')"></Column>
-            <Column v-if="typeSelected.value !== 'raw'" field='plant'  :header="$t('dtc.plant')"></Column>
+            <Column v-else field="material" :header="$t('dtc.material')" style="min-width: 150px;">
+                <template #body="slotProps">
+                    <tr>
+                        <td v-if="showDesc">{{ slotProps.data.material }} - {{ slotProps.data.mat_desc }}</td>
+                        <td v-else>{{ slotProps.data.material }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column v-if="typeSelected.value !== 'raw'" field='plant' :header="$t('dtc.plant')" style="min-width: 150px;">
+                <template #body="slotProps">
+                    <tr>
+                        <td>{{ slotProps.data.plant }} - {{ slotProps.data.line }}</td>
+                    </tr>
+                </template>
+            </Column>
             <Column field="items" :header="$t('dtc.values')" style="min-width:150px">
                 <template #body="slotProps">
                     <tr>
@@ -393,6 +410,7 @@ import Dropdown from 'primevue/dropdown';
 import Column from "primevue/column";
 import ProgressSpinner from 'primevue/progressspinner';
 import axios from "axios";
+import InputSwitch from 'primevue/inputswitch'
 import Toast from 'primevue/toast';
 import { useToast } from "primevue/usetoast";
 import { useDtcStore } from '../../store/dtc';
@@ -418,6 +436,7 @@ const dt = ref();
 const fixed = ref();
 const progress = ref(false)
 const toast = useToast();
+const showDesc = ref(false)
 
 const exportCSV = () => {
     dt.value.exportCSV();
@@ -493,6 +512,8 @@ const submit = async () => {
     }
     tableResult.value = table.value.items
     tableTotal.value = table.value.total
+    console.log(tableResult.value);
+    console.log(tableTotal.value);
     toast.add({severity:'success', summary: 'Atualizado conforme solicitado', detail:'Permissoes atualizadas para a regra', life: 3000});
     progress.value = false
 };
