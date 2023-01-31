@@ -571,359 +571,359 @@
             <Column v-if="!showTotalValue" header="Standard">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showAmount">{{ slotProps.data[1].months[0].amount_used_std ? slotProps.data[1].months[0].amount_used_std : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 0)" v-if="showAmount">{{ slotProps.data[1].months[0].amount_used_std ? slotProps.data[1].months[0].amount_used_std : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td>{{ slotProps.data[1].months[0].totalcoststd ? slotProps.data[1].months[0].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 0)">{{ slotProps.data[1].months[0].totalcoststd ? slotProps.data[1].months[0].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td>{{ slotProps.data[1].months[0].totalcosteff ? slotProps.data[1].months[0].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 0)">{{ slotProps.data[1].months[0].totalcosteff ? slotProps.data[1].months[0].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td>{{ slotProps.data[1].months[0].material_cost_1_tire_standard ? slotProps.data[1].months[0].material_cost_1_tire_standard : '-'}}</td>
+                        <td @click="showContent(slotProps.data[0], 0)">{{ slotProps.data[1].months[0].material_cost_1_tire_standard ? slotProps.data[1].months[0].material_cost_1_tire_standard : '-'}}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td>{{ slotProps.data[1].months[0].material_cost_1_tire_effective ? slotProps.data[1].months[0].material_cost_1_tire_effective : '-'}}</td>
+                        <td @click="showContent(slotProps.data[0], 0)">{{ slotProps.data[1].months[0].material_cost_1_tire_effective ? slotProps.data[1].months[0].material_cost_1_tire_effective : '-'}}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[0].dtc_volum ? slotProps.data[1].months[0].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[0].dtc ? slotProps.data[1].months[0].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 0)" v-if="showTotalValue">{{ slotProps.data[1].months[0].dtc_volum ? slotProps.data[1].months[0].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 0)" v-else>{{ slotProps.data[1].months[0].dtc ? slotProps.data[1].months[0].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Jan">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[1].amount_used_eff_volum ? slotProps.data[1].months[1].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[1].amount_used_eff ? slotProps.data[1].months[1].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">{{ slotProps.data[1].months[1].amount_used_eff_volum ? slotProps.data[1].months[1].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-else>{{ slotProps.data[1].months[1].amount_used_eff ? slotProps.data[1].months[1].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[1].totalcoststd_volum ? slotProps.data[1].months[1].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[1].totalcoststd ? slotProps.data[1].months[1].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">{{ slotProps.data[1].months[1].totalcoststd_volum ? slotProps.data[1].months[1].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-else>{{ slotProps.data[1].months[1].totalcoststd ? slotProps.data[1].months[1].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[1].totalcosteff_volum ? slotProps.data[1].months[1].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[1].totalcosteff ? slotProps.data[1].months[1].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">{{ slotProps.data[1].months[1].totalcosteff_volum ? slotProps.data[1].months[1].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-else>{{ slotProps.data[1].months[1].totalcosteff ? slotProps.data[1].months[1].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[1].material_cost_1_tire_standard_volum ? slotProps.data[1].months[1].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[1].material_cost_1_tire_standard ? slotProps.data[1].months[1].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">{{ slotProps.data[1].months[1].material_cost_1_tire_standard_volum ? slotProps.data[1].months[1].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-else>{{ slotProps.data[1].months[1].material_cost_1_tire_standard ? slotProps.data[1].months[1].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[1].material_cost_1_tire_effective_volum ? slotProps.data[1].months[1].material_cost_1_tire_effective_volum: '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[1].material_cost_1_tire_effective ? slotProps.data[1].months[1].material_cost_1_tire_effective: '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">{{ slotProps.data[1].months[1].material_cost_1_tire_effective_volum ? slotProps.data[1].months[1].material_cost_1_tire_effective_volum: '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-else>{{ slotProps.data[1].months[1].material_cost_1_tire_effective ? slotProps.data[1].months[1].material_cost_1_tire_effective: '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[1].dtc_volum ? slotProps.data[1].months[1].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[1].dtc ? slotProps.data[1].months[1].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">{{ slotProps.data[1].months[1].dtc_volum ? slotProps.data[1].months[1].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 1)" v-else>{{ slotProps.data[1].months[1].dtc ? slotProps.data[1].months[1].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Feb">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[2].amount_used_eff_volum ? slotProps.data[1].months[2].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[2].amount_used_eff ? slotProps.data[1].months[2].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">{{ slotProps.data[1].months[2].amount_used_eff_volum ? slotProps.data[1].months[2].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-else>{{ slotProps.data[1].months[2].amount_used_eff ? slotProps.data[1].months[2].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[2].totalcoststd_volum ? slotProps.data[1].months[2].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[2].totalcoststd ? slotProps.data[1].months[2].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">{{ slotProps.data[1].months[2].totalcoststd_volum ? slotProps.data[1].months[2].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-else>{{ slotProps.data[1].months[2].totalcoststd ? slotProps.data[1].months[2].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[2].totalcosteff_volum ? slotProps.data[1].months[2].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[2].totalcosteff ? slotProps.data[1].months[2].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">{{ slotProps.data[1].months[2].totalcosteff_volum ? slotProps.data[1].months[2].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-else>{{ slotProps.data[1].months[2].totalcosteff ? slotProps.data[1].months[2].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[2].material_cost_1_tire_standard_volum ? slotProps.data[1].months[2].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[2].material_cost_1_tire_standard ? slotProps.data[1].months[2].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">{{ slotProps.data[1].months[2].material_cost_1_tire_standard_volum ? slotProps.data[1].months[2].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-else>{{ slotProps.data[1].months[2].material_cost_1_tire_standard ? slotProps.data[1].months[2].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[2].material_cost_1_tire_effective_volum ? slotProps.data[1].months[2].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[2].material_cost_1_tire_effective ? slotProps.data[1].months[2].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">{{ slotProps.data[1].months[2].material_cost_1_tire_effective_volum ? slotProps.data[1].months[2].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-else>{{ slotProps.data[1].months[2].material_cost_1_tire_effective ? slotProps.data[1].months[2].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[2].dtc_volum ? slotProps.data[1].months[2].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[2].dtc ? slotProps.data[1].months[2].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">{{ slotProps.data[1].months[2].dtc_volum ? slotProps.data[1].months[2].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 2)" v-else>{{ slotProps.data[1].months[2].dtc ? slotProps.data[1].months[2].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Mar">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[3].amount_used_eff_volum ? slotProps.data[1].months[3].amount_used_eff_volum : '-' }}</td>
-                        <td  v-else>{{ slotProps.data[1].months[3].amount_used_eff ? slotProps.data[1].months[3].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">{{ slotProps.data[1].months[3].amount_used_eff_volum ? slotProps.data[1].months[3].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)"  v-else>{{ slotProps.data[1].months[3].amount_used_eff ? slotProps.data[1].months[3].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[3].totalcoststd_volum ? slotProps.data[1].months[3].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[3].totalcoststd ? slotProps.data[1].months[3].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">{{ slotProps.data[1].months[3].totalcoststd_volum ? slotProps.data[1].months[3].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-else>{{ slotProps.data[1].months[3].totalcoststd ? slotProps.data[1].months[3].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[3].totalcosteff_volum ? slotProps.data[1].months[3].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[3].totalcosteff ? slotProps.data[1].months[3].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">{{ slotProps.data[1].months[3].totalcosteff_volum ? slotProps.data[1].months[3].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-else>{{ slotProps.data[1].months[3].totalcosteff ? slotProps.data[1].months[3].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[3].material_cost_1_tire_standard_volum ? slotProps.data[1].months[3].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[3].material_cost_1_tire_standard ? slotProps.data[1].months[3].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">{{ slotProps.data[1].months[3].material_cost_1_tire_standard_volum ? slotProps.data[1].months[3].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-else>{{ slotProps.data[1].months[3].material_cost_1_tire_standard ? slotProps.data[1].months[3].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[3].material_cost_1_tire_effective_volum ? slotProps.data[1].months[3].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[3].material_cost_1_tire_effective ? slotProps.data[1].months[3].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">{{ slotProps.data[1].months[3].material_cost_1_tire_effective_volum ? slotProps.data[1].months[3].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-else>{{ slotProps.data[1].months[3].material_cost_1_tire_effective ? slotProps.data[1].months[3].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[3].dtc_volum ? slotProps.data[1].months[3].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[3].dtc ? slotProps.data[1].months[3].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">{{ slotProps.data[1].months[3].dtc_volum ? slotProps.data[1].months[3].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 3)" v-else>{{ slotProps.data[1].months[3].dtc ? slotProps.data[1].months[3].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Apr">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[4].amount_used_eff_volum ? slotProps.data[1].months[4].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[4].amount_used_eff ? slotProps.data[1].months[4].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">{{ slotProps.data[1].months[4].amount_used_eff_volum ? slotProps.data[1].months[4].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-else>{{ slotProps.data[1].months[4].amount_used_eff ? slotProps.data[1].months[4].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[4].totalcoststd_volum ? slotProps.data[1].months[4].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[4].totalcoststd ? slotProps.data[1].months[4].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">{{ slotProps.data[1].months[4].totalcoststd_volum ? slotProps.data[1].months[4].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-else>{{ slotProps.data[1].months[4].totalcoststd ? slotProps.data[1].months[4].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[4].totalcosteff_volum ? slotProps.data[1].months[4].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[4].totalcosteff ? slotProps.data[1].months[4].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">{{ slotProps.data[1].months[4].totalcosteff_volum ? slotProps.data[1].months[4].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-else>{{ slotProps.data[1].months[4].totalcosteff ? slotProps.data[1].months[4].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[4].material_cost_1_tire_standard_volum ? slotProps.data[1].months[4].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[4].material_cost_1_tire_standard ? slotProps.data[1].months[4].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">{{ slotProps.data[1].months[4].material_cost_1_tire_standard_volum ? slotProps.data[1].months[4].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-else>{{ slotProps.data[1].months[4].material_cost_1_tire_standard ? slotProps.data[1].months[4].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[4].material_cost_1_tire_effective_volum ? slotProps.data[1].months[4].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[4].material_cost_1_tire_effective ? slotProps.data[1].months[4].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">{{ slotProps.data[1].months[4].material_cost_1_tire_effective_volum ? slotProps.data[1].months[4].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-else>{{ slotProps.data[1].months[4].material_cost_1_tire_effective ? slotProps.data[1].months[4].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[4].dtc_volum ? slotProps.data[1].months[4].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[4].dtc ? slotProps.data[1].months[4].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">{{ slotProps.data[1].months[4].dtc_volum ? slotProps.data[1].months[4].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 4)" v-else>{{ slotProps.data[1].months[4].dtc ? slotProps.data[1].months[4].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="May">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[5].amount_used_eff_volum ? slotProps.data[1].months[5].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[5].amount_used_eff ? slotProps.data[1].months[5].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">{{ slotProps.data[1].months[5].amount_used_eff_volum ? slotProps.data[1].months[5].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-else>{{ slotProps.data[1].months[5].amount_used_eff ? slotProps.data[1].months[5].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[5].totalcoststd_volum ? slotProps.data[1].months[5].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[5].totalcoststd ? slotProps.data[1].months[5].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">{{ slotProps.data[1].months[5].totalcoststd_volum ? slotProps.data[1].months[5].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-else>{{ slotProps.data[1].months[5].totalcoststd ? slotProps.data[1].months[5].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[5].totalcosteff_volum ? slotProps.data[1].months[5].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[5].totalcosteff ? slotProps.data[1].months[5].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">{{ slotProps.data[1].months[5].totalcosteff_volum ? slotProps.data[1].months[5].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-else>{{ slotProps.data[1].months[5].totalcosteff ? slotProps.data[1].months[5].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[5].material_cost_1_tire_standard_volum ? slotProps.data[1].months[5].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[5].material_cost_1_tire_standard ? slotProps.data[1].months[5].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">{{ slotProps.data[1].months[5].material_cost_1_tire_standard_volum ? slotProps.data[1].months[5].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-else>{{ slotProps.data[1].months[5].material_cost_1_tire_standard ? slotProps.data[1].months[5].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[5].material_cost_1_tire_effective_volum ? slotProps.data[1].months[5].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[5].material_cost_1_tire_effective ? slotProps.data[1].months[5].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">{{ slotProps.data[1].months[5].material_cost_1_tire_effective_volum ? slotProps.data[1].months[5].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-else>{{ slotProps.data[1].months[5].material_cost_1_tire_effective ? slotProps.data[1].months[5].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[5].dtc_volum ? slotProps.data[1].months[5].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[5].dtc ? slotProps.data[1].months[5].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">{{ slotProps.data[1].months[5].dtc_volum ? slotProps.data[1].months[5].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 5)" v-else>{{ slotProps.data[1].months[5].dtc ? slotProps.data[1].months[5].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Jun">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[6].amount_used_eff_volum ? slotProps.data[1].months[6].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[6].amount_used_eff ? slotProps.data[1].months[6].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">{{ slotProps.data[1].months[6].amount_used_eff_volum ? slotProps.data[1].months[6].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-else>{{ slotProps.data[1].months[6].amount_used_eff ? slotProps.data[1].months[6].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[6].totalcoststd_volum ? slotProps.data[1].months[6].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[6].totalcoststd ? slotProps.data[1].months[6].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">{{ slotProps.data[1].months[6].totalcoststd_volum ? slotProps.data[1].months[6].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-else>{{ slotProps.data[1].months[6].totalcoststd ? slotProps.data[1].months[6].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[6].totalcosteff_volum ? slotProps.data[1].months[6].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[6].totalcosteff ? slotProps.data[1].months[6].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">{{ slotProps.data[1].months[6].totalcosteff_volum ? slotProps.data[1].months[6].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-else>{{ slotProps.data[1].months[6].totalcosteff ? slotProps.data[1].months[6].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[6].material_cost_1_tire_standard_volum ? slotProps.data[1].months[6].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[6].material_cost_1_tire_standard ? slotProps.data[1].months[6].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">{{ slotProps.data[1].months[6].material_cost_1_tire_standard_volum ? slotProps.data[1].months[6].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-else>{{ slotProps.data[1].months[6].material_cost_1_tire_standard ? slotProps.data[1].months[6].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[6].material_cost_1_tire_effective_volum ? slotProps.data[1].months[6].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[6].material_cost_1_tire_effective ? slotProps.data[1].months[6].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">{{ slotProps.data[1].months[6].material_cost_1_tire_effective_volum ? slotProps.data[1].months[6].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-else>{{ slotProps.data[1].months[6].material_cost_1_tire_effective ? slotProps.data[1].months[6].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[6].dtc_volum ? slotProps.data[1].months[6].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[6].dtc ? slotProps.data[1].months[6].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">{{ slotProps.data[1].months[6].dtc_volum ? slotProps.data[1].months[6].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 6)" v-else>{{ slotProps.data[1].months[6].dtc ? slotProps.data[1].months[6].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Jul">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[7].amount_used_eff_volum ? slotProps.data[1].months[7].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[7].amount_used_eff ? slotProps.data[1].months[7].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">{{ slotProps.data[1].months[7].amount_used_eff_volum ? slotProps.data[1].months[7].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-else>{{ slotProps.data[1].months[7].amount_used_eff ? slotProps.data[1].months[7].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[7].totalcoststd_volum ? slotProps.data[1].months[7].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[7].totalcoststd ? slotProps.data[1].months[7].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">{{ slotProps.data[1].months[7].totalcoststd_volum ? slotProps.data[1].months[7].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-else>{{ slotProps.data[1].months[7].totalcoststd ? slotProps.data[1].months[7].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[7].totalcosteff_volum ? slotProps.data[1].months[7].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[7].totalcosteff ? slotProps.data[1].months[7].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">{{ slotProps.data[1].months[7].totalcosteff_volum ? slotProps.data[1].months[7].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-else>{{ slotProps.data[1].months[7].totalcosteff ? slotProps.data[1].months[7].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[7].material_cost_1_tire_standard_volum ? slotProps.data[1].months[7].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[7].material_cost_1_tire_standard ? slotProps.data[1].months[7].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">{{ slotProps.data[1].months[7].material_cost_1_tire_standard_volum ? slotProps.data[1].months[7].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-else>{{ slotProps.data[1].months[7].material_cost_1_tire_standard ? slotProps.data[1].months[7].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[7].material_cost_1_tire_effective_volum ? slotProps.data[1].months[7].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[7].material_cost_1_tire_effective ? slotProps.data[1].months[7].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">{{ slotProps.data[1].months[7].material_cost_1_tire_effective_volum ? slotProps.data[1].months[7].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-else>{{ slotProps.data[1].months[7].material_cost_1_tire_effective ? slotProps.data[1].months[7].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[7].dtc_volum ? slotProps.data[1].months[7].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[7].dtc ? slotProps.data[1].months[7].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">{{ slotProps.data[1].months[7].dtc_volum ? slotProps.data[1].months[7].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 7)" v-else>{{ slotProps.data[1].months[7].dtc ? slotProps.data[1].months[7].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Aug">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[8].amount_used_eff_volum ? slotProps.data[1].months[8].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[8].amount_used_eff ? slotProps.data[1].months[8].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">{{ slotProps.data[1].months[8].amount_used_eff_volum ? slotProps.data[1].months[8].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-else>{{ slotProps.data[1].months[8].amount_used_eff ? slotProps.data[1].months[8].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[8].totalcoststd_volum ? slotProps.data[1].months[8].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[8].totalcoststd ? slotProps.data[1].months[8].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">{{ slotProps.data[1].months[8].totalcoststd_volum ? slotProps.data[1].months[8].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-else>{{ slotProps.data[1].months[8].totalcoststd ? slotProps.data[1].months[8].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[8].totalcosteff_volum ? slotProps.data[1].months[8].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[8].totalcosteff ? slotProps.data[1].months[8].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">{{ slotProps.data[1].months[8].totalcosteff_volum ? slotProps.data[1].months[8].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-else>{{ slotProps.data[1].months[8].totalcosteff ? slotProps.data[1].months[8].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[8].material_cost_1_tire_standard_volum ? slotProps.data[1].months[8].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[8].material_cost_1_tire_standard ? slotProps.data[1].months[8].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">{{ slotProps.data[1].months[8].material_cost_1_tire_standard_volum ? slotProps.data[1].months[8].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-else>{{ slotProps.data[1].months[8].material_cost_1_tire_standard ? slotProps.data[1].months[8].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[8].material_cost_1_tire_effective_volum ? slotProps.data[1].months[8].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[8].material_cost_1_tire_effective ? slotProps.data[1].months[8].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">{{ slotProps.data[1].months[8].material_cost_1_tire_effective_volum ? slotProps.data[1].months[8].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-else>{{ slotProps.data[1].months[8].material_cost_1_tire_effective ? slotProps.data[1].months[8].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[8].dtc_volum ? slotProps.data[1].months[8].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[8].dtc ? slotProps.data[1].months[8].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">{{ slotProps.data[1].months[8].dtc_volum ? slotProps.data[1].months[8].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 8)" v-else>{{ slotProps.data[1].months[8].dtc ? slotProps.data[1].months[8].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Set">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[9].amount_used_eff_volum ? slotProps.data[1].months[9].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[9].amount_used_eff ? slotProps.data[1].months[9].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">{{ slotProps.data[1].months[9].amount_used_eff_volum ? slotProps.data[1].months[9].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-else>{{ slotProps.data[1].months[9].amount_used_eff ? slotProps.data[1].months[9].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[9].totalcoststd_volum ? slotProps.data[1].months[9].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[9].totalcoststd ? slotProps.data[1].months[9].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">{{ slotProps.data[1].months[9].totalcoststd_volum ? slotProps.data[1].months[9].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-else>{{ slotProps.data[1].months[9].totalcoststd ? slotProps.data[1].months[9].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[9].totalcosteff_volum ? slotProps.data[1].months[9].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[9].totalcosteff ? slotProps.data[1].months[9].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">{{ slotProps.data[1].months[9].totalcosteff_volum ? slotProps.data[1].months[9].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-else>{{ slotProps.data[1].months[9].totalcosteff ? slotProps.data[1].months[9].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[9].material_cost_1_tire_standard_volum ? slotProps.data[1].months[9].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[9].material_cost_1_tire_standard ? slotProps.data[1].months[9].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">{{ slotProps.data[1].months[9].material_cost_1_tire_standard_volum ? slotProps.data[1].months[9].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-else>{{ slotProps.data[1].months[9].material_cost_1_tire_standard ? slotProps.data[1].months[9].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[9].material_cost_1_tire_effective_volum ? slotProps.data[1].months[9].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[9].material_cost_1_tire_effective ? slotProps.data[1].months[9].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">{{ slotProps.data[1].months[9].material_cost_1_tire_effective_volum ? slotProps.data[1].months[9].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-else>{{ slotProps.data[1].months[9].material_cost_1_tire_effective ? slotProps.data[1].months[9].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[9].dtc_volum ? slotProps.data[1].months[9].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[9].dtc ? slotProps.data[1].months[9].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">{{ slotProps.data[1].months[9].dtc_volum ? slotProps.data[1].months[9].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 9)" v-else>{{ slotProps.data[1].months[9].dtc ? slotProps.data[1].months[9].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Out">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[10].amount_used_eff_volum ? slotProps.data[1].months[10].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[10].amount_used_eff ? slotProps.data[1].months[10].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">{{ slotProps.data[1].months[10].amount_used_eff_volum ? slotProps.data[1].months[10].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-else>{{ slotProps.data[1].months[10].amount_used_eff ? slotProps.data[1].months[10].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[10].totalcoststd_volum ? slotProps.data[1].months[10].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[10].totalcoststd ? slotProps.data[1].months[10].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">{{ slotProps.data[1].months[10].totalcoststd_volum ? slotProps.data[1].months[10].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-else>{{ slotProps.data[1].months[10].totalcoststd ? slotProps.data[1].months[10].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[10].totalcosteff_volum ? slotProps.data[1].months[10].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[10].totalcosteff ? slotProps.data[1].months[10].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">{{ slotProps.data[1].months[10].totalcosteff_volum ? slotProps.data[1].months[10].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-else>{{ slotProps.data[1].months[10].totalcosteff ? slotProps.data[1].months[10].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[10].material_cost_1_tire_standard_volum ? slotProps.data[1].months[10].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[10].material_cost_1_tire_standard ? slotProps.data[1].months[10].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">{{ slotProps.data[1].months[10].material_cost_1_tire_standard_volum ? slotProps.data[1].months[10].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-else>{{ slotProps.data[1].months[10].material_cost_1_tire_standard ? slotProps.data[1].months[10].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[10].material_cost_1_tire_effective_volum ? slotProps.data[1].months[10].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[10].material_cost_1_tire_effective ? slotProps.data[1].months[10].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">{{ slotProps.data[1].months[10].material_cost_1_tire_effective_volum ? slotProps.data[1].months[10].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-else>{{ slotProps.data[1].months[10].material_cost_1_tire_effective ? slotProps.data[1].months[10].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[10].dtc_volum ? slotProps.data[1].months[10].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[10].dtc ? slotProps.data[1].months[10].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">{{ slotProps.data[1].months[10].dtc_volum ? slotProps.data[1].months[10].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 10)" v-else>{{ slotProps.data[1].months[10].dtc ? slotProps.data[1].months[10].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Nov">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[11].amount_used_eff_volum ? slotProps.data[1].months[11].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[11].amount_used_eff ? slotProps.data[1].months[11].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">{{ slotProps.data[1].months[11].amount_used_eff_volum ? slotProps.data[1].months[11].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-else>{{ slotProps.data[1].months[11].amount_used_eff ? slotProps.data[1].months[11].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[11].totalcoststd_volum ? slotProps.data[1].months[11].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[11].totalcoststd ? slotProps.data[1].months[11].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">{{ slotProps.data[1].months[11].totalcoststd_volum ? slotProps.data[1].months[11].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-else>{{ slotProps.data[1].months[11].totalcoststd ? slotProps.data[1].months[11].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[11].totalcosteff_volum ? slotProps.data[1].months[11].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[11].totalcosteff ? slotProps.data[1].months[11].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">{{ slotProps.data[1].months[11].totalcosteff_volum ? slotProps.data[1].months[11].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-else>{{ slotProps.data[1].months[11].totalcosteff ? slotProps.data[1].months[11].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[11].material_cost_1_tire_standard_volum ? slotProps.data[1].months[11].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[11].material_cost_1_tire_standard ? slotProps.data[1].months[11].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">{{ slotProps.data[1].months[11].material_cost_1_tire_standard_volum ? slotProps.data[1].months[11].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-else>{{ slotProps.data[1].months[11].material_cost_1_tire_standard ? slotProps.data[1].months[11].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[11].material_cost_1_tire_effective_volum ? slotProps.data[1].months[11].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[11].material_cost_1_tire_effective ? slotProps.data[1].months[11].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">{{ slotProps.data[1].months[11].material_cost_1_tire_effective_volum ? slotProps.data[1].months[11].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-else>{{ slotProps.data[1].months[11].material_cost_1_tire_effective ? slotProps.data[1].months[11].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[11].dtc_volum ? slotProps.data[1].months[11].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[11].dtc ? slotProps.data[1].months[11].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">{{ slotProps.data[1].months[11].dtc_volum ? slotProps.data[1].months[11].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 11)" v-else>{{ slotProps.data[1].months[11].dtc ? slotProps.data[1].months[11].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
             <Column header="Dez">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[12].amount_used_eff_volum ? slotProps.data[1].months[12].amount_used_eff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[12].amount_used_eff ? slotProps.data[1].months[12].amount_used_eff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">{{ slotProps.data[1].months[12].amount_used_eff_volum ? slotProps.data[1].months[12].amount_used_eff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-else>{{ slotProps.data[1].months[12].amount_used_eff ? slotProps.data[1].months[12].amount_used_eff : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[12].totalcoststd_volum ? slotProps.data[1].months[12].totalcoststd_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[12].totalcoststd ? slotProps.data[1].months[12].totalcoststd : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">{{ slotProps.data[1].months[12].totalcoststd_volum ? slotProps.data[1].months[12].totalcoststd_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-else>{{ slotProps.data[1].months[12].totalcoststd ? slotProps.data[1].months[12].totalcoststd : '-' }}</td>
                     </tr>
                     <tr v-if="showMatCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[12].totalcosteff_volum ? slotProps.data[1].months[12].totalcosteff_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[12].totalcosteff ? slotProps.data[1].months[12].totalcosteff : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">{{ slotProps.data[1].months[12].totalcosteff_volum ? slotProps.data[1].months[12].totalcosteff_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-else>{{ slotProps.data[1].months[12].totalcosteff ? slotProps.data[1].months[12].totalcosteff : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostStd">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[12].material_cost_1_tire_standard_volum ? slotProps.data[1].months[12].material_cost_1_tire_standard_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[12].material_cost_1_tire_standard ? slotProps.data[1].months[12].material_cost_1_tire_standard : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">{{ slotProps.data[1].months[12].material_cost_1_tire_standard_volum ? slotProps.data[1].months[12].material_cost_1_tire_standard_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-else>{{ slotProps.data[1].months[12].material_cost_1_tire_standard ? slotProps.data[1].months[12].material_cost_1_tire_standard : '-' }}</td>
                     </tr>
                     <tr v-if="showTotalCostEff">
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[12].material_cost_1_tire_effective_volum ? slotProps.data[1].months[12].material_cost_1_tire_effective_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[12].material_cost_1_tire_effective ? slotProps.data[1].months[12].material_cost_1_tire_effective : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">{{ slotProps.data[1].months[12].material_cost_1_tire_effective_volum ? slotProps.data[1].months[12].material_cost_1_tire_effective_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-else>{{ slotProps.data[1].months[12].material_cost_1_tire_effective ? slotProps.data[1].months[12].material_cost_1_tire_effective : '-' }}</td>
                     </tr>
                     <tr>
-                        <td v-if="showTotalValue">{{ slotProps.data[1].months[12].dtc_volum ? slotProps.data[1].months[12].dtc_volum : '-' }}</td>
-                        <td v-else>{{ slotProps.data[1].months[12].dtc ? slotProps.data[1].months[12].dtc : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">{{ slotProps.data[1].months[12].dtc_volum ? slotProps.data[1].months[12].dtc_volum : '-' }}</td>
+                        <td @click="showContent(slotProps.data[0], 12)" v-else>{{ slotProps.data[1].months[12].dtc ? slotProps.data[1].months[12].dtc : '-' }}</td>
                     </tr>
                 </template>
             </Column>
@@ -958,10 +958,177 @@
         </DataTable>
     </div>
     <Toast />
+    <Dialog :modal="true" v-model:visible="display">
+        <template #header>
+            <h3>Material Breakdown in Material {{ mat }}</h3>
+        </template>
+        <DataTable :value="modalTable" responsiveLayout="scroll">
+            <Column>
+                <template #body="slotProps">
+                    <Card>
+                        <template #title>
+                            Total Cost
+                        </template>
+                        <template #content>
+                            <tr>
+                                <td>Total Cost Std</td>
+                                <td>{{ slotProps.data.card.totalCostStd }}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Cost Eff</td>
+                                <td>{{ slotProps.data.card.totalCostEff }}</td>
+                            </tr>
+                        </template>
+                    </Card>
+                </template>
+            </Column>
+            <Column>
+                <template #body="slotProps">
+                    <Card>
+                        <template #title>
+                            Cost per KG
+                        </template>
+                        <template #content>
+                            <tr>
+                                <td>Cost per KG Std</td>
+                                <td>{{ slotProps.data.card.costPerKgStd }}</td>
+                            </tr>
+                            <tr>
+                                <td>Cost per KG Eff</td>
+                                <td>{{ slotProps.data.card.costPerKgEff }}</td>
+                            </tr>
+                        </template>
+                    </Card>
+                </template>
+            </Column>
+            <Column>
+                <template #body="slotProps">
+                    <Card>
+                        <template #title>
+                            Cost per Liters
+                        </template>
+                        <template #content>
+                            <tr>
+                                <td>Cost per Liter Std</td>
+                                <td>{{ slotProps.data.card.costPerLiterStd }}</td>
+                            </tr>
+                            <tr>
+                                <td>Cost per Liter Eff</td>
+                                <td>{{ slotProps.data.card.costPerLiterEff }}</td>
+                            </tr>
+                        </template>
+                    </Card>
+                </template>
+            </Column>
+            <Column>
+                <template #body="slotProps">
+                    <Card>
+                        <template #title>
+                            Total
+                        </template>
+                        <template #content>
+                            <tr>
+                                <td>Total</td>
+                                <td>{{ slotProps.data.card.totalRawMaterials }}</td>
+                            </tr>
+                            <tr>
+                                <td>Density</td>
+                                <td>{{ slotProps.data.card.density }}</td>
+                            </tr>
+                        </template>
+                    </Card>
+                </template>
+            </Column>
+        </DataTable>
+        <DataTable :value="modalTable" responsiveLayout="scroll">
+            <template #header>
+                <div class="flex justify-content-between flex-wrap">
+                    <div class="flex justify-content-between flex-wrap align-items-center gap-2">
+                        <Dropdown optionLabel="text" v-model="fixed" placeholder="Precission value" style="max-width: 200px; float: right;"
+                            :options="[
+                                { value: 0, text: '0 - precision' },
+                                { value: 1, text: '1 - precision' },
+                                { value: 2, text: '2 - precision' },
+                                { value: 3, text: '3 - precision' },
+                                { value: 4, text: '4 - precision' },
+                                { value: 5, text: '5 - precision' },
+                                { value: 6, text: '6 - precision' },
+                                { value: 7, text: '7 - precision' }
+                            ]" />
+                    </div>
+                </div>
+            </template>
+            <Column header="#">
+                <template #body="slotProps">
+                    <tr v-for="(el, index) in slotProps.data.table" :key="index">
+                        <td>{{ el.number_material[0] }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column header="Raw Material">
+                <template #body="slotProps">
+                    <tr v-for="(el, index) in slotProps.data.table" :key="index">
+                        <td>{{ el.raw_material }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column header="Unit">
+                <template #body="slotProps">
+                    <tr v-for="(el, index) in slotProps.data.table" :key="index">
+                        <td>KG</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column header="Cost per Unit (STD)">
+                <template #body="slotProps">
+                    <tr v-for="(el, index) in slotProps.data.table" :key="index">
+                        <td>{{ el.cost_per_unit_std }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column header="Cost per Unit (EFF)">
+                <template #body="slotProps">
+                    <tr v-for="(el, index) in slotProps.data.table" :key="index">
+                        <td>{{ el.cost_per_unit_eff }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column header="Raw Weight">
+                <template #body="slotProps">
+                    <tr v-for="(el, index) in slotProps.data.table" :key="index">
+                        <td>{{ el.raw_weight }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column header="Raw Weight %">
+                <template #body="slotProps">
+                    <tr v-for="(el, index) in slotProps.data.table" :key="index">
+                        <td>{{ el.raw_weight_percent }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column header="Total Cost (STD)">
+                <template #body="slotProps">
+                    <tr v-for="(el, index) in slotProps.data.table" :key="index">
+                        <td>{{ el.total_cost_std }}</td>
+                    </tr>
+                </template>
+            </Column>
+            <Column header="Total Cost (EFF)">
+                <template #body="slotProps">
+                    <tr v-for="(el, index) in slotProps.data.table" :key="index">
+                        <td>{{ el.total_cost_eff }}</td>
+                    </tr>
+                </template>
+            </Column>
+        </DataTable>
+    </Dialog>
 </div>
 </template>
 <script setup>
 import Dropdown from 'primevue/dropdown';
+import Card from 'primevue/card'
+import Dialog from 'primevue/dialog'
 import Column from "primevue/column";
 import ProgressSpinner from 'primevue/progressspinner';
 import InputSwitch from 'primevue/inputswitch'
@@ -972,8 +1139,7 @@ import { useDtcStore } from '../../store/dtc';
 import { FilterMatchMode } from 'primevue/api';
 import { ref, onMounted } from "vue";
 
-const primo = ref([]);
-
+const display = ref(false)
 const dt = ref();
 const dtc = useDtcStore()
 const plant = ref([]);
@@ -995,6 +1161,21 @@ const showMatCostStd = ref(false);
 const showMatCostEff = ref(false);
 const showTotalCostStd = ref(true);
 const showTotalCostEff = ref(true);
+let modalTable = ref([]);
+let modalTableResult = ref([]);
+let mat = ref('');
+let month = ref(0);
+
+const showContent = async (rawMaterial, mo) => {
+    display.value = true
+    mat.value = rawMaterial
+    month.value = mo
+    const response = await axios.get('http://localhost:8000/api/v1/report_raw_material_breakdown/?plant='+plantSelected.value.value + '&product=' +mat.value + '&filter=0' + '&month=' + month.value + '&year=' + year.value)
+    modalTable.value = response.data
+    console.log(modalTable.value);
+}
+
+
 const exportCSV = () => {
     dt.value.exportCSV();
 };   
@@ -1024,7 +1205,7 @@ let volumTotals = ref([]);
 const submit = async () => {
     progress.value = true
     if (plantSelected.value.value === undefined) {
-        plantSelected.value.value = ''
+        plantSelected.value.value = 'JI61'
     }
     const response = await axios.get('http://localhost:8000/api/v1/product_one_level/?plant='+plantSelected.value.value + '&product=' +tireSelected.value.value + '&market_segment=' + mkgSelected.value.value + '&year=' + year.value + '&line=' + lineSelected)
     response.data.items
@@ -1159,7 +1340,7 @@ const submit = async () => {
     items_materials = materials
     items_totais = totais.value
     volumTotals = volumTotais.value
-    console.log(table.value)
+    // console.log(table.value)
     progress.value = false
 };
 onMounted(async () => {
