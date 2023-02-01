@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.api_v1.endpoints import login, users, permission, role, role_permission, multselect, tissue, report_raw_material, raw_material_and_compound, compound_and_fabric, product_raw_material, product_one_level # noqa: E501, E261
+from app.api.api_v1.endpoints import login, users, permission, role, role_permission, multselect, tissue, report_raw_material, raw_material_and_compound, compound_and_fabric, product_raw_material, product_one_level, report_raw_material_breakdown # noqa: E501, E261
 
 api_router = APIRouter()
 api_router.include_router(login.router, tags=["login"])
@@ -33,3 +33,6 @@ api_router.include_router(product_raw_material.router,
 api_router.include_router(product_one_level.router,
                           prefix="/product_one_level",
                           tags=["product_one_level"])
+api_router.include_router(report_raw_material_breakdown.router,
+                          prefix="/report_raw_material_breakdown",
+                          tags=["report_raw_material_breakdown"])

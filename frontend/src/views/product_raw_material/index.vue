@@ -1006,6 +1006,7 @@ const getTire = async () => {
     tire.value = dtc.tires
 };
 const submit = async () => {
+    total.value = []
     progress.value = true
     if (plantSelected.value.value === undefined) {
         plantSelected.value.value = ''
