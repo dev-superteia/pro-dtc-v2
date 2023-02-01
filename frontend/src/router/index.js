@@ -4,18 +4,12 @@ const routes = [
   {
     path: '/',
     component: BaseLayout,
-    redirect: 'dashboard',
+    redirect: 'product_one_level',
     meta: {
       authRequired: true,
       hidden: true,
     },
-    children: [
-      { 
-        path: '/dashboard',
-        name: 'dashboard', 
-        component: () => import('@/views/home/Dashboard.vue'),
-        meta: { transition: 'slide-right' },
-       },
+    children: [    
       { 
         path: '/permission',
         name: 'permission', 

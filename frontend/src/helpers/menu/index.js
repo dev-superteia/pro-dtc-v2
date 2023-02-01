@@ -9,13 +9,7 @@ export const getMenuData = [
       label: 'user',
       icon: 'pi pi-fw pi-pencil',
       to:'',
-      items: [
-        {
-              key: '1_0',
-              label: 'DTC',
-              icon: 'pi pi-chart-bar',
-              to:'/raw_material_and_compound'
-        },          
+      items: [         
         {
             key: '1_1',
             label: 'Product One-Level',
