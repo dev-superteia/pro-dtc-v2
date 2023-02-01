@@ -14,7 +14,7 @@ class ProductRawMaterialRepository():
         filter_line = f"""and ms.line = '{line}'""" if line else ''
 
         query = f"""
-            with componentes as (
+            with componentes_aux as (
                 select
                     mez.plant,
                     mez.component,
@@ -39,6 +39,17 @@ class ProductRawMaterialRepository():
                         and mez.material not like 'C%' and mez.material not like 'S%' and mez.material not like 'Y%'
                         group by mez.material, mez.plant, mez.measure_unit, mez.utilization, mez.component, mez.month, mez.year
                         ),
+             componentes as (select * , 
+                    (case when comp.component like 'STT%' or comp.component like 'YTT%' then (select (mez.mp_weight * utilization) as comp_weight
+                    from material_espec_zp58 mez where comp.component = mez.material and comp."month" = mez."month" and comp.plant  = mez.plant and comp."year" = mez."year"                 
+                    ) when comp.component like 'STM%' or comp.component like 'YTM%' then (select (mez78.mp_weight * utilization) as comp_weight
+                    from material_espec_zp78 mez78 where comp.component = mez78.material and comp."month" = mez78."month" and comp.plant  = mez78.plant and comp."year" = mez78."year"                 
+                    )else 0 end)as comp_weight,
+                    (case when comp.component like 'STT%' or comp.component like 'YTT%' then (select mez.mat_me
+                    from material_espec_zp58 mez where comp.component = mez.material and comp."month" = mez."month" and comp.plant  = mez.plant and comp."year" = mez."year"                 
+                    ) when comp.component like 'STM%' or comp.component like 'YTM%' then (select mez78.mat_me
+                    from material_espec_zp78 mez78 where comp.component = mez78.material and comp."month" = mez78."month" and comp.plant  = mez78.plant and comp."year" = mez78."year"                 
+                    )else '' end) as comp_me from componentes_aux comp),            
             aux_materials as (
                 select concat(raw_materials.material,',',type) as material, 
                        raw_materials.material as material_name,
@@ -69,6 +80,21 @@ class ProductRawMaterialRepository():
                         from componentes
                         inner join material_espec_zp45 mez2 on
                             componentes.component = mez2.material
+                            and componentes.plant = mez2.plant
+                            and componentes.year = mez2.year
+                            and componentes.month = mez2.month
+                    union
+                    select componentes.plant,
+                        componentes.component as material,
+                        mez2.component as raw_material,
+                        (case when mez2.qtd_without = 0 then mez2.utilization else mez2.qtd_without end) * componentes.comp_weight as raw_weight,
+                        mez2.month,
+                        componentes.year,
+                        '4' as type,
+                        volum
+                        from componentes
+                        inner join material_espec_zp45 mez2 on
+                            componentes.comp_me  = mez2.material
                             and componentes.plant = mez2.plant
                             and componentes.year = mez2.year
                             and componentes.month = mez2.month

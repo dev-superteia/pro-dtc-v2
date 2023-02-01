@@ -17,7 +17,7 @@ services:
       - ./backend:/app
       - ./backend/app/logs:/app/logs
     image: pythonweb     
-    container_name: smarti
+    container_name: prodtc-v2
     ports:
       - "${PORT}:8000"
     depends_on:
@@ -28,6 +28,7 @@ services:
       - "backend"  
   db:
     image: postgres:12-alpine
+    container_name: db-prodtc
     ports:
       - "5432:5432"
     volumes:

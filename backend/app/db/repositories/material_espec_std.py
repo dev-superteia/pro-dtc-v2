@@ -19,7 +19,13 @@ class MaterialEspecStdRepository():
                     mestd.plant,
                     mestd.tm_material as material ,
                     mestd.year,
-                    mestd.weight
+                    mestd.weight,                    
+                    (case when tm_material like 'ST%' or tm_material like 'YT%' then (select (mestd.weight * mest.comp_weight) as comp_weight
+                    from material_espec_std_tm mest where mest.year = mestd.year and mest.plant = mestd.plant and  mest.material = mestd.tm_material
+                    ) else 0 end) as comp_weigh,
+                     (case when tm_material like 'ST%' or tm_material like 'YT%' then (select comp_material as comp_weight
+                    from material_espec_std_tm mest where mest.year = mestd.year and mest.plant = mestd.plant and  mest.material = mestd.tm_material
+                    ) else '' end) as comp_material
                 from
                     material_espec_std mestd
                     {join_market}
@@ -30,6 +36,10 @@ class MaterialEspecStdRepository():
                     {filter_product}
                     {filter_market}
                     {filter_line}
+                    and mestd.tm_material not like 'CQ%'
+                    and mestd.tm_material not like 'CW%'
+                    and mestd.tm_material not like '%0011'
+                    and mestd.tm_material not like '%0012'
                     and mestd.material is not null),
             materials as (select plant, raw_material, raw_weight, 'KG' as measure_unit,
                     cost_std as costperunitstandard,
@@ -77,12 +87,27 @@ class MaterialEspecStdRepository():
                     join material_cost mc on mc.material = componentes.material and mc.year = componentes.year
                     where
                         componentes.material like 'RC%'
+                   union 
+                 select
+                     mesm.plant,
+                     mesm.material,
+                     mesm.raw_material,
+                     case when mesm.raw_material like 'RG%' then 0 else mesm.raw_weight * componentes.weight end raw_weight,
+                     cost_std,
+                     '4' as type
+                    from componentes
+                    join material_espec_std_me mesm on
+                        mesm.material = componentes.comp_material and
+                        mesm.plant = componentes.plant and
+                        mesm.year = componentes.year
+                    join material_cost mc on mc.material = raw_material and mc.year = mesm.year          
                 ) raw_materials)
             select raw_material as material, max(measure_unit) as unit, max(costperunitstandard) as costperunitstandard,
                     max(costperuniteffective) as costperuniteffective, sum(raw_weight) as rawweight,
                     sum(totalcoststandard) as totalcoststandard, sum(totalcosteffective) as totalcosteffective,
                     count(distinct(material)) as totaltm, array_agg(distinct(material)) as materials, array_agg(distinct(tm_composition)) as tm_composition
                     from materials group by raw_material
+                    
         """
         print(query, 'JTaa')
         sqlQuery = text(query)
@@ -445,6 +470,7 @@ class MaterialEspecStdRepository():
         """
 
         sqlQuery = text(query)
+        print(sqlQuery)
         resultQuery = await db.execute(sqlQuery)
         result = list(resultQuery)
         return result

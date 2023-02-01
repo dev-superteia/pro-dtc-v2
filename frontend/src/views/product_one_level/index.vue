@@ -545,7 +545,7 @@
                 </div>
             </div>
             </template>
-            <Column field="0" :header="$t('dtc.raw_material')"></Column>
+            <Column field="0" :header="$t('dtc.raw_material')" sortable="true"></Column>
             <Column :header="$t('dtc.values')" style="min-width: 200px;">
                 <template #body="slotProps">
                     <tr v-if="showAmount">
