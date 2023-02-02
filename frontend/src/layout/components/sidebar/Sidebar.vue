@@ -35,7 +35,6 @@ aside {
   top: 0;
   bottom: 0;
   background: #fff;
-  z-index: 1000;
   width: 200px;
   transition: all .5s ease;
   color: var(--text-color);

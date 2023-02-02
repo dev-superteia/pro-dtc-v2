@@ -37,6 +37,12 @@
             <ProgressSpinner v-if="progress" style="width: 50px; height: 50px" strokeWidth="8"
                 fill="var(--surface-ground)" animationDuration=".5s" aria-label="Custom ProgressSpinner" />
         </div>
+        <Button @click="changeGra()"> tttttt</Button>   
+        <div class="col-12 mt-3">
+        <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Select a City" />   
+        <Chart type="line" :data="datasets" :options="basicOptions" class="w-full p-5" />
+
+        </div>
         <div class="col-12">
             <div style="display: flex; margin: 50px 0; justify-content: center">
                 <div style="display: flex">
@@ -3323,6 +3329,7 @@ import { useDtcStore } from "../../store/dtc";
 import { FilterMatchMode } from "primevue/api";
 import { ref, onMounted } from "vue";
 import TableRaw from "@/layout/components/arrow-table/index.vue";
+import Chart from 'primevue/chart';
 
 const display = ref(false);
 const dt = ref();
@@ -3350,6 +3357,12 @@ let modalTable = ref([]);
 let modalTableResult = ref([]);
 let mat = ref("");
 let month = ref(0);
+let datasets = ref([]);
+let items_totais = ref([]);
+let items_materials = ref([]);
+let volumTotals = ref([]);
+let graphselected = ref(2);
+const volumTotais = ref([]);
 
 const showContent = async (rawMaterial, mo) => {
     display.value = true;
@@ -3373,6 +3386,56 @@ const showContent = async (rawMaterial, mo) => {
 const exportCSV = () => {
     dt.value.exportCSV();
 };
+const changeGra = () => {
+      let changedData = volumTotais.value.valuevolum
+      if (graphselected.value === 2) {
+        changedData = volumTotais.value.value
+      }
+      if (graphselected.value === 3) {
+        var dtc = []
+        for (var i = 0; i <= 13; i++) {
+          dtc.push(items_totais.value.values[i].dtc)
+        }
+        console.log(dtc)
+        changedData = dtc
+      }
+      if (graphselected.value === 4) {
+        var totalWeightStd = []
+        for (var j = 0; j <= 13; j++) {
+          totalWeightStd.push(items_totais.value.values[j].totalWeightStd)
+        }
+        console.log(totalWeightStd)
+        changedData = totalWeightStd
+      }
+      if (graphselected.value === 5) {
+        var totalCostStd = []
+        for (var k = 0; k <= 13; k++) {
+          totalCostStd.push(items_totais.value.values[k].totalCostStd)
+        }
+        console.log(totalCostStd)
+        changedData = totalCostStd
+      }
+      if (graphselected.value === 6) {
+        var totalCostEff = []
+        for (var p = 0; p <= 13; p++) {
+          totalCostEff.push(items_totais.value.values[p].totalCostEff)
+        }
+        console.log(totalCostEff)
+        changedData = totalCostEff
+      }
+      datasets.value = {
+                labels: ['Standard', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'Algust', 'September', 'October', 'November', 'December'],
+                datasets: [
+                    {
+                        label: 'Total',
+                        data: changedData,
+                        fill: false,
+                        borderColor: '#42A5F5',
+                        tension: .4
+                    }
+                ]
+            }
+};
 const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
@@ -3393,9 +3456,7 @@ const getTire = async () => {
     tire.value = dtc.tires;
 };
 
-let items_totais = ref([]);
-let items_materials = ref([]);
-let volumTotals = ref([]);
+
 const submit = async () => {
     progress.value = true;
     if (plantSelected.value.value === undefined) {
@@ -3417,7 +3478,7 @@ const submit = async () => {
     const entries = Object.entries(response.data.items);
     const items = [];
     const materials = [];
-    const volumTotais = ref([]);
+
     const volums = ref([]);
     const totais = ref([
         { name: "Total", isTotal: "total", values: [] },
@@ -3668,8 +3729,9 @@ const submit = async () => {
     items_materials = materials;
     items_totais = totais.value;
     volumTotals = volumTotais.value;
-    // console.log(table.value)
+    // console.log(table.value)    
     progress.value = false;
+
 };
 onMounted(async () => {
     getPlant();
@@ -3680,3 +3742,8 @@ onMounted(async () => {
     year.value = d.getFullYear();
 });
 </script>
+<style>
+.p-dialog-mask.p-component-overlay.p-component-overlay-enter {
+    z-index: 999 !important;
+}
+</style>
