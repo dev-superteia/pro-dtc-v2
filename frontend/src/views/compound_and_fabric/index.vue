@@ -12,7 +12,7 @@
             <h3>{{ $t('dtc.material') }}</h3>
             <div class="p-inputgroup">
                 <Dropdown editable optionLabel="text" placeholder="Select a Material" v-model="materialSelected"
-                    :options="material" @click="getMaterial" />
+                    :options="material"/>
             </div>
         </div>
         <div class="col-12">
@@ -25,7 +25,7 @@
             <h3>{{ $t('dtc.type') }}</h3>
             <div class="p-inputgroup">
                 <Dropdown optionLabel="text" placeholder="Select a Type" v-model="selectMaterialBreakdown"
-                    :options="itemsMaterialBreakdown" selectOnFocus="true" />
+                    :options="itemsMaterialBreakdown" :selectOnFocus="true" />
             </div>
         </div>
         <div class="col-2 mt-3">
@@ -61,7 +61,7 @@
                 </div>
             </template>
             <template #content>
-                <Chart type="line" :data="datasets" :options="basicOptions" class="w-full p-5" />
+                <Chart type="line" :data="datasets" class="w-full p-5" />
             </template>
         </Card>
         </div>
@@ -108,7 +108,6 @@ const getMassAll = async () => {
 const getComponents = async () => {
     progress.value = true
     const response = await axios.get('http://localhost:8000/api/v1/compound_and_fabric?plant=' + plantSelected.value.value + '&material=' + materialSelected.value.value + '&year=' + year.value + '&type=' + selectMaterialBreakdown.value.id)
-    console.log(response.data)
     table.value = response.data
     const weights = response.data.weights;
     const lines = []
@@ -153,7 +152,6 @@ const changeGraph = (type) => {
 
     datasets.value.labels = ['Standard', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'Algust', 'September', 'October', 'November', 'December']
     datasets.value.datasets = seriesLines
-    console.log(datasets.value);
 }
 const convertNumber = (number) => {
     if (number !== '--') {

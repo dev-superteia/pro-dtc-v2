@@ -5,7 +5,7 @@
       <div>
         <div class="py-2 px-2 m-0">
             <a href="#" class="logo"><img src="https://www.primefaces.org/atlantis-vue/layout/images/logo-light.png" style="height: 30px"/>
-              <div class="logo_name">Smarti</div>
+              <div class="logo_name">Prodtc</div>
             </a>
         </div>
         <hr class="mb-5">

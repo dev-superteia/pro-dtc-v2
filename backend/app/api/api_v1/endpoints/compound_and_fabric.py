@@ -27,6 +27,7 @@ async def get_raw(
     density = await repositories.MdMaterialRepository.find_density(db, plant, material, year, month)
 
     total_weights = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    cost_list = ["cost_m01","cost_m02","cost_m03","cost_m04","cost_m05","cost_m06","cost_m07","cost_m08","cost_m09","cost_m10","cost_m11","cost_m12"]
     
     for years in table:
         text = await repositories.MaterialCostRepository.description(db,years['rawmaterial'])
@@ -43,7 +44,8 @@ async def get_raw(
                     total_weights[0] += months['raw_weight']
                 elif idx >= 2:
                     months['cost_standard'] = await repositories.MaterialCostRepository.find_by_material(db,material=months['material'], cost='cost_std')
-                    months['cost_effective'] = await repositories.MaterialCostRepository.find_by_material(db,material=months['material'], cost='cost_m02')
+                    print("oiiii",idx)
+                    months['cost_effective'] = await repositories.MaterialCostRepository.find_by_material(db,material=months['material'], cost=cost_list[idx-3])
                     months['total_cost_standard'] = Decimal(months['cost_standard']) * Decimal(months['raw_weight']) 
                     months['total_cost_effective'] = Decimal(months['cost_effective']) * Decimal(months['raw_weight']) 
                     months['measure_unit'] = 'KG'

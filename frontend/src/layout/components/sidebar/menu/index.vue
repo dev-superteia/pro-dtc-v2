@@ -53,7 +53,6 @@
       border: none !important; 
       background-color: var(--primary-color) !important;
       color: var(--primary-color-text) !important;
-      align-items: center !important;
       display: flex !important;
       flex-direction: column;
       cursor: pointer;

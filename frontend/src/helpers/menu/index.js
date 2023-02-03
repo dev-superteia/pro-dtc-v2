@@ -6,8 +6,8 @@ export const getMenuData = [
   },
   {
       key: '1',
-      label: 'user',
-      icon: 'pi pi-fw pi-pencil',
+      label: 'DTC',
+      icon: 'pi pi-fw pi-align-justify',
       to:'',
       items: [         
         {
@@ -51,7 +51,7 @@ export const getMenuData = [
   },{
       key: '2',
       label: 'user',
-      icon: 'pi pi-fw pi-pencil',
+      icon: 'pi pi-fw pi-align-justify',
       to:'',
       items: [{
               key: '2_0',

@@ -58,7 +58,6 @@ class rawMaterial:
             return result
         elif (month > 0):
             material_table = await repositories.MaterialEspecZp45Repository.find_by_plant_component_month_year(db=db, plant=plant, component=materialName, month=month, year=year)
-            print("Material Table 1", material_table)
             raw_weight_index = 24
 
         for index, aux in enumerate(material_table):

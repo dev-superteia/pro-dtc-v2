@@ -46,27 +46,27 @@
             <div style="display: flex; margin: 50px 0; justify-content: center">
                 <div style="display: flex">
                     <InputSwitch v-model="showTotalValue" />
-                    <h3 style="margin: 0 10px">Total Value</h3>
+                    <h4 style="margin: 0 10px">Total Value</h4>
                 </div>
                 <div style="display: flex">
                     <InputSwitch v-model="showAmount" />
-                    <h3 style="margin: 0 10px">Amount Used</h3>
+                    <h4 style="margin: 0 10px">Amount Used</h4>
                 </div>
                 <div style="display: flex">
                     <InputSwitch v-model="showMatCostStd" />
-                    <h3 style="margin: 0 10px">Material Cost Standard</h3>
+                    <h4 style="margin: 0 10px">Material Cost Standard</h4>
                 </div>
                 <div style="display: flex">
                     <InputSwitch v-model="showMatCostEff" />
-                    <h3 style="margin: 0 10px">Material Cost Effective</h3>
+                    <h4 style="margin: 0 10px">Material Cost Effective</h4>
                 </div>
                 <div style="display: flex">
                     <InputSwitch v-model="showTotalCostStd" />
-                    <h3 style="margin: 0 10px">Total Cost Standard</h3>
+                    <h4 style="margin: 0 10px">Total Cost Standard</h4>
                 </div>
                 <div style="display: flex">
                     <InputSwitch v-model="showTotalCostEff" />
-                    <h3 style="margin: 0 10px">Total Cost Effective</h3>
+                    <h4 style="margin: 0 10px">Total Cost Effective</h4>
                 </div>
             </div>
             <DataTable :value="items_totais" responsiveLayout="scroll" :filters="filters" :paginator="true" :rows="-1">
@@ -98,10 +98,10 @@
                 <Column v-if="!showTotalValue" header="Standard" style="min-width:200px">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td>{{ slotProps.data.values[0].totalWeightStd }}</td>
+                            <td>{{ (slotProps.data.values[0].totalWeightStd).toFixed(fixed.value) }}</td>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td>{{ slotProps.data.values[0].materialCostStd }}</td>
+                            <td>{{ slotProps.data.values[0].materialCostStd.toFixed(fixed.value) }}</td>
                         </tr>
                         <tr v-if="showMatCostEff">
                             <td>{{ slotProps.data.values[0].materialCostEff }}</td>
@@ -3350,7 +3350,7 @@ const mkgSelected = ref([]);
 const lineSelected = ref([]);
 const year = ref([]);
 const table = ref([]);
-const fixed = ref();
+const fixed = ref({ value: 3, text: '3 - precision' });
 const progress = ref(false);
 const toast = useToast();
 const showTotalValue = ref(false);

@@ -13,3 +13,5 @@ from .material_volum import MaterialVolumRepository
 from .material_espec_std_me import MaterialEspecStdMeRepository
 from .material_especZp45 import MaterialEspecZp45Repository
 from .raw_material_breakdown import rawMaterial
+from .raw_material_breakdown import rawMaterial
+from .tissue import Tissue

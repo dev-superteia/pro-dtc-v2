@@ -109,7 +109,6 @@ class MaterialEspecStdRepository():
                     from materials group by raw_material
                     
         """
-        print(query, 'JTaa')
         sqlQuery = text(query)
         resultQuery = await db.execute(sqlQuery)
         result = list(resultQuery)
@@ -470,7 +469,6 @@ class MaterialEspecStdRepository():
         """
 
         sqlQuery = text(query)
-        print(sqlQuery)
         resultQuery = await db.execute(sqlQuery)
         result = list(resultQuery)
         return result

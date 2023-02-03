@@ -1,12 +1,12 @@
 from typing import Any, Optional
 from sqlalchemy import select, and_, or_, text
-from app.db.models.md_material import MdMaterial
+from app.db import repositories 
 from app.db.schemas import Material
 from sqlalchemy.ext.asyncio import AsyncSession
 import re
 from decimal import Decimal
 
-from app.db.models.material_espec_zp45 import MaterialEspecZp45
+from app.db.models import MaterialEspecZp45, MaterialEspecZp58, MaterialEspecZp78, MdMaterial, MaterialEspecStdTm
 
 class MdMaterialRepository():
     async def get_tires(db: AsyncSession) -> Optional[Material]:
@@ -469,11 +469,28 @@ class MdMaterialRepository():
 
         if(int(filterType) == 3):
             try:
-                result = await MaterialEspecZp45.find_material_utilization(db,plant, material, rawMaterial, '02', year)
+                result = await repositories.material_especZp45.MaterialEspecZp45Repository.find_material_utilization(db,plant, material, rawMaterial, '02', year)
             except:
                 result = Decimal(0)
         return result    
 
+    async def find_by_materialtm(db: AsyncSession, plant, material, year) -> Optional[Material]:
+        stmt = select(MaterialEspecStdTm).filter(MaterialEspecStdTm.plant == plant, 
+                                                 MaterialEspecStdTm.material == material, 
+                                                 MaterialEspecStdTm.year == year)
+        result = await db.execute(stmt)
+        return result.scalars().first()
+    
+    async def find_by_material58(db: AsyncSession, plant, material,month, year) -> Optional[MaterialEspecZp58]:
+        stmt = select(MaterialEspecZp58).filter(MaterialEspecZp58.plant == plant, MaterialEspecZp58.material == material,MaterialEspecZp58.month == month,  MaterialEspecZp58.year == year)
+        result = await db.execute(stmt)
+        return result.scalars().first()
+
+
+    async def find_by_material78(db: AsyncSession, plant, material, month, year) -> Optional[MaterialEspecZp78]:
+        stmt = select(MaterialEspecZp78).filter(MaterialEspecZp78.plant == plant, MaterialEspecZp78.material == material, MaterialEspecZp78.month == month, MaterialEspecZp78.year == year)
+        result = await db.execute(stmt)
+        return result.scalars().first()
     
     
 permission = MdMaterialRepository()

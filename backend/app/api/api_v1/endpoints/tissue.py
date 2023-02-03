@@ -24,3 +24,26 @@ async def get_raw(
     raw = await repositories.MdMaterialRepository.get_tissues(db=db, plant=plant,year=year)
     #raw = {}
     return jsonable_encoder(raw)
+
+@router.get("/report_raw_material_month_tissue", response_model=List[schemas.Tissue])
+async def get_tissue(
+    *,
+    db: AsyncSession = Depends(deps.get_db),
+    plant: str,
+    material: str,
+    year: int,
+    ) -> Any:
+    
+    result = []
+    # Get each month values
+    for month in range(0, 13):
+
+        classCloth = repositories.Tissue(plant, material, 1, month, year)        
+
+        result_month = await repositories.tissue.get_cloth_month(classCloth,db)
+        if result_month['status']:
+            result.append({'status': True, 'month': month, 'card': repositories.tissue.table_presentation_convert_in_card(db, classCloth)})
+        else:
+            result.append({'status': False, 'month': month, 'card': []})
+
+    return jsonable_encoder(result)
