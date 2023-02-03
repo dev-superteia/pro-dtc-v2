@@ -20,7 +20,22 @@
                 animationDuration=".5s" aria-label="Custom ProgressSpinner" />
     </div>    
 </div>
-<DataTable :value="material" responsiveLayout="scroll">
+<DataTable ref="dt" :value="material" responsiveLayout="scroll" :rowsPerPageOptions="[10, 20, 50]" :filters="filters" :paginator="true" :rows="10">
+    <template #header>
+                <div class="flex justify-content-between flex-wrap">
+                <div><span class="p-input-icon-left">
+                        <i class="pi pi-search" />
+                        <InputText v-model="filters['global'].value" placeholder="Search..."
+                            style="max-width: 200px;" />
+                    </span>
+                </div>
+                <div class="flex justify-content-between flex-wrap align-items-center gap-2">
+                    <div style="text-align: left; width: 200px;">
+                        <Button icon="pi pi-external-link" label="Export" @click="exportCSV($event)" />
+                    </div>
+                </div>
+            </div>
+            </template>
     <Column field="component" header="Material"></Column>
     <Column field="plant" header="Plant"></Column>
     <Column field="year" header="Year"></Column>
@@ -33,9 +48,18 @@ import Column from "primevue/column";
 import axios from "axios";
 import { useDtcStore } from '../../store/dtc';
 import { ref, onMounted } from "vue";
+import { FilterMatchMode } from 'primevue/api';
 import ProgressSpinner from 'primevue/progressspinner';
 import Toast from 'primevue/toast';
 import { useToast } from "primevue/usetoast";
+
+const dt = ref();
+const filters = ref({
+    'global': { value: null, matchMode: FilterMatchMode.CONTAINS },
+});
+const exportCSV = () => {
+    dt.value.exportCSV();
+};
 
 const dtc = useDtcStore()
 const plant = ref([]);
