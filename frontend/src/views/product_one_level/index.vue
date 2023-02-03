@@ -1583,7 +1583,7 @@
                 <Column v-if="!showTotalValue" header="Standard">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 0)" v-if="showAmount">
+                            <td @click="showContent(slotProps.data[0], 0, 0)" v-if="showAmount">
                                 {{
                                     slotProps.data[1].months[0].amount_used_std
                                         ? slotProps.data[1].months[0].amount_used_std
@@ -1592,7 +1592,7 @@
                             </td>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 0)">
+                            <td @click="showContent(slotProps.data[0], 0, 0)">
                                 {{
                                     slotProps.data[1].months[0].totalcoststd
                                         ? slotProps.data[1].months[0].totalcoststd
@@ -1601,7 +1601,7 @@
                             </td>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 0)">
+                            <td @click="showContent(slotProps.data[0], 0, 0)">
                                 {{
                                     slotProps.data[1].months[0].totalcosteff
                                         ? slotProps.data[1].months[0].totalcosteff
@@ -1610,7 +1610,7 @@
                             </td>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 0)">
+                            <td @click="showContent(slotProps.data[0], 0, 0)">
                                 {{
                                     slotProps.data[1].months[0].material_cost_1_tire_standard
                                         ? slotProps.data[1].months[0].material_cost_1_tire_standard
@@ -1619,7 +1619,7 @@
                             </td>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 0)">
+                            <td @click="showContent(slotProps.data[0], 0, 0)">
                                 {{
                                     slotProps.data[1].months[0].material_cost_1_tire_effective
                                         ? slotProps.data[1].months[0].material_cost_1_tire_effective
@@ -1628,14 +1628,14 @@
                             </td>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 0)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 0, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[0].dtc_volum
                                         ? slotProps.data[1].months[0].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <td @click="showContent(slotProps.data[0], 0)" v-else>
+                            <td @click="showContent(slotProps.data[0], 0, 0)" v-else>
                                 {{
                                     slotProps.data[1].months[0].dtc
                                         ? slotProps.data[1].months[0].dtc
@@ -1648,14 +1648,14 @@
                 <Column header="Jan" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 1, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[1].amount_used_eff_volum
                                         ? slotProps.data[1].months[1].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 1)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 1, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -1666,14 +1666,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 1, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[1].totalcoststd_volum
                                         ? slotProps.data[1].months[1].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 1)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 1, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -1684,14 +1684,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 1, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[1].totalcosteff_volum
                                         ? slotProps.data[1].months[1].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 1)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 1, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -1702,7 +1702,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 1, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[1]
                                         .material_cost_1_tire_standard_volum
@@ -1711,7 +1711,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 1)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 1, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -1722,7 +1722,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 1, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[1]
                                         .material_cost_1_tire_effective_volum
@@ -1732,7 +1732,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 1)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 1, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -1743,14 +1743,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 1)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 1, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[1].dtc_volum
                                         ? slotProps.data[1].months[1].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 1)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 1, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -1765,14 +1765,14 @@
                 <Column header="Feb" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 2, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[2].amount_used_eff_volum
                                         ? slotProps.data[1].months[2].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 2)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -1783,14 +1783,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 2, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[2].totalcoststd_volum
                                         ? slotProps.data[1].months[2].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 2)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -1801,14 +1801,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 2, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[2].totalcosteff_volum
                                         ? slotProps.data[1].months[2].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 2)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -1819,7 +1819,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 2, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[2]
                                         .material_cost_1_tire_standard_volum
@@ -1828,7 +1828,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 2)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -1839,7 +1839,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 2, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[2]
                                         .material_cost_1_tire_effective_volum
@@ -1849,7 +1849,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 2)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -1860,14 +1860,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 2)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 2, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[2].dtc_volum
                                         ? slotProps.data[1].months[2].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 2)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -1882,14 +1882,14 @@
                 <Column header="Mar" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 3, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[3].amount_used_eff_volum
                                         ? slotProps.data[1].months[3].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 3)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -1900,14 +1900,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 3, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[3].totalcoststd_volum
                                         ? slotProps.data[1].months[3].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 3)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -1918,14 +1918,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 3, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[3].totalcosteff_volum
                                         ? slotProps.data[1].months[3].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 3)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -1936,7 +1936,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 3, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[3]
                                         .material_cost_1_tire_standard_volum
@@ -1945,7 +1945,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 3)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -1956,7 +1956,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 3, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[3]
                                         .material_cost_1_tire_effective_volum
@@ -1966,7 +1966,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 3)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -1977,14 +1977,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 3)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 3, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[3].dtc_volum
                                         ? slotProps.data[1].months[3].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 3)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -1999,14 +1999,14 @@
                 <Column header="Apr" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 4, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[4].amount_used_eff_volum
                                         ? slotProps.data[1].months[4].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 4)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -2017,14 +2017,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 4, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[4].totalcoststd_volum
                                         ? slotProps.data[1].months[4].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 4)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -2035,14 +2035,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 4, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[4].totalcosteff_volum
                                         ? slotProps.data[1].months[4].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 4)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -2053,7 +2053,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 4, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[4]
                                         .material_cost_1_tire_standard_volum
@@ -2062,7 +2062,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 4)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -2073,7 +2073,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 4, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[4]
                                         .material_cost_1_tire_effective_volum
@@ -2083,7 +2083,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 4)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -2094,14 +2094,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 4)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 4, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[4].dtc_volum
                                         ? slotProps.data[1].months[4].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 4)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -2116,14 +2116,14 @@
                 <Column header="May" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 5, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[5].amount_used_eff_volum
                                         ? slotProps.data[1].months[5].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 5)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -2134,14 +2134,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 5, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[5].totalcoststd_volum
                                         ? slotProps.data[1].months[5].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 5)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -2152,14 +2152,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 5, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[5].totalcosteff_volum
                                         ? slotProps.data[1].months[5].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 5)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -2170,7 +2170,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 5, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[5]
                                         .material_cost_1_tire_standard_volum
@@ -2179,7 +2179,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 5)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -2190,7 +2190,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 5, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[5]
                                         .material_cost_1_tire_effective_volum
@@ -2200,7 +2200,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 5)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -2211,14 +2211,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 5)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 5, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[5].dtc_volum
                                         ? slotProps.data[1].months[5].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 5)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -2233,14 +2233,14 @@
                 <Column header="Jun" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 6, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[6].amount_used_eff_volum
                                         ? slotProps.data[1].months[6].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 6)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -2251,14 +2251,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 6, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[6].totalcoststd_volum
                                         ? slotProps.data[1].months[6].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 6)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -2269,14 +2269,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 6, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[6].totalcosteff_volum
                                         ? slotProps.data[1].months[6].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 6)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -2287,7 +2287,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 6, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[6]
                                         .material_cost_1_tire_standard_volum
@@ -2296,7 +2296,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 6)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -2307,7 +2307,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 6, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[6]
                                         .material_cost_1_tire_effective_volum
@@ -2317,7 +2317,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 6)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -2328,14 +2328,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 6)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 6, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[6].dtc_volum
                                         ? slotProps.data[1].months[6].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 6)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -2350,14 +2350,14 @@
                 <Column header="Jul" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 7, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[7].amount_used_eff_volum
                                         ? slotProps.data[1].months[7].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 7)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -2368,14 +2368,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 7, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[7].totalcoststd_volum
                                         ? slotProps.data[1].months[7].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 7)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -2386,14 +2386,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 7, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[7].totalcosteff_volum
                                         ? slotProps.data[1].months[7].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 7)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -2404,7 +2404,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 7, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[7]
                                         .material_cost_1_tire_standard_volum
@@ -2413,7 +2413,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 7)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -2424,7 +2424,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 7, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[7]
                                         .material_cost_1_tire_effective_volum
@@ -2434,7 +2434,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 7)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -2445,14 +2445,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 7)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 7, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[7].dtc_volum
                                         ? slotProps.data[1].months[7].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 7)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -2467,14 +2467,14 @@
                 <Column header="Aug" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 8, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[8].amount_used_eff_volum
                                         ? slotProps.data[1].months[8].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 8)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -2485,14 +2485,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 8, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[8].totalcoststd_volum
                                         ? slotProps.data[1].months[8].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 8)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -2503,14 +2503,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 8, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[8].totalcosteff_volum
                                         ? slotProps.data[1].months[8].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 8)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -2521,7 +2521,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 8, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[8]
                                         .material_cost_1_tire_standard_volum
@@ -2530,7 +2530,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 8)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -2541,7 +2541,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 8, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[8]
                                         .material_cost_1_tire_effective_volum
@@ -2551,7 +2551,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 8)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -2562,14 +2562,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 8)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 8, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[8].dtc_volum
                                         ? slotProps.data[1].months[8].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 8)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -2584,14 +2584,14 @@
                 <Column header="Set" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 9, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[9].amount_used_eff_volum
                                         ? slotProps.data[1].months[9].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 9)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -2602,14 +2602,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 9, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[9].totalcoststd_volum
                                         ? slotProps.data[1].months[9].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 9)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -2620,14 +2620,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 9, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[9].totalcosteff_volum
                                         ? slotProps.data[1].months[9].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 9)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -2638,7 +2638,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 9, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[9]
                                         .material_cost_1_tire_standard_volum
@@ -2647,7 +2647,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 9)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -2658,7 +2658,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 9, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[9]
                                         .material_cost_1_tire_effective_volum
@@ -2668,7 +2668,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 9)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -2679,14 +2679,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 9)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 9, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[9].dtc_volum
                                         ? slotProps.data[1].months[9].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 9)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -2701,14 +2701,14 @@
                 <Column header="Out" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 10, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[10].amount_used_eff_volum
                                         ? slotProps.data[1].months[10].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 10)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -2719,14 +2719,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 10, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[10].totalcoststd_volum
                                         ? slotProps.data[1].months[10].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 10)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -2737,14 +2737,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 10, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[10].totalcosteff_volum
                                         ? slotProps.data[1].months[10].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 10)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -2755,7 +2755,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 10, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[10]
                                         .material_cost_1_tire_standard_volum
@@ -2764,7 +2764,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 10)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -2775,7 +2775,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 10, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[10]
                                         .material_cost_1_tire_effective_volum
@@ -2785,7 +2785,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 10)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -2796,14 +2796,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 10)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 10, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[10].dtc_volum
                                         ? slotProps.data[1].months[10].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 10)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -2818,14 +2818,14 @@
                 <Column header="Nov" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 11, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[11].amount_used_eff_volum
                                         ? slotProps.data[1].months[11].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 11)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -2836,14 +2836,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 11, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[11].totalcoststd_volum
                                         ? slotProps.data[1].months[11].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 11)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -2854,14 +2854,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 11, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[11].totalcosteff_volum
                                         ? slotProps.data[1].months[11].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 11)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -2872,7 +2872,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 11, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[11]
                                         .material_cost_1_tire_standard_volum
@@ -2881,7 +2881,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 11)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -2892,7 +2892,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 11, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[11]
                                         .material_cost_1_tire_effective_volum
@@ -2902,7 +2902,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 11)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -2913,14 +2913,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 11)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 11, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[11].dtc_volum
                                         ? slotProps.data[1].months[11].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 11)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -2935,14 +2935,14 @@
                 <Column header="Dez" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
-                            <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[12].amount_used_eff_volum
                                         ? slotProps.data[1].months[12].amount_used_eff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 12)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
@@ -2953,14 +2953,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[12].totalcoststd_volum
                                         ? slotProps.data[1].months[12].totalcoststd_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 12)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
@@ -2971,14 +2971,14 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[12].totalcosteff_volum
                                         ? slotProps.data[1].months[12].totalcosteff_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 12)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
@@ -2989,7 +2989,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[12]
                                         .material_cost_1_tire_standard_volum
@@ -2998,7 +2998,7 @@
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 12)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
@@ -3009,7 +3009,7 @@
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[12]
                                         .material_cost_1_tire_effective_volum
@@ -3019,7 +3019,7 @@
                                 }}
                             </td>
 
-                            <TableRaw @click="showContent(slotProps.data[0], 12)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
@@ -3030,14 +3030,14 @@
                             </TableRaw>
                         </tr>
                         <tr>
-                            <td @click="showContent(slotProps.data[0], 12)" v-if="showTotalValue">
+                            <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[12].dtc_volum
                                         ? slotProps.data[1].months[12].dtc_volum
                                         : "-"
                                 }}
                             </td>
-                            <TableRaw @click="showContent(slotProps.data[0], 12)" v-else :value="{
+                            <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
@@ -3245,6 +3245,13 @@
                                     { value: 6, text: '6 - precision' },
                                     { value: 7, text: '7 - precision' },
                                 ]" />
+                                
+                            <Dropdown optionLabel="text" v-model="recycleFilter" placeholder="Precission value"
+                                style="min-width: 250px; float: right" :options="[
+                                    { value: 0, text: 'Without Recycle' },
+                                    { value: 1, text: 'Without Recycle (No Explosion)' },
+                                    { value: 2, text: 'Without Recycle (Explosion)' },
+                                ]" @update:model-value="recycleContent(modalPlant, mat, recycleFilter.value, month, modalYear)"/>
                         </div>
                     </div>
                 </template>
@@ -3354,9 +3361,11 @@ const showMatCostEff = ref(false);
 const showTotalCostStd = ref(true);
 const showTotalCostEff = ref(true);
 let modalTable = ref([]);
-let modalTableResult = ref([]);
 let mat = ref("");
 let month = ref(0);
+let recycleFilter = ref(0)
+let modalPlant = ref("")
+let modalYear = ref()
 let datasets = ref([]);
 let items_totais = ref([]);
 let items_materials = ref([]);
@@ -3365,19 +3374,40 @@ let graphselected = ref(2);
 const volumTotais = ref([]);
 
 const showContent = async (rawMaterial, mo) => {
+    modalTable.value = []
     display.value = true;
     mat.value = rawMaterial;
     month.value = mo;
+    modalPlant = plantSelected.value.value
+    modalYear = year.value
     const response = await axios.get(
         "http://localhost:8000/api/v1/report_raw_material_breakdown/?plant=" +
         plantSelected.value.value +
         "&product=" +
         mat.value +
-        "&filter=0" +
+        "&filter=" +
+        recycleFilter.value +
         "&month=" +
         month.value +
         "&year=" +
         year.value
+    );
+    modalTable.value = response.data;
+};
+
+const recycleContent = async (plant, rawMaterial, filter, mo, year) => {
+    modalTable.value = []
+    const response = await axios.get(
+        "http://localhost:8000/api/v1/report_raw_material_breakdown/?plant=" +
+        plant +
+        "&product=" +
+        rawMaterial +
+        "&filter=" +
+        filter +
+        "&month=" +
+        mo +
+        "&year=" +
+        year
     );
     modalTable.value = response.data;
     console.log(modalTable.value);
