@@ -3511,7 +3511,7 @@ const submit = async () => {
         "&year=" +
         year.value +
         "&line=" +
-        lineSelected
+        lineSelected.value.value
     );
     response.data.items;
     const entries = Object.entries(response.data.items);
