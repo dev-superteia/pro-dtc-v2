@@ -37,10 +37,9 @@
             <ProgressSpinner v-if="progress" style="width: 50px; height: 50px" strokeWidth="8"
                 fill="var(--surface-ground)" animationDuration=".5s" aria-label="Custom ProgressSpinner" />
         </div>
-        <Button @click="changeGra()"> tttttt</Button>   
         <div class="col-12 mt-3">
-        <Dropdown v-model="selectedCity" :options="cities" optionLabel="name" placeholder="Select a City" />   
-        <Chart type="line" :data="datasets" :options="basicOptions" class="w-full p-5" />
+        <Dropdown v-model="graphselected" :options="graph" optionLabel="text" placeholder="Select a graph value" @change="changeGra()"/>   
+        <Chart type="line" :data="datasets" class="w-full p-5" />
 
         </div>
         <div class="col-12">
@@ -1557,7 +1556,7 @@
                         </div>
                     </div>
                 </template>
-                <Column field="0" :header="$t('dtc.raw_material')" sortable="true"></Column>
+                <Column field="0" :header="$t('dtc.raw_material')" :sortable="true"></Column>
                 <Column :header="$t('dtc.values')" style="min-width: 200px">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
@@ -3327,7 +3326,7 @@ import Toast from "primevue/toast";
 import { useToast } from "primevue/usetoast";
 import { useDtcStore } from "../../store/dtc";
 import { FilterMatchMode } from "primevue/api";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, toRaw  } from "vue";
 import TableRaw from "@/layout/components/arrow-table/index.vue";
 import Chart from 'primevue/chart';
 
@@ -3361,8 +3360,16 @@ let datasets = ref([]);
 let items_totais = ref([]);
 let items_materials = ref([]);
 let volumTotals = ref([]);
-let graphselected = ref(2);
+let graphselected = ref({ value: 1, text: 'Total' });
 const volumTotais = ref([]);
+const graph = ref([
+        { value: 1, text: 'Total' },
+        { value: 2, text: 'Total Value' },
+        { value: 3, text: 'DTC' },
+        { value: 4, text: 'Total Weight Std' },
+        { value: 5, text: 'Cost Std' },
+        { value: 6, text: 'Cost Eff' },
+        ]);
 
 const showContent = async (rawMaterial, mo) => {
     display.value = true;
@@ -3387,38 +3394,40 @@ const exportCSV = () => {
     dt.value.exportCSV();
 };
 const changeGra = () => {
-      let changedData = volumTotais.value.valuevolum
-      if (graphselected.value === 2) {
+      const itens = toRaw(items_totais); 
+      console.log(itens)
+      let changedData = volumTotais.value.volum
+      if (graphselected.value.value === 2) {
         changedData = volumTotais.value.value
       }
-      if (graphselected.value === 3) {
+      if (graphselected.value.value === 3) {
         var dtc = []
         for (var i = 0; i <= 13; i++) {
-          dtc.push(items_totais.value.values[i].dtc)
+          dtc.push(itens[0].values[i].dtc)
         }
         console.log(dtc)
         changedData = dtc
       }
-      if (graphselected.value === 4) {
+      if (graphselected.value.value === 4) {
         var totalWeightStd = []
         for (var j = 0; j <= 13; j++) {
-          totalWeightStd.push(items_totais.value.values[j].totalWeightStd)
+          totalWeightStd.push(itens[0].values[j].totalWeightStd)
         }
         console.log(totalWeightStd)
         changedData = totalWeightStd
       }
-      if (graphselected.value === 5) {
+      if (graphselected.value.value === 5) {
         var totalCostStd = []
         for (var k = 0; k <= 13; k++) {
-          totalCostStd.push(items_totais.value.values[k].totalCostStd)
+          totalCostStd.push(itens[0].values[k].totalCostStd)
         }
         console.log(totalCostStd)
         changedData = totalCostStd
       }
-      if (graphselected.value === 6) {
+      if (graphselected.value.value === 6) {
         var totalCostEff = []
         for (var p = 0; p <= 13; p++) {
-          totalCostEff.push(items_totais.value.values[p].totalCostEff)
+          totalCostEff.push(itens[0].values[p].totalCostEff)
         }
         console.log(totalCostEff)
         changedData = totalCostEff
@@ -3427,7 +3436,7 @@ const changeGra = () => {
                 labels: ['Standard', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'Algust', 'September', 'October', 'November', 'December'],
                 datasets: [
                     {
-                        label: 'Total',
+                        label: graphselected.value.text,
                         data: changedData,
                         fill: false,
                         borderColor: '#42A5F5',
@@ -3729,7 +3738,8 @@ const submit = async () => {
     items_materials = materials;
     items_totais = totais.value;
     volumTotals = volumTotais.value;
-    // console.log(table.value)    
+    // console.log(table.value) 
+    changeGra()   
     progress.value = false;
 
 };
