@@ -22,13 +22,13 @@
     <div class="col-12">
         <h3>{{$t('dtc.type')}}</h3>
         <div class="p-inputgroup">
-            <Dropdown optionLabel="text" :placeholder="$t('dtc.type')" v-model="typeSelected" :options="type"/>
+            <Dropdown optionLabel="text" :placeholder="$t('dtc.type')" v-model="typeSelected" :options="type" @update:model-value="getTypeList"/>
         </div>
     </div>
     <div class="col-12">
         <h3>{{$t('dtc.type_list')}}</h3>
         <div class="p-inputgroup">
-            <Dropdown editable optionLabel="text" :placeholder="$t('dtc.type_list')" v-model="listSelected" :options="listType" @click="getTypeList"/>
+            <Dropdown editable optionLabel="text" :placeholder="$t('dtc.type_list')" v-model="listSelected" :options="listType"/>
         </div>
     </div>
     <div class="col-12">
@@ -44,7 +44,7 @@
                 animationDuration=".5s" aria-label="Custom ProgressSpinner" />
     </div>
     <div class="col-12">
-        <div style="display: flex">
+        <div style="display: flex"  v-if="typeSelected.value === 'material'">
             <InputSwitch v-model="showDesc"/>
             <h3 style="margin: 0 10px;">Description</h3>
         </div>
