@@ -20,15 +20,16 @@
                             { value: 5, text: '5 - precision' },
                             { value: 6, text: '6 - precision' },
                             { value: 7, text: '7 - precision' }
-                        ]" />
+                        ]" @change="changeFixed"/>
                     <div style="text-align: left; width: 200px;">
                         <Button icon="pi pi-external-link" label="Export" @click="exportCSV($event)" />
                     </div>
+                    {{ fixed.value }}
 
                 </div>
             </div>
         </template>
-        <Column field="rawmaterial" header="Material" sortable="true"></Column>
+        <Column field="rawmaterial" header="Material" :sortable="true"></Column>
         <Column field="value" :header="$t('dtc.values')" style="min-width:150px">
             <template #body="slotProps">
                 <tr>
@@ -54,7 +55,7 @@
         <Column field="months" :header="$t('dtc.values')">
             <template #body="slotProps">
                 <tr>
-                    <td>{{ slotProps.data.months[1].raw_weight }}</td>
+                    <td>{{ (slotProps.data.months[1].raw_weight).toFixed(fixed) }}</td>
                 </tr>
                 <tr>
                     <td>{{ slotProps.data.months[1].raw_weight / tableValue.weights[0] }}</td>
@@ -376,26 +377,26 @@
     </DataTable>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, computed } from "vue";
 import Column from "primevue/column";
 import { useConfigStore } from '@/store/config';
 import { FilterMatchMode } from 'primevue/api';
 import Dropdown from 'primevue/dropdown';
 import TableRaw from '@/layout/components/arrow-table/index.vue'
 const config = useConfigStore()
-const props = defineProps({
-    tableValue: Array
-})
+const props = defineProps(['tableValue'])
 const changeFixed = () => {
-    config.setFixed(4)
+    config.setFixed(props)
 }
 const dt = ref();
-const fixed = ref();
+const table = ref([]);
+const fixed = ref({ value: 3, text: '3 - precision' });
 const filters = ref({
     'global': { value: null, matchMode: FilterMatchMode.CONTAINS },
 });
 
 const exportCSV = () => {
     dt.value.exportCSV();
-};       
+};  
+
 </script>
