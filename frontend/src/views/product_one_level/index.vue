@@ -3245,7 +3245,7 @@
                                     { value: 7, text: '7 - precision' },
                                 ]" />
                                 
-                            <Dropdown optionLabel="text" v-model="recycleFilter" placeholder="Precission value"
+                            <Dropdown optionLabel="text" v-model="recycleFilter" placeholder="Without Recycle"
                                 style="min-width: 250px; float: right" :options="[
                                     { value: 0, text: 'Without Recycle' },
                                     { value: 1, text: 'Without Recycle (No Explosion)' },
