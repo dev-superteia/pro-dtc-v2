@@ -30,6 +30,7 @@ section{
     margin-top: 100px;
     margin-right:30px ;
     margin-left:250px ;
+    overflow: auto;
     }
 .section-toggle{
     margin-left: 100px;
