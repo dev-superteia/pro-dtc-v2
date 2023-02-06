@@ -55,7 +55,8 @@ async def get_raw(
         'name': 'ok',
         'density': density,
         'weights': total_weights,
-        'table': table
+        'table': table,
+        'total': []
     }
 
     return response

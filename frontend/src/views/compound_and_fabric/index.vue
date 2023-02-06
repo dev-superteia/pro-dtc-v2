@@ -96,6 +96,7 @@ const itemsMaterialBreakdown = ref([{ id: 1, text: 'Without Recycle' }, { id: 2,
 const table = ref([]);
 const desserts = ref([]);
 const datasets = ref({});
+const arr = ref([])
 
 const getPlant = async () => {
     plant.value = await dtc.setPlant()
@@ -134,6 +135,27 @@ const getComponents = async () => {
     })
     desserts.value = lines
     changeGraph('weight')
+    let costEff = 0
+    let costStd = 0
+    let rawWeight = 0
+    let totalStd = 0
+    let totalEff = 0
+
+    for(let i = 2; i<=13; i++) {
+        costEff = 0
+        costStd = 0
+        rawWeight = 0
+        table.value.table.forEach((element, index) => {
+          costEff = costEff + (element.months[i].cost_effective !== '--' ? element.months[i].cost_effective : 0)
+          costStd = costStd + (element.months[i].cost_standard !== '--' ? element.months[i].cost_standard : 0)
+          rawWeight = rawWeight + (element.months[i].raw_weight !== '--' ? element.months[i].raw_weight : 0)
+          totalStd = totalStd + (element.months[i].total_cost_standard !== '--' ? element.months[i].total_cost_standard : 0)
+          totalEff = totalEff + (element.months[i].total_cost_effective !== '--' ? element.months[i].total_cost_effective : 0)
+        })
+        arr.value.push({cost_effective: costEff, cost_standard: costStd, raw_weight: rawWeight, total_cost_standard: totalStd, total_cost_effective: totalEff})
+    }
+    table.value.total.push(arr.value)
+    console.log(table.value)
 
 };
 const changeGraph = (type) => {
