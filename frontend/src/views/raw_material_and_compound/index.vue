@@ -99,7 +99,7 @@
                     </tr>
                 </template>
             </Column>
-            <Column field="items" :header="$t('dtc.values')" style="min-width:150px">
+            <Column field="items" :header="$t('dtc.values')" style="min-width:200px">
                 <template #body="slotProps">
                     <tr>
                         <td>Material Volume</td>
