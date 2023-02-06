@@ -29,7 +29,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Jan">
+        <Column header="Jan" style="min-width:200px">
             <template #body="slotProps">
                 <tr>
                     <td>{{ slotProps.data[0].raw_weight }}</td>
@@ -362,7 +362,7 @@
             </div>
         </template>
         <Column field="rawmaterial" header="Material" :sortable="true"></Column>
-        <Column field="value" :header="$t('dtc.values')" style="min-width:150px">
+        <Column field="value" :header="$t('dtc.values')" style="min-width:200px">
             <template #body="slotProps">
                 <tr>
                     <td>Weight</td>
@@ -407,7 +407,7 @@
                 </tr>
             </template>
         </Column>
-        <Column field="months" header="Jan">
+        <Column field="months" header="Jan" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[2].raw_weight && slotProps.data.months[2].raw_weight != '--' ? slotProps.data.months[2].raw_weight : 0 }">
@@ -432,7 +432,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Feb">
+        <Column field="months" header="Feb" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[3].raw_weight && slotProps.data.months[3].raw_weight != '--' ? slotProps.data.months[3].raw_weight : 0 }">
@@ -457,7 +457,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Mar">
+        <Column field="months" header="Mar" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[4].raw_weight && slotProps.data.months[4].raw_weight != '--' ? slotProps.data.months[4].raw_weight : 0 }">
@@ -482,7 +482,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Apr">
+        <Column field="months" header="Apr" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[5].raw_weight && slotProps.data.months[5].raw_weight != '--' ? slotProps.data.months[5].raw_weight : 0 }">
@@ -507,7 +507,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Mai">
+        <Column field="months" header="Mai" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[6].raw_weight && slotProps.data.months[6].raw_weight != '--' ? slotProps.data.months[6].raw_weight : 0 }">
@@ -532,7 +532,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Jun">
+        <Column field="months" header="Jun" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[7].raw_weight && slotProps.data.months[7].raw_weight != '--' ? slotProps.data.months[7].raw_weight : 0 }">
@@ -557,7 +557,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Jul">
+        <Column field="months" header="Jul" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[8].raw_weight && slotProps.data.months[8].raw_weight != '--' ? slotProps.data.months[8].raw_weight : 0 }">
@@ -582,7 +582,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Aug">
+        <Column field="months" header="Aug" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[9].raw_weight && slotProps.data.months[9].raw_weight != '--' ? slotProps.data.months[9].raw_weight : 0 }">
@@ -607,7 +607,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Sep">
+        <Column field="months" header="Sep" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[10].raw_weight && slotProps.data.months[10].raw_weight != '--' ? slotProps.data.months[10].raw_weight : 0 }">
@@ -632,7 +632,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Oct">
+        <Column field="months" header="Oct" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[11].raw_weight && slotProps.data.months[11].raw_weight != '--' ? slotProps.data.months[11].raw_weight : 0 }">
@@ -657,7 +657,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Nov">
+        <Column field="months" header="Nov" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[12].raw_weight && slotProps.data.months[12].raw_weight != '--' ? slotProps.data.months[12].raw_weight : 0 }">
@@ -682,7 +682,7 @@
                 </TableRaw>
             </template>
         </Column>
-        <Column field="months" header="Dec">
+        <Column field="months" header="Dec" style="min-width:200px">
             <template #body="slotProps">
                 <TableRaw
                     :value="{ std: slotProps.data.months[1].raw_weight || slotProps.data.months[1].raw_weight != '--' ? slotProps.data.months[1].raw_weight  : 0, eff: slotProps.data.months[13].raw_weight && slotProps.data.months[13].raw_weight != '--' ? slotProps.data.months[13].raw_weight : 0 }">
