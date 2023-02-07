@@ -50,7 +50,7 @@ export const getMenuData = [
       ]
   },{
       key: '2',
-      label: 'user',
+      label: 'User',
       icon: 'pi pi-fw pi-align-justify',
       to:'',
       items: [{
