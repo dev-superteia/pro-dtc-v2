@@ -31,7 +31,7 @@
                 <InputText placeholder="Year" v-model="year"/>
             </div>
         </div>
-        <div class="col-3 mt-3">
+        <div class="col-2 mt-3">
             <Button v-if="!progress" :label="$t('message.search')" @click="submit()" icon="pi pi-send" iconPos="right" ></Button>
             <ProgressSpinner v-if="progress" style="width:50px;height:50px" strokeWidth="8" fill="var(--surface-ground)"
                     animationDuration=".5s" aria-label="Custom ProgressSpinner" />
@@ -709,38 +709,38 @@
                 </template>
             </Column>
         </DataTable>
-        <div class="grid p-fluid" style="margin: 50px 0;">
-            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
+        <div style="display: flex; margin: 50px 0; justify-content: center;">
+            <div style="display: flex">
                 <InputSwitch v-model="showTotalValue"/>
                 <h3 style="margin: 0 10px;">Total Value</h3>
             </div>
-            <div  class="col-12 md:col-6 lg:col-3" style="display: flex ">
+            <div style="display: flex">
                 <InputSwitch v-model="showMaterial"/>
                 <h3 style="margin: 0 10px;">Material</h3>
             </div>
-            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
+            <div style="display: flex">
                 <InputSwitch v-model="showTotalMaterial"/>
                 <h3 style="margin: 0 10px;">Total Material</h3>
             </div>
-            <div  class="col-12 md:col-6 lg:col-3" style="display: flex">
+            <div style="display: flex">
                 <InputSwitch v-model="showRawWeight"/>
                 <h3 style="margin: 0 10px;">Raw Weight</h3>
             </div>
         </div>
-        <div class="grid p-fluid" style="margin: 50px 0;">
-            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
+        <div style="display: flex; margin: 50px 0; justify-content: center;">
+            <div style="display: flex">
                 <InputSwitch v-model="showCostStd"/>
                 <h3 style="margin: 0 10px;">Cost per Unit Std</h3>
             </div>
-            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
+            <div style="display: flex">
                 <InputSwitch v-model="showCostEff"/>
                 <h3 style="margin: 0 10px;">Cost per Unit Eff</h3>
             </div>
-            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
+            <div style="display: flex">
                 <InputSwitch v-model="showTotalCostStd"/>
                 <h3 style="margin: 0 10px;">Total Cost Standard</h3>
             </div>
-            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
+            <div style="display: flex">
                 <InputSwitch v-model="showTotalCostEff"/>
                 <h3 style="margin: 0 10px;">Total Cost Effective</h3>
             </div>
@@ -805,22 +805,22 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showTotalMaterial">
-                            <td>{{(slotProps.data.values[0].totaltm).toFixed(fixed.value)}}</td>
+                            <td>{{(slotProps.data.values[0].totaltm ? slotProps.data.values[0].totaltm : '-' )}}</td>
                         </tr>
                         <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showCostStd">
-                            <td>{{(slotProps.data.values[0].costperunitstandard).toFixed(fixed.value)}}</td>
+                            <td>{{(slotProps.data.values[0].costperunitstandard ? slotProps.data.values[0].costperunitstandard : '-')}}</td>
                         </tr>
                         <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showCostEff">
-                            <td>{{(slotProps.data.values[0].costperuniteffective).toFixed(fixed.value)}}</td>
+                            <td>{{(slotProps.data.values[0].costperuniteffective ? slotProps.data.values[0].costperuniteffective : '-')}}</td>
                         </tr>
                         <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showRawWeight">
-                            <td>{{(slotProps.data.values[0].rawweight).toFixed(fixed.value)}}</td>
+                            <td>{{(slotProps.data.values[0].rawweight ? slotProps.data.values[0].rawweight : '-')}}</td>
                         </tr>
                         <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showTotalCostStd">
-                            <td>{{(slotProps.data.values[0].totalcoststandard).toFixed(fixed.value)}}</td>
+                            <td>{{(slotProps.data.values[0].totalcoststandard ? slotProps.data.values[0].totalcoststandard : '-')}}</td>
                         </tr>
                         <tr @click="showContent(slotProps.data.material, slotProps.data.values[0].tm_composition, slotProps.data.values[0].unit)" v-if="showTotalCostEff">
-                            <td>{{(slotProps.data.values[0].totalcosteffective).toFixed(fixed.value)}}</td>
+                            <td>{{(slotProps.data.values[0].totalcosteffective ? slotProps.data.values[0].totalcosteffective : '-')}}</td>
                         </tr>
                     </template>
                 </Column>
@@ -834,57 +834,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition)">{{(slotProps.data.values[1].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition)">{{(slotProps.data.values[1].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[1].totaltm || slotProps.data.values[1].totaltm != '-' ? (slotProps.data.values[1].totaltm ).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[1].totaltm || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].totaltm).toFixed(fixed.value): 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].costperunitstandard_volum ? (slotProps.data.values[1].costperunitstandard_volum ).toFixed(fixed.value): '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].costperunitstandard_volum || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].costperunitstandard_volum).toFixed(fixed.value): '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[1].costperunitstandard || slotProps.data.values[1].costperunitstandard != '-' ? (slotProps.data.values[1].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[1].costperunitstandard || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].costperuniteffective_volum ? (slotProps.data.values[1].costperuniteffective_volum ).toFixed(fixed.value): '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].costperuniteffective_volum || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].costperuniteffective_volum).toFixed(fixed.value): '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[1].costperuniteffective || slotProps.data.values[1].costperuniteffective != '-' ? (slotProps.data.values[1].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[1].costperuniteffective || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].raw_weight_volum ? (slotProps.data.values[1].raw_weight_volum ).toFixed(fixed.value): '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].raw_weight_volum || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].raw_weight_volum).toFixed(fixed.value): '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[1].rawweight || slotProps.data.values[1].rawweight != '-' ? (slotProps.data.values[1].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[1].rawweight || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].totalcoststandard_volum ? (slotProps.data.values[1].totalcoststandard_volum ).toFixed(fixed.value): '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].totalcoststandard_volum || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].totalcoststandard_volum).toFixed(fixed.value): '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[1].totalcoststandard || slotProps.data.values[1].totalcoststandard != '-' ? (slotProps.data.values[1].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[1].totalcoststandard || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].totalcosteffective_volum ? (slotProps.data.values[1].totalcosteffective_volum ).toFixed(fixed.value): '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-if="showTotalValue">{{slotProps.data.values[1].totalcosteffective_volum || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].totalcosteffective_volum).toFixed(fixed.value): '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[1].tm_composition, slotProps.data.values[1].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[1].totalcosteffective || slotProps.data.values[1].totalcosteffective != '-' ? (slotProps.data.values[1].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[1].totalcosteffective || Object.keys(slotProps.data.values[1]).length > 0 ? (slotProps.data.values[1].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -900,57 +900,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition)">{{(slotProps.data.values[2].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition)">{{(slotProps.data.values[2].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[2].totaltm || slotProps.data.values[2].totaltm != '-' ? slotProps.data.values[2].totaltm : 0)
+                                    eff: (slotProps.data.values[2].totaltm || Object.keys(slotProps.data.values[2]).length > 0 ? slotProps.data.values[2].totaltm : 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].costperunitstandard_volum ? slotProps.data.values[2].costperunitstandard_volum : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].costperunitstandard_volum || Object.keys(slotProps.data.values[2]).length > 0 ? slotProps.data.values[2].costperunitstandard_volum : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[2].costperunitstandard || slotProps.data.values[2].costperunitstandard != '-' ? (slotProps.data.values[2].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[2].costperunitstandard || Object.keys(slotProps.data.values[2]).length > 0 ? (slotProps.data.values[2].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].costperuniteffective_volum ? (slotProps.data.values[2].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].costperuniteffective_volum || Object.keys(slotProps.data.values[2]).length > 0 ? (slotProps.data.values[2].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[2].costperuniteffective || slotProps.data.values[2].costperuniteffective != '-' ? (slotProps.data.values[2].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[2].costperuniteffective || Object.keys(slotProps.data.values[2]).length > 0 ? (slotProps.data.values[2].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].raw_weight_volum ? (slotProps.data.values[2].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].raw_weight_volum || Object.keys(slotProps.data.values[2]).length > 0 ? (slotProps.data.values[2].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[2].rawweight || slotProps.data.values[2].rawweight != '-' ? (slotProps.data.values[2].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[2].rawweight || Object.keys(slotProps.data.values[2]).length > 0 ? (slotProps.data.values[2].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].totalcoststandard_volum ? (slotProps.data.values[2].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].totalcoststandard_volum || Object.keys(slotProps.data.values[2]).length > 0 ? (slotProps.data.values[2].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[2].totalcoststandard || slotProps.data.values[2].totalcoststandard != '-' ? (slotProps.data.values[2].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[2].totalcoststandard || Object.keys(slotProps.data.values[2]).length > 0 ? (slotProps.data.values[2].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].totalcosteffective_volum ? (slotProps.data.values[2].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-if="showTotalValue">{{slotProps.data.values[2].totalcosteffective_volum || Object.keys(slotProps.data.values[2]).length > 0 ? (slotProps.data.values[2].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[2].tm_composition, slotProps.data.values[2].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[2].totalcosteffective || slotProps.data.values[2].totalcosteffective != '-' ? (slotProps.data.values[2].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[2].totalcosteffective || Object.keys(slotProps.data.values[2]).length > 0 ? (slotProps.data.values[2].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -966,57 +966,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition)">{{(slotProps.data.values[3].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition)">{{(slotProps.data.values[3].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[3].totaltm || slotProps.data.values[3].totaltm != '-' ? (slotProps.data.values[3].totaltm ).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[3].totaltm || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].totaltm): 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].costperunitstandard_volum ? (slotProps.data.values[3].costperunitstandard_volum ).toFixed(fixed.value): '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].costperunitstandard_volum || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].costperunitstandard_volum).toFixed(fixed.value): '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[3].costperunitstandard || slotProps.data.values[3].costperunitstandard != '-' ? (slotProps.data.values[3].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[3].costperunitstandard || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].costperuniteffective_volum ? (slotProps.data.values[3].costperuniteffective_volum ).toFixed(fixed.value): '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].costperuniteffective_volum || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].costperuniteffective_volum).toFixed(fixed.value): '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[3].costperuniteffective || slotProps.data.values[3].costperuniteffective != '-' ? (slotProps.data.values[3].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[3].costperuniteffective || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].raw_weight_volum ? (slotProps.data.values[3].raw_weight_volum ).toFixed(fixed.value): '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].raw_weight_volum || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].raw_weight_volum).toFixed(fixed.value): '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[3].rawweight || slotProps.data.values[3].rawweight != '-' ? (slotProps.data.values[3].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[3].rawweight || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].totalcoststandard_volum ? (slotProps.data.values[3].totalcoststandard_volum ).toFixed(fixed.value): '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].totalcoststandard_volum || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].totalcoststandard_volum).toFixed(fixed.value): '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[3].totalcoststandard || slotProps.data.values[3].totalcoststandard != '-' ? (slotProps.data.values[3].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[3].totalcoststandard || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].totalcosteffective_volum ? (slotProps.data.values[3].totalcosteffective_volum ).toFixed(fixed.value): '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-if="showTotalValue">{{slotProps.data.values[3].totalcosteffective_volum || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].totalcosteffective_volum).toFixed(fixed.value): '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[3].tm_composition, slotProps.data.values[3].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[3].totalcosteffective || slotProps.data.values[3].totalcosteffective != '-' ? (slotProps.data.values[3].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[3].totalcosteffective || Object.keys(slotProps.data.values[3]).length > 0 ? (slotProps.data.values[3].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -1036,53 +1036,53 @@
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[4].totaltm || slotProps.data.values[4].totaltm != '-' ? (slotProps.data.values[4].totaltm).toFixed(fixed.value) : 0)
+                                    eff: (slotProps.data.values[4].totaltm || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].totaltm) : 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].costperunitstandard_volum ? (slotProps.data.values[4].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].costperunitstandard_volum || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[4].costperunitstandard || slotProps.data.values[4].costperunitstandard != '-' ? (slotProps.data.values[4].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[4].costperunitstandard || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].costperuniteffective_volum ? (slotProps.data.values[4].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].costperuniteffective_volum || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[4].costperuniteffective || slotProps.data.values[4].costperuniteffective != '-' ? (slotProps.data.values[4].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[4].costperuniteffective || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].raw_weight_volum ? (slotProps.data.values[4].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].raw_weight_volum || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[4].rawweight || slotProps.data.values[4].rawweight != '-' ? (slotProps.data.values[4].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[4].rawweight || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].totalcoststandard_volum ? (slotProps.data.values[4].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].totalcoststandard_volum || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[4].totalcoststandard || slotProps.data.values[4].totalcoststandard != '-' ? (slotProps.data.values[4].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[4].totalcoststandard || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].totalcosteffective_volum ? (slotProps.data.values[4].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-if="showTotalValue">{{slotProps.data.values[4].totalcosteffective_volum || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[4].tm_composition, slotProps.data.values[4].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[4].totalcosteffective || slotProps.data.values[4].totalcosteffective != '-' ? (slotProps.data.values[4].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[4].totalcosteffective || Object.keys(slotProps.data.values[4]).length > 0 ? (slotProps.data.values[4].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -1098,57 +1098,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition)">{{(slotProps.data.values[5].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition)">{{(slotProps.data.values[5].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[5].totaltm || slotProps.data.values[5].totaltm != '-' ? (slotProps.data.values[5].totaltm).toFixed(fixed.value) : 0)
+                                    eff: (slotProps.data.values[5].totaltm || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].totaltm) : 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].costperunitstandard_volum ? (slotProps.data.values[5].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].costperunitstandard_volum || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[5].costperunitstandard || slotProps.data.values[5].costperunitstandard != '-' ? (slotProps.data.values[5].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[5].costperunitstandard || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].costperuniteffective_volum ? (slotProps.data.values[5].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].costperuniteffective_volum || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[5].costperuniteffective || slotProps.data.values[5].costperuniteffective != '-' ? (slotProps.data.values[5].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[5].costperuniteffective || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].raw_weight_volum ? (slotProps.data.values[5].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].raw_weight_volum || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[5].rawweight || slotProps.data.values[5].rawweight != '-' ? (slotProps.data.values[5].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[5].rawweight || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].totalcoststandard_volum ? (slotProps.data.values[5].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].totalcoststandard_volum || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[5].totalcoststandard || slotProps.data.values[5].totalcoststandard != '-' ? (slotProps.data.values[5].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[5].totalcoststandard || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].totalcosteffective_volum ? (slotProps.data.values[5].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-if="showTotalValue">{{slotProps.data.values[5].totalcosteffective_volum || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[5].tm_composition, slotProps.data.values[5].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[5].totalcosteffective || slotProps.data.values[5].totalcosteffective != '-' ? (slotProps.data.values[5].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[5].totalcosteffective || Object.keys(slotProps.data.values[5]).length > 0 ? (slotProps.data.values[5].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -1164,57 +1164,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition)">{{(slotProps.data.values[6].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition)">{{(slotProps.data.values[6].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[6].totaltm || slotProps.data.values[6].totaltm != '-' ? (slotProps.data.values[6].totaltm).toFixed(fixed.value) : 0)
+                                    eff: (slotProps.data.values[6].totaltm || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].totaltm) : 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].costperunitstandard_volum ? (slotProps.data.values[6].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].costperunitstandard_volum || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[6].costperunitstandard || slotProps.data.values[6].costperunitstandard != '-' ? (slotProps.data.values[6].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[6].costperunitstandard || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].costperuniteffective_volum ? (slotProps.data.values[6].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].costperuniteffective_volum || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[6].costperuniteffective || slotProps.data.values[6].costperuniteffective != '-' ? (slotProps.data.values[6].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[6].costperuniteffective || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].raw_weight_volum ? (slotProps.data.values[6].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].raw_weight_volum || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[6].rawweight || slotProps.data.values[6].rawweight != '-' ? (slotProps.data.values[6].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[6].rawweight || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].totalcoststandard_volum ? (slotProps.data.values[6].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].totalcoststandard_volum || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[6].totalcoststandard || slotProps.data.values[6].totalcoststandard != '-' ? (slotProps.data.values[6].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[6].totalcoststandard || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].totalcosteffective_volum ? (slotProps.data.values[6].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-if="showTotalValue">{{slotProps.data.values[6].totalcosteffective_volum || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[6].tm_composition, slotProps.data.values[6].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[6].totalcosteffective || slotProps.data.values[6].totalcosteffective != '-' ? (slotProps.data.values[6].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[6].totalcosteffective || Object.keys(slotProps.data.values[6]).length > 0 ? (slotProps.data.values[6].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -1230,57 +1230,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition)">{{(slotProps.data.values[7].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition)">{{(slotProps.data.values[7].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[7].totaltm || slotProps.data.values[7].totaltm != '-' ? (slotProps.data.values[7].totaltm).toFixed(fixed.value) : 0)
+                                    eff: (slotProps.data.values[7].totaltm || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].totaltm) : 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].costperunitstandard_volum ? (slotProps.data.values[7].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].costperunitstandard_volum || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[7].costperunitstandard || slotProps.data.values[7].costperunitstandard != '-' ? (slotProps.data.values[7].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[7].costperunitstandard || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].costperuniteffective_volum ? (slotProps.data.values[7].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].costperuniteffective_volum || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[7].costperuniteffective || slotProps.data.values[7].costperuniteffective != '-' ? (slotProps.data.values[7].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[7].costperuniteffective || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].raw_weight_volum ? (slotProps.data.values[7].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].raw_weight_volum || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[7].rawweight || slotProps.data.values[7].rawweight != '-' ? (slotProps.data.values[7].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[7].rawweight || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].totalcoststandard_volum ? (slotProps.data.values[7].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].totalcoststandard_volum || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[7].totalcoststandard || slotProps.data.values[7].totalcoststandard != '-' ? (slotProps.data.values[7].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[7].totalcoststandard || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].totalcosteffective_volum ? (slotProps.data.values[7].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-if="showTotalValue">{{slotProps.data.values[7].totalcosteffective_volum || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[7].tm_composition, slotProps.data.values[7].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[7].totalcosteffective || slotProps.data.values[7].totalcosteffective != '-' ? (slotProps.data.values[7].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[7].totalcosteffective || Object.keys(slotProps.data.values[7]).length > 0 ? (slotProps.data.values[7].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -1296,57 +1296,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition)">{{(slotProps.data.values[8].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition)">{{(slotProps.data.values[8].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[8].totaltm || slotProps.data.values[8].totaltm != '-' ? (slotProps.data.values[8].totaltm).toFixed(fixed.value) : 0)
+                                    eff: (slotProps.data.values[8].totaltm || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].totaltm) : 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].costperunitstandard_volum ? (slotProps.data.values[8].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].costperunitstandard_volum || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[8].costperunitstandard || slotProps.data.values[8].costperunitstandard != '-' ? (slotProps.data.values[8].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[8].costperunitstandard || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].costperuniteffective_volum ? (slotProps.data.values[8].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].costperuniteffective_volum || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[8].costperuniteffective || slotProps.data.values[8].costperuniteffective != '-' ? (slotProps.data.values[8].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[8].costperuniteffective || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].raw_weight_volum ? (slotProps.data.values[8].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].raw_weight_volum || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[8].rawweight || slotProps.data.values[8].rawweight != '-' ? (slotProps.data.values[8].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[8].rawweight || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].totalcoststandard_volum ? (slotProps.data.values[8].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].totalcoststandard_volum || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[8].totalcoststandard || slotProps.data.values[8].totalcoststandard != '-' ? (slotProps.data.values[8].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[8].totalcoststandard || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].totalcosteffective_volum ? (slotProps.data.values[8].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-if="showTotalValue">{{slotProps.data.values[8].totalcosteffective_volum || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[8].tm_composition, slotProps.data.values[8].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[8].totalcosteffective || slotProps.data.values[8].totalcosteffective != '-' ? (slotProps.data.values[8].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[8].totalcosteffective || Object.keys(slotProps.data.values[8]).length > 0 ? (slotProps.data.values[8].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -1362,57 +1362,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition)">{{(slotProps.data.values[9].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition)">{{(slotProps.data.values[9].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[9].totaltm || slotProps.data.values[9].totaltm != '-' ? (slotProps.data.values[9].totaltm).toFixed(fixed.value) : 0)
+                                    eff: (slotProps.data.values[9].totaltm || Object.keys(slotProps.data.values[9]).length > 0 ? (slotProps.data.values[9].totaltm) : 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].costperunitstandard_volum ? (slotProps.data.values[9].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].costperunitstandard_volum || Object.keys(slotProps.data.values[9]).length > 0  ? (slotProps.data.values[9].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[9].costperunitstandard || slotProps.data.values[9].costperunitstandard != '-' ? (slotProps.data.values[9].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[9].costperunitstandard || Object.keys(slotProps.data.values[9]).length > 0 ? (slotProps.data.values[9].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].costperuniteffective_volum ? (slotProps.data.values[9].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].costperuniteffective_volum || Object.keys(slotProps.data.values[9]).length > 0  ? (slotProps.data.values[9].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[9].costperuniteffective || slotProps.data.values[9].costperuniteffective != '-' ? (slotProps.data.values[9].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[9].costperuniteffective || Object.keys(slotProps.data.values[9]).length > 0 ? (slotProps.data.values[9].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].raw_weight_volum ? (slotProps.data.values[9].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].raw_weight_volum || Object.keys(slotProps.data.values[9]).length > 0  ? (slotProps.data.values[9].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[9].rawweight || slotProps.data.values[9].rawweight != '-' ? (slotProps.data.values[9].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[9].rawweight || Object.keys(slotProps.data.values[9]).length > 0 ? (slotProps.data.values[9].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].totalcoststandard_volum ? (slotProps.data.values[9].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].totalcoststandard_volum || Object.keys(slotProps.data.values[9]).length > 0  ? (slotProps.data.values[9].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[9].totalcoststandard || slotProps.data.values[9].totalcoststandard != '-' ? (slotProps.data.values[9].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[9].totalcoststandard || Object.keys(slotProps.data.values[9]).length > 0 ? (slotProps.data.values[9].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].totalcosteffective_volum ? (slotProps.data.values[9].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-if="showTotalValue">{{slotProps.data.values[9].totalcosteffective_volum || Object.keys(slotProps.data.values[9]).length > 0  ? (slotProps.data.values[9].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[9].tm_composition, slotProps.data.values[9].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[9].totalcosteffective || slotProps.data.values[9].totalcosteffective != '-' ? (slotProps.data.values[9].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[9].totalcosteffective || Object.keys(slotProps.data.values[9]).length > 0 ? (slotProps.data.values[9].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -1428,57 +1428,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition)">{{(slotProps.data.values[10].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition)">{{(slotProps.data.values[10].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[10].totaltm || slotProps.data.values[10].totaltm != '-' ? (slotProps.data.values[10].totaltm).toFixed(fixed.value) : 0)
+                                    eff: (slotProps.data.values[10].totaltm || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].totaltm) : 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].costperunitstandard_volum ? (slotProps.data.values[10].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].costperunitstandard_volum || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[10].costperunitstandard || slotProps.data.values[10].costperunitstandard != '-' ? (slotProps.data.values[10].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[10].costperunitstandard || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].costperuniteffective_volum ? (slotProps.data.values[10].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].costperuniteffective_volum || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[10].costperuniteffective || slotProps.data.values[10].costperuniteffective != '-' ? (slotProps.data.values[10].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[10].costperuniteffective || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].raw_weight_volum ? (slotProps.data.values[10].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].raw_weight_volum || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[10].rawweight || slotProps.data.values[10].rawweight != '-' ? (slotProps.data.values[10].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[10].rawweight || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].totalcoststandard_volum ? (slotProps.data.values[10].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].totalcoststandard_volum || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[10].totalcoststandard || slotProps.data.values[10].totalcoststandard != '-' ? (slotProps.data.values[10].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[10].totalcoststandard || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].totalcosteffective_volum ? (slotProps.data.values[10].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-if="showTotalValue">{{slotProps.data.values[10].totalcosteffective_volum || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[10].tm_composition, slotProps.data.values[10].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[10].totalcosteffective || slotProps.data.values[10].totalcosteffective != '-' ? (slotProps.data.values[10].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[10].totalcosteffective || Object.keys(slotProps.data.values[10]).length > 0 ? (slotProps.data.values[10].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -1494,57 +1494,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition)">{{(slotProps.data.values[11].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition)">{{(slotProps.data.values[11].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[11].totaltm || slotProps.data.values[11].totaltm != '-' ? (slotProps.data.values[11].totaltm).toFixed(fixed.value) : 0)
+                                    eff: (slotProps.data.values[11].totaltm || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].totaltm) : 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].costperunitstandard_volum ? (slotProps.data.values[11].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].costperunitstandard_volum || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[11].costperunitstandard || slotProps.data.values[11].costperunitstandard != '-' ? (slotProps.data.values[11].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[11].costperunitstandard || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].costperuniteffective_volum ? (slotProps.data.values[11].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].costperuniteffective_volum || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[11].costperuniteffective || slotProps.data.values[11].costperuniteffective != '-' ? (slotProps.data.values[11].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[11].costperuniteffective || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].raw_weight_volum ? (slotProps.data.values[11].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].raw_weight_volum || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[11].rawweight || slotProps.data.values[11].rawweight != '-' ? (slotProps.data.values[11].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[11].rawweight || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].totalcoststandard_volum ? (slotProps.data.values[11].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].totalcoststandard_volum || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[11].totalcoststandard || slotProps.data.values[11].totalcoststandard != '-' ? (slotProps.data.values[11].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[11].totalcoststandard || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].totalcosteffective_volum ? (slotProps.data.values[11].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-if="showTotalValue">{{slotProps.data.values[11].totalcosteffective_volum || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[11].tm_composition, slotProps.data.values[11].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[11].totalcosteffective || slotProps.data.values[11].totalcosteffective != '-' ? (slotProps.data.values[11].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[11].totalcosteffective || Object.keys(slotProps.data.values[11]).length > 0 ? (slotProps.data.values[11].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -1560,57 +1560,57 @@
                     </template>
                     <template v-else #body="slotProps">
                         <tr v-if="showTotalMaterial">
-                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition)">{{(slotProps.data.values[12].totaltm).toFixed(fixed.value)}}</td>
+                            <td v-if="showTotalValue" @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition)">{{(slotProps.data.values[12].totaltm)}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totaltm || slotProps.data.values[0].totaltm != '-' ? slotProps.data.values[0].totaltm : 0),
-                                    eff: (slotProps.data.values[12].totaltm || slotProps.data.values[12].totaltm != '-' ? (slotProps.data.values[12].totaltm).toFixed(fixed.value) : 0)
+                                    eff: (slotProps.data.values[12].totaltm || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].totaltm) : 0)
                                 }"
                             >
                             </TableRaw>
                         </tr>
                         <tr v-if="showCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].costperunitstandard_volum ? (slotProps.data.values[12].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].costperunitstandard_volum || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].costperunitstandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperunitstandard || slotProps.data.values[0].costperunitstandard != '-' ? slotProps.data.values[0].costperunitstandard: 0),
-                                    eff: (slotProps.data.values[12].costperunitstandard || slotProps.data.values[12].costperunitstandard != '-' ? (slotProps.data.values[12].costperunitstandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[12].costperunitstandard || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].costperunitstandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].costperuniteffective_volum ? (slotProps.data.values[12].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].costperuniteffective_volum || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].costperuniteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].costperuniteffective || slotProps.data.values[0].costperuniteffective != '-' ? slotProps.data.values[0].costperuniteffective: 0),
-                                    eff: (slotProps.data.values[12].costperuniteffective || slotProps.data.values[12].costperuniteffective != '-' ? (slotProps.data.values[12].costperuniteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[12].costperuniteffective || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].costperuniteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showRawWeight">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].raw_weight_volum ? (slotProps.data.values[12].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].raw_weight_volum || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].raw_weight_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].rawweight || slotProps.data.values[0].rawweight != '-' ? slotProps.data.values[0].rawweight: 0),
-                                    eff: (slotProps.data.values[12].rawweight || slotProps.data.values[12].rawweight != '-' ? (slotProps.data.values[12].rawweight).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[12].rawweight || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].rawweight).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].totalcoststandard_volum ? (slotProps.data.values[12].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].totalcoststandard_volum || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].totalcoststandard_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcoststandard || slotProps.data.values[0].totalcoststandard != '-' ? slotProps.data.values[0].totalcoststandard: 0),
-                                    eff: (slotProps.data.values[12].totalcoststandard || slotProps.data.values[12].totalcoststandard != '-' ? (slotProps.data.values[12].totalcoststandard).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[12].totalcoststandard || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].totalcoststandard).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].totalcosteffective_volum ? (slotProps.data.values[12].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
+                            <td @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-if="showTotalValue">{{slotProps.data.values[12].totalcosteffective_volum || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].totalcosteffective_volum).toFixed(fixed.value) : '-'}}</td>
                             <TableRaw @click="showContent(slotProps.data.material, slotProps.data.values[12].tm_composition, slotProps.data.values[12].unit)" v-else
                                 :value="{
                                     std: (slotProps.data.values[0].totalcosteffective || slotProps.data.values[0].totalcosteffective != '-' ? slotProps.data.values[0].totalcosteffective: 0),
-                                    eff: (slotProps.data.values[12].totalcosteffective || slotProps.data.values[12].totalcosteffective != '-' ? (slotProps.data.values[12].totalcosteffective).toFixed(fixed.value): 0)
+                                    eff: (slotProps.data.values[12].totalcosteffective || Object.keys(slotProps.data.values[12]).length > 0 ? (slotProps.data.values[12].totalcosteffective).toFixed(fixed.value): 0)
                                 }"
                             ></TableRaw>
                         </tr>
@@ -1677,7 +1677,6 @@
     import { useDtcStore } from '../../store/dtc';
     import { FilterMatchMode } from 'primevue/api';
     import { ref, onMounted } from "vue";
-    
     const display = ref(false)
     const dtc = useDtcStore()
     const plant = ref([]);
@@ -1708,7 +1707,7 @@
     let comp = ref([])
     let tires = ref('')
     let unity = ref('')
-    
+    const arr = ref([])
     const showContent = (rm, tm_cs, unit) => {
         comp.value = []
         display.value = true
@@ -1716,7 +1715,6 @@
         comp.value = Object.entries(tm_cs)
         unity.value = unit
     }
-    
     const exportCSV = () => {
         dt.value.exportCSV();
     };   
@@ -1724,7 +1722,7 @@
         'global': { value: null, matchMode: FilterMatchMode.CONTAINS },
     });
     const getPlant = async () => {
-      plant.value = await dtc.setPlant()
+        plant.value = await dtc.setPlant()
     };
     const getMkg = async () => {
         await dtc.setMkg()
@@ -1764,7 +1762,6 @@
                 te[index] = te[index] + (el.totalcosteffective ? el.totalcosteffective : 0)
             })
         })
-    
         total.value.push({
             tm: tm,
             coststd: cs,
