@@ -3,9 +3,9 @@
         <td>--</td>
     </tr>
     <tr v-else>
-        <td v-if="(parseFloat(value.std) == parseFloat(value.eff))" style="color:#03966f;">{{parseFloat(value.eff).toFixed(fixedRef)}}<span style="color: #03966f;margin-left: 5px;">=</span></td>
-        <td v-if="(parseFloat(value.std) < parseFloat(value.eff))" style="color:#fc0303;">{{parseFloat(value.eff).toFixed(fixedRef)}}<i class="pi pi-arrow-down" style="color: #fc0303;margin-left: 5px;"></i></td>
-        <td v-if="(parseFloat(value.std) > parseFloat(value.eff))" style="color:#03966f;">{{parseFloat(value.eff).toFixed(fixedRef)}}<i class="pi pi-arrow-up" style="color: #03966f;margin-left: 5px;"></i></td>
+        <td v-if="(parseFloat(value.std) == parseFloat(value.eff))" style="color:#03966f;">{{parseFloat(value.eff)}}<span style="color: #03966f;margin-left: 5px;">=</span></td>
+        <td v-if="(parseFloat(value.std) < parseFloat(value.eff))" style="color:#fc0303;">{{parseFloat(value.eff)}}<i class="pi pi-arrow-down" style="color: #fc0303;margin-left: 5px;"></i></td>
+        <td v-if="(parseFloat(value.std) > parseFloat(value.eff))" style="color:#03966f;">{{parseFloat(value.eff)}}<i class="pi pi-arrow-up" style="color: #03966f;margin-left: 5px;"></i></td>
     </tr>
 
 </template>

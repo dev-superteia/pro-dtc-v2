@@ -101,22 +101,22 @@
                             <td>{{ (slotProps.data.values[0].totalWeightStd).toFixed(fixed.value) }}</td>
                         </tr>
                         <tr v-if="showMatCostStd">
-                            <td>{{ slotProps.data.values[0].materialCostStd.toFixed(fixed.value) }}</td>
+                            <td>{{ (slotProps.data.values[0].materialCostStd).toFixed(fixed.value) }}</td>
                         </tr>
                         <tr v-if="showMatCostEff">
-                            <td>{{ slotProps.data.values[0].materialCostEff }}</td>
+                            <td>{{ slotProps.data.values[0].materialCostEff.toFixed(fixed.value) }}</td>
                         </tr>
                         <tr v-if="showTotalCostStd">
-                            <td>{{ slotProps.data.values[0].totalCostStd }}</td>
+                            <td>{{ slotProps.data.values[0].totalCostStd.toFixed(fixed.value) }}</td>
                         </tr>
                         <tr v-if="showTotalCostEff">
-                            <td>{{ slotProps.data.values[0].totalCostEff }}</td>
+                            <td>{{ slotProps.data.values[0].totalCostEff.toFixed(fixed.value) }}</td>
                         </tr>
                         <tr>
-                            <td>{{ slotProps.data.values[0].dtc }}</td>
+                            <td>{{ slotProps.data.values[0].dtc.toFixed(fixed.value) }}</td>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[0].volum }}</td>
+                            <td>{{ slotProps.data.values[0].volum.toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -125,8 +125,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[1].totalWeightStd *
-                                        slotProps.data.values[1].volum
+                                    (slotProps.data.values[1].totalWeightStd *
+                                        slotProps.data.values[1].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -134,7 +134,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[1].totalWeightStd
-                                    ? slotProps.data.values[1].totalWeightStd
+                                    ? (slotProps.data.values[1].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -142,8 +142,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[1].materialCostStd *
-                                        slotProps.data.values[1].volum
+                                    (slotProps.data.values[1].materialCostStd *
+                                        slotProps.data.values[1].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -151,7 +151,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[1].materialCostStd
-                                    ? slotProps.data.values[1].materialCostStd
+                                    ? (slotProps.data.values[1].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -159,8 +159,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[1].materialCostEff *
-                                        slotProps.data.values[1].volum
+                                    (slotProps.data.values[1].materialCostEff *
+                                        slotProps.data.values[1].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -168,7 +168,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[1].materialCostEff
-                                    ? slotProps.data.values[1].materialCostEff
+                                    ? (slotProps.data.values[1].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -176,8 +176,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[1].totalCostStd *
-                                        slotProps.data.values[1].volum
+                                    (slotProps.data.values[1].totalCostStd *
+                                        slotProps.data.values[1].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -185,7 +185,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[1].totalCostStd
-                                    ? slotProps.data.values[1].totalCostStd
+                                    ? (slotProps.data.values[1].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -193,8 +193,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[1].totalCostEff *
-                                        slotProps.data.values[1].volum
+                                    (slotProps.data.values[1].totalCostEff *
+                                        slotProps.data.values[1].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -202,7 +202,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[1].totalCostEff
-                                    ? slotProps.data.values[1].totalCostEff
+                                    ? (slotProps.data.values[1].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -210,7 +210,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[1].dtc * slotProps.data.values[1].volum
+                                   ( slotProps.data.values[1].dtc * slotProps.data.values[1].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -218,13 +218,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[1].dtc
-                                    ? slotProps.data.values[1].dtc
+                                    ? (slotProps.data.values[1].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[1].volum }}</td>
+                            <td>{{ (slotProps.data.values[1].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -233,8 +233,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[2].totalWeightStd *
-                                        slotProps.data.values[2].volum
+                                    (slotProps.data.values[2].totalWeightStd *
+                                        slotProps.data.values[2].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -242,7 +242,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[2].totalWeightStd
-                                    ? slotProps.data.values[2].totalWeightStd
+                                    ? (slotProps.data.values[2].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -251,8 +251,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[2].materialCostStd *
-                                        slotProps.data.values[2].volum
+                                    (slotProps.data.values[2].materialCostStd *
+                                        slotProps.data.values[2].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -260,7 +260,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[2].materialCostStd
-                                    ? slotProps.data.values[2].materialCostStd
+                                    ? (slotProps.data.values[2].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -269,8 +269,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[2].materialCostEff *
-                                        slotProps.data.values[2].volum
+                                    (slotProps.data.values[2].materialCostEff *
+                                        slotProps.data.values[2].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -278,7 +278,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[2].materialCostEff
-                                    ? slotProps.data.values[2].materialCostEff
+                                    ? (slotProps.data.values[2].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -286,8 +286,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[2].totalCostStd *
-                                        slotProps.data.values[2].volum
+                                    (slotProps.data.values[2].totalCostStd *
+                                        slotProps.data.values[2].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -295,7 +295,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[2].totalCostStd
-                                    ? slotProps.data.values[2].totalCostStd
+                                    ? (slotProps.data.values[2].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -303,8 +303,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[2].totalCostEff *
-                                        slotProps.data.values[2].volum
+                                    (slotProps.data.values[2].totalCostEff *
+                                        slotProps.data.values[2].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -312,7 +312,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[2].totalCostEff
-                                    ? slotProps.data.values[2].totalCostEff
+                                    ? (slotProps.data.values[2].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -320,7 +320,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[2].dtc * slotProps.data.values[2].volum
+                                    (slotProps.data.values[2].dtc * slotProps.data.values[2].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -328,13 +328,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[2].dtc
-                                    ? slotProps.data.values[2].dtc
+                                    ? (slotProps.data.values[2].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[2].volum }}</td>
+                            <td>{{ (slotProps.data.values[2].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -343,8 +343,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[3].totalWeightStd *
-                                        slotProps.data.values[3].dtc
+                                    (slotProps.data.values[3].totalWeightStd *
+                                        slotProps.data.values[3].dtc).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -352,7 +352,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[3].totalWeightStd
-                                    ? slotProps.data.values[3].totalWeightStd
+                                    ? (slotProps.data.values[3].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -360,8 +360,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[3].materialCostStd *
-                                        slotProps.data.values[3].dtc
+                                    (slotProps.data.values[3].materialCostStd *
+                                        slotProps.data.values[3].dtc).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -369,7 +369,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[3].materialCostStd
-                                    ? slotProps.data.values[3].materialCostStd
+                                    ? (slotProps.data.values[3].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -377,8 +377,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[3].materialCostEff *
-                                        slotProps.data.values[3].dtc
+                                    (slotProps.data.values[3].materialCostEff *
+                                        slotProps.data.values[3].dtc).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -386,7 +386,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[3].materialCostEff
-                                    ? slotProps.data.values[3].materialCostEff
+                                    ? (slotProps.data.values[3].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -394,8 +394,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[3].totalCostStd *
-                                        slotProps.data.values[3].dtc
+                                    (slotProps.data.values[3].totalCostStd *
+                                        slotProps.data.values[3].dtc).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -403,7 +403,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[3].totalCostStd
-                                    ? slotProps.data.values[3].totalCostStd
+                                    ? (slotProps.data.values[3].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -411,8 +411,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[3].totalCostEff *
-                                        slotProps.data.values[3].dtc
+                                    (slotProps.data.values[3].totalCostEff *
+                                        slotProps.data.values[3].dtc).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -420,7 +420,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[3].totalCostEff
-                                    ? slotProps.data.values[3].totalCostEff
+                                    ? (slotProps.data.values[3].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -428,7 +428,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[3].dtc * slotProps.data.values[3].dtc
+                                    (slotProps.data.values[3].dtc * slotProps.data.values[3].dtc).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -436,13 +436,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[3].dtc
-                                    ? slotProps.data.values[3].dtc
+                                    ? (slotProps.data.values[3].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[3].volum }}</td>
+                            <td>{{ (slotProps.data.values[3].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -451,8 +451,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[4].totalWeightStd *
-                                        slotProps.data.values[4].volum
+                                    (slotProps.data.values[4].totalWeightStd *
+                                        slotProps.data.values[4].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -460,7 +460,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[4].totalWeightStd
-                                    ? slotProps.data.values[4].totalWeightStd
+                                    ? (slotProps.data.values[4].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -468,8 +468,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[4].materialCostStd *
-                                        slotProps.data.values[4].volum
+                                    (slotProps.data.values[4].materialCostStd *
+                                        slotProps.data.values[4].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -477,7 +477,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[4].materialCostStd
-                                    ? slotProps.data.values[4].materialCostStd
+                                    ? (slotProps.data.values[4].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -485,8 +485,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[4].materialCostEff *
-                                        slotProps.data.values[4].volum
+                                    (slotProps.data.values[4].materialCostEff *
+                                        slotProps.data.values[4].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -494,7 +494,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[4].materialCostEff
-                                    ? slotProps.data.values[4].materialCostEff
+                                    ? (slotProps.data.values[4].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -502,8 +502,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[4].totalCostStd *
-                                        slotProps.data.values[4].volum
+                                    (slotProps.data.values[4].totalCostStd *
+                                        slotProps.data.values[4].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -511,7 +511,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[4].totalCostStd
-                                    ? slotProps.data.values[4].totalCostStd
+                                    ? (slotProps.data.values[4].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -519,8 +519,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[4].totalCostEff *
-                                        slotProps.data.values[4].volum
+                                    (slotProps.data.values[4].totalCostEff *
+                                        slotProps.data.values[4].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -528,7 +528,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[4].totalCostEff
-                                    ? slotProps.data.values[4].totalCostEff
+                                    ? (slotProps.data.values[4].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -536,7 +536,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[4].dtc * slotProps.data.values[4].volum
+                                    (slotProps.data.values[4].dtc * slotProps.data.values[4].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -544,13 +544,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[4].dtc
-                                    ? slotProps.data.values[4].dtc
+                                    ? (slotProps.data.values[4].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[4].volum }}</td>
+                            <td>{{ (slotProps.data.values[4].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -559,8 +559,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[5].totalWeightStd *
-                                        slotProps.data.values[5].volum
+                                    (slotProps.data.values[5].totalWeightStd *
+                                        slotProps.data.values[5].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -568,7 +568,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[5].totalWeightStd
-                                    ? slotProps.data.values[5].totalWeightStd
+                                    ? (slotProps.data.values[5].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -576,8 +576,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[5].materialCostStd *
-                                        slotProps.data.values[5].volum
+                                    (slotProps.data.values[5].materialCostStd *
+                                        slotProps.data.values[5].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -585,7 +585,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[5].materialCostStd
-                                    ? slotProps.data.values[5].materialCostStd
+                                    ? (slotProps.data.values[5].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -593,8 +593,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[5].materialCostEff *
-                                        slotProps.data.values[5].volum
+                                    (slotProps.data.values[5].materialCostEff *
+                                        slotProps.data.values[5].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -602,7 +602,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[5].materialCostEff
-                                    ? slotProps.data.values[5].materialCostEff
+                                    ? (slotProps.data.values[5].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -610,8 +610,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[5].totalCostStd *
-                                        slotProps.data.values[5].volum
+                                    (slotProps.data.values[5].totalCostStd *
+                                        slotProps.data.values[5].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -619,7 +619,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[5].totalCostStd
-                                    ? slotProps.data.values[5].totalCostStd
+                                    ? (slotProps.data.values[5].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -627,8 +627,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[5].totalCostEff *
-                                        slotProps.data.values[5].volum
+                                    (slotProps.data.values[5].totalCostEff *
+                                        slotProps.data.values[5].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -636,7 +636,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[5].totalCostEff
-                                    ? slotProps.data.values[5].totalCostEff
+                                    ? (slotProps.data.values[5].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -644,7 +644,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[5].dtc * slotProps.data.values[5].volum
+                                    (slotProps.data.values[5].dtc * slotProps.data.values[5].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -652,13 +652,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[5].dtc
-                                    ? slotProps.data.values[5].dtc
+                                    ? (slotProps.data.values[5].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[5].volum }}</td>
+                            <td>{{ (slotProps.data.values[5].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -667,8 +667,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[6].totalWeightStd *
-                                        slotProps.data.values[6].volum
+                                   ( slotProps.data.values[6].totalWeightStd *
+                                        slotProps.data.values[6].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -676,7 +676,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[6].totalWeightStd
-                                    ? slotProps.data.values[6].totalWeightStd
+                                    ? (slotProps.data.values[6].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -684,8 +684,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[6].materialCostStd *
-                                        slotProps.data.values[6].volum
+                                    (slotProps.data.values[6].materialCostStd *
+                                        slotProps.data.values[6].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -693,7 +693,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[6].materialCostStd
-                                    ? slotProps.data.values[6].materialCostStd
+                                    ? (slotProps.data.values[6].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -701,8 +701,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[6].materialCostEff *
-                                        slotProps.data.values[6].volum
+                                    (slotProps.data.values[6].materialCostEff *
+                                        slotProps.data.values[6].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -710,7 +710,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[6].materialCostEff
-                                    ? slotProps.data.values[6].materialCostEff
+                                    ? (slotProps.data.values[6].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -718,8 +718,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[6].totalCostStd *
-                                        slotProps.data.values[6].volum
+                                    (slotProps.data.values[6].totalCostStd *
+                                        slotProps.data.values[6].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -727,7 +727,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[6].totalCostStd
-                                    ? slotProps.data.values[6].totalCostStd
+                                    ? (slotProps.data.values[6].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -735,8 +735,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[6].totalCostEff *
-                                        slotProps.data.values[6].volum
+                                    (slotProps.data.values[6].totalCostEff *
+                                        slotProps.data.values[6].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -744,7 +744,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[6].totalCostEff
-                                    ? slotProps.data.values[6].totalCostEff
+                                    ? (slotProps.data.values[6].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -752,7 +752,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[6].dtc * slotProps.data.values[6].volum
+                                    (slotProps.data.values[6].dtc * slotProps.data.values[6].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -760,13 +760,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[6].dtc
-                                    ? slotProps.data.values[6].dtc
+                                    ? (slotProps.data.values[6].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[6].volum }}</td>
+                            <td>{{ (slotProps.data.values[6].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -775,8 +775,8 @@
                             <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[7].totalWeightStd *
-                                        slotProps.data.values[7].volum
+                                    (slotProps.data.values[7].totalWeightStd *
+                                        slotProps.data.values[7].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -784,7 +784,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[7].totalWeightStd
-                                    ? slotProps.data.values[7].totalWeightStd
+                                    ? (slotProps.data.values[7].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -792,8 +792,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[7].materialCostStd *
-                                        slotProps.data.values[7].volum
+                                    (slotProps.data.values[7].materialCostStd *
+                                        slotProps.data.values[7].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -801,7 +801,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[7].materialCostStd
-                                    ? slotProps.data.values[7].materialCostStd
+                                    ? (slotProps.data.values[7].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -809,8 +809,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[7].materialCostEff *
-                                        slotProps.data.values[7].volum
+                                    (slotProps.data.values[7].materialCostEff *
+                                        slotProps.data.values[7].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -818,7 +818,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[7].materialCostEff
-                                    ? slotProps.data.values[7].materialCostEff
+                                    ? (slotProps.data.values[7].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -826,8 +826,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[7].totalCostStd *
-                                        slotProps.data.values[7].volum
+                                    (slotProps.data.values[7].totalCostStd *
+                                        slotProps.data.values[7].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -835,7 +835,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[7].totalCostStd
-                                    ? slotProps.data.values[7].totalCostStd
+                                    ? (slotProps.data.values[7].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -843,8 +843,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[7].totalCostEff *
-                                        slotProps.data.values[7].volum
+                                    (slotProps.data.values[7].totalCostEff *
+                                        slotProps.data.values[7].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -852,7 +852,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[7].totalCostEff
-                                    ? slotProps.data.values[7].totalCostEff
+                                    ? (slotProps.data.values[7].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -860,7 +860,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[7].dtc * slotProps.data.values[7].volum
+                                    (slotProps.data.values[7].dtc * slotProps.data.values[7].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -868,13 +868,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[7].dtc
-                                    ? slotProps.data.values[7].dtc
+                                    ? (slotProps.data.values[7].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[7].volum }}</td>
+                            <td>{{ (slotProps.data.values[7].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -883,8 +883,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[8].totalWeightStd *
-                                        slotProps.data.values[8].volum
+                                   ( slotProps.data.values[8].totalWeightStd *
+                                        slotProps.data.values[8].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -892,7 +892,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[8].totalWeightStd
-                                    ? slotProps.data.values[8].totalWeightStd
+                                    ? (slotProps.data.values[8].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -900,8 +900,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[8].materialCostStd *
-                                        slotProps.data.values[8].volum
+                                    (slotProps.data.values[8].materialCostStd *
+                                        slotProps.data.values[8].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -909,7 +909,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[8].materialCostStd
-                                    ? slotProps.data.values[8].materialCostStd
+                                    ? (slotProps.data.values[8].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -917,8 +917,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[8].materialCostEff *
-                                        slotProps.data.values[8].volum
+                                    (slotProps.data.values[8].materialCostEff *
+                                        slotProps.data.values[8].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -926,7 +926,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[8].materialCostEff
-                                    ? slotProps.data.values[8].materialCostEff
+                                    ? (slotProps.data.values[8].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -934,8 +934,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[8].totalCostStd *
-                                        slotProps.data.values[8].volum
+                                    (slotProps.data.values[8].totalCostStd *
+                                        slotProps.data.values[8].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -943,7 +943,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[8].totalCostStd
-                                    ? slotProps.data.values[8].totalCostStd
+                                    ? (slotProps.data.values[8].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -951,8 +951,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[8].totalCostEff *
-                                        slotProps.data.values[8].volum
+                                    (slotProps.data.values[8].totalCostEff *
+                                        slotProps.data.values[8].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -960,7 +960,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[8].totalCostEff
-                                    ? slotProps.data.values[8].totalCostEff
+                                    ? (slotProps.data.values[8].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -968,7 +968,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[8].dtc * slotProps.data.values[8].volum
+                                    (slotProps.data.values[8].dtc * slotProps.data.values[8].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -976,13 +976,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[8].dtc
-                                    ? slotProps.data.values[8].dtc
+                                    ? (slotProps.data.values[8].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[8].volum }}</td>
+                            <td>{{ (slotProps.data.values[8].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -991,8 +991,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[9].totalWeightStd *
-                                        slotProps.data.values[9].volum
+                                    (slotProps.data.values[9].totalWeightStd *
+                                        slotProps.data.values[9].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1000,7 +1000,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[9].totalWeightStd
-                                    ? slotProps.data.values[9].totalWeightStd
+                                    ? (slotProps.data.values[9].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1008,8 +1008,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[9].materialCostStd *
-                                        slotProps.data.values[9].volum
+                                    (slotProps.data.values[9].materialCostStd *
+                                        slotProps.data.values[9].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1017,7 +1017,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[9].materialCostStd
-                                    ? slotProps.data.values[9].materialCostStd
+                                    ? (slotProps.data.values[9].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1025,8 +1025,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[9].materialCostEff *
-                                        slotProps.data.values[9].volum
+                                    (slotProps.data.values[9].materialCostEff *
+                                        slotProps.data.values[9].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1034,7 +1034,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[9].materialCostEff
-                                    ? slotProps.data.values[9].materialCostEff
+                                    ? (slotProps.data.values[9].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1042,8 +1042,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[9].totalCostStd *
-                                        slotProps.data.values[9].volum
+                                    (slotProps.data.values[9].totalCostStd *
+                                        slotProps.data.values[9].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1051,7 +1051,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[9].totalCostStd
-                                    ? slotProps.data.values[9].totalCostStd
+                                    ? (slotProps.data.values[9].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1059,8 +1059,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[9].totalCostEff *
-                                        slotProps.data.values[9].volum
+                                    (slotProps.data.values[9].totalCostEff *
+                                        slotProps.data.values[9].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1068,7 +1068,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[9].totalCostEff
-                                    ? slotProps.data.values[9].totalCostEff
+                                    ? (slotProps.data.values[9].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1076,7 +1076,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[9].dtc * slotProps.data.values[9].volum
+                                    (slotProps.data.values[9].dtc * slotProps.data.values[9].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1084,13 +1084,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[9].dtc
-                                    ? slotProps.data.values[9].dtc
+                                    ? (slotProps.data.values[9].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[9].volum }}</td>
+                            <td>{{ (slotProps.data.values[9].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -1099,8 +1099,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[10].totalWeightStd *
-                                        slotProps.data.values[10].volum
+                                    (slotProps.data.values[10].totalWeightStd *
+                                        slotProps.data.values[10].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1108,7 +1108,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[10].totalWeightStd
-                                    ? slotProps.data.values[10].totalWeightStd
+                                    ? (slotProps.data.values[10].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1116,8 +1116,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[10].materialCostStd *
-                                        slotProps.data.values[10].volum
+                                    (slotProps.data.values[10].materialCostStd *
+                                        slotProps.data.values[10].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1125,7 +1125,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[10].materialCostStd
-                                    ? slotProps.data.values[10].materialCostStd
+                                    ? (slotProps.data.values[10].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1133,8 +1133,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[10].materialCostEff *
-                                        slotProps.data.values[10].volum
+                                    (slotProps.data.values[10].materialCostEff *
+                                        slotProps.data.values[10].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1142,7 +1142,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[10].materialCostEff
-                                    ? slotProps.data.values[10].materialCostEff
+                                    ? (slotProps.data.values[10].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1150,8 +1150,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[10].totalCostStd *
-                                        slotProps.data.values[10].volum
+                                    (slotProps.data.values[10].totalCostStd *
+                                        slotProps.data.values[10].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1159,7 +1159,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[10].totalCostStd
-                                    ? slotProps.data.values[10].totalCostStd
+                                    ? (slotProps.data.values[10].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1167,8 +1167,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[10].totalCostEff *
-                                        slotProps.data.values[10].volum
+                                    (slotProps.data.values[10].totalCostEff *
+                                        slotProps.data.values[10].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1176,7 +1176,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[10].totalCostEff
-                                    ? slotProps.data.values[10].totalCostEff
+                                    ? (slotProps.data.values[10].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1184,7 +1184,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[10].dtc * slotProps.data.values[10].volum
+                                    (slotProps.data.values[10].dtc * slotProps.data.values[10].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1192,13 +1192,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[10].dtc
-                                    ? slotProps.data.values[10].dtc
+                                    ? (slotProps.data.values[10].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[10].volum }}</td>
+                            <td>{{ (slotProps.data.values[10].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -1207,8 +1207,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[11].totalWeightStd *
-                                        slotProps.data.values[11].volum
+                                    (slotProps.data.values[11].totalWeightStd *
+                                        slotProps.data.values[11].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1216,7 +1216,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[11].totalWeightStd
-                                    ? slotProps.data.values[11].totalWeightStd
+                                    ? (slotProps.data.values[11].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1224,8 +1224,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[11].materialCostStd *
-                                        slotProps.data.values[11].volum
+                                    (slotProps.data.values[11].materialCostStd *
+                                        slotProps.data.values[11].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1233,7 +1233,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[11].materialCostStd
-                                    ? slotProps.data.values[11].materialCostStd
+                                    ? (slotProps.data.values[11].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1241,8 +1241,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[11].materialCostEff *
-                                        slotProps.data.values[11].volum
+                                    (slotProps.data.values[11].materialCostEff *
+                                        slotProps.data.values[11].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1250,7 +1250,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[11].materialCostEff
-                                    ? slotProps.data.values[11].materialCostEff
+                                    ? (slotProps.data.values[11].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1258,8 +1258,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[11].totalCostStd *
-                                        slotProps.data.values[11].volum
+                                    (slotProps.data.values[11].totalCostStd *
+                                        slotProps.data.values[11].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1267,7 +1267,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[11].totalCostStd
-                                    ? slotProps.data.values[11].totalCostStd
+                                    ? (slotProps.data.values[11].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1275,8 +1275,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[11].totalCostEff *
-                                        slotProps.data.values[11].volum
+                                    (slotProps.data.values[11].totalCostEff *
+                                        slotProps.data.values[11].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1284,7 +1284,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[11].totalCostEff
-                                    ? slotProps.data.values[11].totalCostEff
+                                    ? (slotProps.data.values[11].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1292,7 +1292,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[11].dtc * slotProps.data.values[11].volum
+                                    (slotProps.data.values[11].dtc * slotProps.data.values[11].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1300,13 +1300,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[11].dtc
-                                    ? slotProps.data.values[11].dtc
+                                    ? (slotProps.data.values[11].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[11].volum }}</td>
+                            <td>{{ (slotProps.data.values[11].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -1315,8 +1315,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[12].totalWeightStd *
-                                        slotProps.data.values[12].volum
+                                    (slotProps.data.values[12].totalWeightStd *
+                                        slotProps.data.values[12].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1324,7 +1324,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[12].totalWeightStd
-                                    ? slotProps.data.values[12].totalWeightStd
+                                    ? (slotProps.data.values[12].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1332,8 +1332,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[12].materialCostStd *
-                                        slotProps.data.values[12].volum
+                                    (slotProps.data.values[12].materialCostStd *
+                                        slotProps.data.values[12].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1341,7 +1341,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[12].materialCostStd
-                                    ? slotProps.data.values[12].materialCostStd
+                                    ? (slotProps.data.values[12].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1349,8 +1349,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[12].materialCostEff *
-                                        slotProps.data.values[12].volum
+                                    (slotProps.data.values[12].materialCostEff *
+                                        slotProps.data.values[12].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1358,7 +1358,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[12].materialCostEff
-                                    ? slotProps.data.values[12].materialCostEff
+                                    ? (slotProps.data.values[12].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1366,8 +1366,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[12].totalCostStd *
-                                        slotProps.data.values[12].volum
+                                    (slotProps.data.values[12].totalCostStd *
+                                        slotProps.data.values[12].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1375,7 +1375,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[12].totalCostStd
-                                    ? slotProps.data.values[12].totalCostStd
+                                    ? (slotProps.data.values[12].totalCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1383,8 +1383,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[12].totalCostEff *
-                                        slotProps.data.values[12].volum
+                                    (slotProps.data.values[12].totalCostEff *
+                                        slotProps.data.values[12].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1392,7 +1392,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[12].totalCostEff
-                                    ? slotProps.data.values[12].totalCostEff
+                                    ? (slotProps.data.values[12].totalCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1400,7 +1400,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[12].dtc * slotProps.data.values[12].volum
+                                    (slotProps.data.values[12].dtc * slotProps.data.values[12].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1408,13 +1408,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[12].dtc
-                                    ? slotProps.data.values[12].dtc
+                                    ? (slotProps.data.values[12].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[12].volum }}</td>
+                            <td>{{ (slotProps.data.values[12].volum).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -1423,8 +1423,8 @@
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[13].totalWeightStd *
-                                        slotProps.data.values[13].volum
+                                    (slotProps.data.values[13].totalWeightStd *
+                                        slotProps.data.values[13].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1432,7 +1432,7 @@
                                     ? slotProps.data.values[0].totalWeightStd
                                     : 0,
                                 eff: slotProps.data.values[13].totalWeightStd
-                                    ? slotProps.data.values[13].totalWeightStd
+                                    ? (slotProps.data.values[13].totalWeightStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1440,8 +1440,8 @@
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[13].materialCostStd *
-                                        slotProps.data.values[13].volum
+                                    (slotProps.data.values[13].materialCostStd *
+                                        slotProps.data.values[13].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1449,7 +1449,7 @@
                                     ? slotProps.data.values[0].materialCostStd
                                     : 0,
                                 eff: slotProps.data.values[13].materialCostStd
-                                    ? slotProps.data.values[13].materialCostStd
+                                    ? (slotProps.data.values[13].materialCostStd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1457,8 +1457,8 @@
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[13].materialCostEff *
-                                        slotProps.data.values[13].volum
+                                    (slotProps.data.values[13].materialCostEff *
+                                        slotProps.data.values[13].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1466,7 +1466,7 @@
                                     ? slotProps.data.values[0].materialCostEff
                                     : 0,
                                 eff: slotProps.data.values[13].materialCostEff
-                                    ? slotProps.data.values[13].materialCostEff
+                                    ? (slotProps.data.values[13].materialCostEff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1474,8 +1474,8 @@
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[13].totalCostStd *
-                                        slotProps.data.values[13].volum
+                                    (slotProps.data.values[13].totalCostStd *
+                                        slotProps.data.values[13].volum).toFixed(fixed.value)
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1483,7 +1483,7 @@
                                     ? slotProps.data.values[0].totalCostStd
                                     : 0,
                                 eff: slotProps.data.values[13].totalCostStd
-                                    ? slotProps.data.values[13].totalCostStd
+                                    ? (slotProps.data.values[13].totalCostStd.toFixed(fixed.value))
                                     : 0,
                             }">
                             </TableRaw>
@@ -1491,8 +1491,8 @@
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[13].totalCostEff *
-                                        slotProps.data.values[13].volum
+                                    (slotProps.data.values[13].totalCostEff *
+                                        slotProps.data.values[13].volum.toFixed(fixed.value))
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1500,7 +1500,7 @@
                                     ? slotProps.data.values[0].totalCostEff
                                     : 0,
                                 eff: slotProps.data.values[13].totalCostEff
-                                    ? slotProps.data.values[13].totalCostEff
+                                    ? (slotProps.data.values[13].totalCostEff.toFixed(fixed.value))
                                     : 0,
                             }">
                             </TableRaw>
@@ -1508,7 +1508,7 @@
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    slotProps.data.values[13].dtc * slotProps.data.values[13].volum
+                                    (slotProps.data.values[13].dtc * slotProps.data.values[13].volum.toFixed(fixed.value))
                                 }}
                             </td>
                             <TableRaw v-else :value="{
@@ -1516,13 +1516,13 @@
                                     ? slotProps.data.values[0].dtc
                                     : 0,
                                 eff: slotProps.data.values[13].dtc
-                                    ? slotProps.data.values[13].dtc
+                                    ? (slotProps.data.values[13].dtc.toFixed(fixed.value))
                                     : 0,
                             }">
                             </TableRaw>
                         </tr>
                         <tr v-if="showTotalValue">
-                            <td>{{ slotProps.data.values[13].volum }}</td>
+                            <td>{{ (slotProps.data.values[13].volum.toFixed(fixed.value)) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -1585,7 +1585,7 @@
                             <td @click="showContent(slotProps.data[0], 0, 0)" v-if="showAmount">
                                 {{
                                     slotProps.data[1].months[0].amount_used_std
-                                        ? slotProps.data[1].months[0].amount_used_std
+                                        ? (slotProps.data[1].months[0].amount_used_std).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1594,7 +1594,7 @@
                             <td @click="showContent(slotProps.data[0], 0, 0)">
                                 {{
                                     slotProps.data[1].months[0].totalcoststd
-                                        ? slotProps.data[1].months[0].totalcoststd
+                                        ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1603,7 +1603,7 @@
                             <td @click="showContent(slotProps.data[0], 0, 0)">
                                 {{
                                     slotProps.data[1].months[0].totalcosteff
-                                        ? slotProps.data[1].months[0].totalcosteff
+                                        ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1612,7 +1612,7 @@
                             <td @click="showContent(slotProps.data[0], 0, 0)">
                                 {{
                                     slotProps.data[1].months[0].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1621,7 +1621,7 @@
                             <td @click="showContent(slotProps.data[0], 0, 0)">
                                 {{
                                     slotProps.data[1].months[0].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1630,14 +1630,14 @@
                             <td @click="showContent(slotProps.data[0], 0, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[0].dtc_volum
-                                        ? slotProps.data[1].months[0].dtc_volum
+                                        ? (slotProps.data[1].months[0].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <td @click="showContent(slotProps.data[0], 0, 0)" v-else>
                                 {{
                                     slotProps.data[1].months[0].dtc
-                                        ? slotProps.data[1].months[0].dtc
+                                        ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1650,7 +1650,7 @@
                             <td @click="showContent(slotProps.data[0], 1, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[1].amount_used_eff_volum
-                                        ? slotProps.data[1].months[1].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[1].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1659,7 +1659,7 @@
                                     ? slotProps.data[1].months[0].amount_used_eff
                                     : 0,
                                 eff: slotProps.data[1].months[1].amount_used_eff
-                                        ? slotProps.data[1].months[1].amount_used_eff
+                                        ? (slotProps.data[1].months[1].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1668,7 +1668,7 @@
                             <td @click="showContent(slotProps.data[0], 1, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[1].totalcoststd_volum
-                                        ? slotProps.data[1].months[1].totalcoststd_volum
+                                        ? (slotProps.data[1].months[1].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1677,7 +1677,7 @@
                                     ? slotProps.data[1].months[0].totalcoststd
                                     : 0,
                                 eff: slotProps.data[1].months[1].totalcoststd
-                                        ? slotProps.data[1].months[1].totalcoststd
+                                        ? (slotProps.data[1].months[1].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1686,7 +1686,7 @@
                             <td @click="showContent(slotProps.data[0], 1, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[1].totalcosteff_volum
-                                        ? slotProps.data[1].months[1].totalcosteff_volum
+                                        ? (slotProps.data[1].months[1].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1695,7 +1695,7 @@
                                     ? slotProps.data[1].months[0].totalcosteff
                                     : 0,
                                 eff: slotProps.data[1].months[1].totalcosteff
-                                        ? slotProps.data[1].months[1].totalcosteff
+                                        ? (slotProps.data[1].months[1].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1705,8 +1705,7 @@
                                 {{
                                     slotProps.data[1].months[1]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[1]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[1].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1715,7 +1714,7 @@
                                     ? slotProps.data[1].months[0].material_cost_1_tire_standard
                                     : 0,
                                 eff: slotProps.data[1].months[1].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[1].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[1].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1725,8 +1724,7 @@
                                 {{
                                     slotProps.data[1].months[1]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[1]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[1].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1736,7 +1734,7 @@
                                     ? slotProps.data[1].months[0].material_cost_1_tire_effective
                                     : 0,
                                 eff: slotProps.data[1].months[1].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[1].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[1].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1745,7 +1743,7 @@
                             <td @click="showContent(slotProps.data[0], 1, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[1].dtc_volum
-                                        ? slotProps.data[1].months[1].dtc_volum
+                                        ? (slotProps.data[1].months[1].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1754,7 +1752,7 @@
                                     ? slotProps.data[1].months[0].dtc
                                     : 0,
                                 eff: slotProps.data[1].months[1].dtc
-                                        ? slotProps.data[1].months[1].dtc
+                                        ? (slotProps.data[1].months[1].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1767,16 +1765,16 @@
                             <td @click="showContent(slotProps.data[0], 2, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[2].amount_used_eff_volum
-                                        ? slotProps.data[1].months[2].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[2].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[2].amount_used_eff
-                                        ? slotProps.data[1].months[2].amount_used_eff
+                                        ? (slotProps.data[1].months[2].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1785,16 +1783,16 @@
                             <td @click="showContent(slotProps.data[0], 2, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[2].totalcoststd_volum
-                                        ? slotProps.data[1].months[2].totalcoststd_volum
+                                        ? (slotProps.data[1].months[2].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[2].totalcoststd
-                                        ? slotProps.data[1].months[2].totalcoststd
+                                        ? (slotProps.data[1].months[2].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1803,16 +1801,16 @@
                             <td @click="showContent(slotProps.data[0], 2, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[2].totalcosteff_volum
-                                        ? slotProps.data[1].months[2].totalcosteff_volum
+                                        ? (slotProps.data[1].months[2].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[2].totalcosteff
-                                        ? slotProps.data[1].months[2].totalcosteff
+                                        ? (slotProps.data[1].months[2].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1822,17 +1820,16 @@
                                 {{
                                     slotProps.data[1].months[2]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[2]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[2].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[2].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[2].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[2].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1842,18 +1839,17 @@
                                 {{
                                     slotProps.data[1].months[2]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[2]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[2].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[2].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[2].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[2].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1862,16 +1858,16 @@
                             <td @click="showContent(slotProps.data[0], 2, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[2].dtc_volum
-                                        ? slotProps.data[1].months[2].dtc_volum
+                                        ? (slotProps.data[1].months[2].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 2, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[2].dtc
-                                        ? slotProps.data[1].months[2].dtc
+                                        ? (slotProps.data[1].months[2].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1884,16 +1880,16 @@
                             <td @click="showContent(slotProps.data[0], 3, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[3].amount_used_eff_volum
-                                        ? slotProps.data[1].months[3].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[3].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[3].amount_used_eff
-                                        ? slotProps.data[1].months[3].amount_used_eff
+                                        ? (slotProps.data[1].months[3].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1902,16 +1898,16 @@
                             <td @click="showContent(slotProps.data[0], 3, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[3].totalcoststd_volum
-                                        ? slotProps.data[1].months[3].totalcoststd_volum
+                                        ? (slotProps.data[1].months[3].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[3].totalcoststd
-                                        ? slotProps.data[1].months[3].totalcoststd
+                                        ? (slotProps.data[1].months[3].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1920,16 +1916,16 @@
                             <td @click="showContent(slotProps.data[0], 3, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[3].totalcosteff_volum
-                                        ? slotProps.data[1].months[3].totalcosteff_volum
+                                        ? (slotProps.data[1].months[3].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[3].totalcosteff
-                                        ? slotProps.data[1].months[3].totalcosteff
+                                        ? (slotProps.data[1].months[3].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1939,17 +1935,16 @@
                                 {{
                                     slotProps.data[1].months[3]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[3]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[3].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[3].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[3].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[3].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1959,18 +1954,17 @@
                                 {{
                                     slotProps.data[1].months[3]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[3]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[3].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[3].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[3].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[3].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -1979,16 +1973,16 @@
                             <td @click="showContent(slotProps.data[0], 3, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[3].dtc_volum
-                                        ? slotProps.data[1].months[3].dtc_volum
+                                        ? (slotProps.data[1].months[3].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 3, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[3].dtc
-                                        ? slotProps.data[1].months[3].dtc
+                                        ? (slotProps.data[1].months[3].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2001,16 +1995,16 @@
                             <td @click="showContent(slotProps.data[0], 4, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[4].amount_used_eff_volum
-                                        ? slotProps.data[1].months[4].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[4].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[4].amount_used_eff
-                                        ? slotProps.data[1].months[4].amount_used_eff
+                                        ? (slotProps.data[1].months[4].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2019,16 +2013,16 @@
                             <td @click="showContent(slotProps.data[0], 4, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[4].totalcoststd_volum
-                                        ? slotProps.data[1].months[4].totalcoststd_volum
+                                        ? (slotProps.data[1].months[4].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[4].totalcoststd
-                                        ? slotProps.data[1].months[4].totalcoststd
+                                        ? (slotProps.data[1].months[4].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2037,16 +2031,16 @@
                             <td @click="showContent(slotProps.data[0], 4, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[4].totalcosteff_volum
-                                        ? slotProps.data[1].months[4].totalcosteff_volum
+                                        ? (slotProps.data[1].months[4].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[4].totalcosteff
-                                        ? slotProps.data[1].months[4].totalcosteff
+                                        ? (slotProps.data[1].months[4].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2056,17 +2050,16 @@
                                 {{
                                     slotProps.data[1].months[4]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[4]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[4].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[4].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[4].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[4].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2076,18 +2069,17 @@
                                 {{
                                     slotProps.data[1].months[4]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[4]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[4].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[4].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[4].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[4].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2096,16 +2088,16 @@
                             <td @click="showContent(slotProps.data[0], 4, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[4].dtc_volum
-                                        ? slotProps.data[1].months[4].dtc_volum
+                                        ? (slotProps.data[1].months[4].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 4, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[4].dtc
-                                        ? slotProps.data[1].months[4].dtc
+                                        ? (slotProps.data[1].months[4].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2118,16 +2110,16 @@
                             <td @click="showContent(slotProps.data[0], 5, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[5].amount_used_eff_volum
-                                        ? slotProps.data[1].months[5].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[5].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[5].amount_used_eff
-                                        ? slotProps.data[1].months[5].amount_used_eff
+                                        ? (slotProps.data[1].months[5].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2136,16 +2128,16 @@
                             <td @click="showContent(slotProps.data[0], 5, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[5].totalcoststd_volum
-                                        ? slotProps.data[1].months[5].totalcoststd_volum
+                                        ? (slotProps.data[1].months[5].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[5].totalcoststd
-                                        ? slotProps.data[1].months[5].totalcoststd
+                                        ? (slotProps.data[1].months[5].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2154,16 +2146,16 @@
                             <td @click="showContent(slotProps.data[0], 5, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[5].totalcosteff_volum
-                                        ? slotProps.data[1].months[5].totalcosteff_volum
+                                        ? (slotProps.data[1].months[5].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[5].totalcosteff
-                                        ? slotProps.data[1].months[5].totalcosteff
+                                        ? (slotProps.data[1].months[5].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2173,17 +2165,16 @@
                                 {{
                                     slotProps.data[1].months[5]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[5]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[5].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[5].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[5].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[5].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2193,18 +2184,17 @@
                                 {{
                                     slotProps.data[1].months[5]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[5]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[5].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[5].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[5].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[5].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2213,16 +2203,16 @@
                             <td @click="showContent(slotProps.data[0], 5, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[5].dtc_volum
-                                        ? slotProps.data[1].months[5].dtc_volum
+                                        ? (slotProps.data[1].months[5].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 5, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[5].dtc
-                                        ? slotProps.data[1].months[5].dtc
+                                        ? (slotProps.data[1].months[5].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2235,16 +2225,16 @@
                             <td @click="showContent(slotProps.data[0], 6, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[6].amount_used_eff_volum
-                                        ? slotProps.data[1].months[6].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[6].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[6].amount_used_eff
-                                        ? slotProps.data[1].months[6].amount_used_eff
+                                        ? (slotProps.data[1].months[6].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2253,16 +2243,16 @@
                             <td @click="showContent(slotProps.data[0], 6, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[6].totalcoststd_volum
-                                        ? slotProps.data[1].months[6].totalcoststd_volum
+                                        ? (slotProps.data[1].months[6].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[6].totalcoststd
-                                        ? slotProps.data[1].months[6].totalcoststd
+                                        ? (slotProps.data[1].months[6].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2271,16 +2261,16 @@
                             <td @click="showContent(slotProps.data[0], 6, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[6].totalcosteff_volum
-                                        ? slotProps.data[1].months[6].totalcosteff_volum
+                                        ? (slotProps.data[1].months[6].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[6].totalcosteff
-                                        ? slotProps.data[1].months[6].totalcosteff
+                                        ? (slotProps.data[1].months[6].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2290,17 +2280,16 @@
                                 {{
                                     slotProps.data[1].months[6]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[6]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[6].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[6].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[6].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[6].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2310,18 +2299,17 @@
                                 {{
                                     slotProps.data[1].months[6]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[6]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[6].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[6].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[6].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[6].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2330,16 +2318,16 @@
                             <td @click="showContent(slotProps.data[0], 6, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[6].dtc_volum
-                                        ? slotProps.data[1].months[6].dtc_volum
+                                        ? (slotProps.data[1].months[6].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 6, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[6].dtc
-                                        ? slotProps.data[1].months[6].dtc
+                                        ? (slotProps.data[1].months[6].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2352,16 +2340,16 @@
                             <td @click="showContent(slotProps.data[0], 7, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[7].amount_used_eff_volum
-                                        ? slotProps.data[1].months[7].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[7].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[7].amount_used_eff
-                                        ? slotProps.data[1].months[7].amount_used_eff
+                                        ? (slotProps.data[1].months[7].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2370,16 +2358,16 @@
                             <td @click="showContent(slotProps.data[0], 7, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[7].totalcoststd_volum
-                                        ? slotProps.data[1].months[7].totalcoststd_volum
+                                        ? (slotProps.data[1].months[7].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[7].totalcoststd
-                                        ? slotProps.data[1].months[7].totalcoststd
+                                        ? (slotProps.data[1].months[7].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2388,16 +2376,16 @@
                             <td @click="showContent(slotProps.data[0], 7, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[7].totalcosteff_volum
-                                        ? slotProps.data[1].months[7].totalcosteff_volum
+                                        ? (slotProps.data[1].months[7].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[7].totalcosteff
-                                        ? slotProps.data[1].months[7].totalcosteff
+                                        ? (slotProps.data[1].months[7].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2407,17 +2395,16 @@
                                 {{
                                     slotProps.data[1].months[7]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[7]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[7].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[7].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[7].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[7].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2427,18 +2414,17 @@
                                 {{
                                     slotProps.data[1].months[7]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[7]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[7].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[7].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[7].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[7].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2447,16 +2433,16 @@
                             <td @click="showContent(slotProps.data[0], 7, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[7].dtc_volum
-                                        ? slotProps.data[1].months[7].dtc_volum
+                                        ? (slotProps.data[1].months[7].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 7, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[7].dtc
-                                        ? slotProps.data[1].months[7].dtc
+                                        ? (slotProps.data[1].months[7].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2469,16 +2455,16 @@
                             <td @click="showContent(slotProps.data[0], 8, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[8].amount_used_eff_volum
-                                        ? slotProps.data[1].months[8].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[8].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[8].amount_used_eff
-                                        ? slotProps.data[1].months[8].amount_used_eff
+                                        ? (slotProps.data[1].months[8].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2487,16 +2473,16 @@
                             <td @click="showContent(slotProps.data[0], 8, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[8].totalcoststd_volum
-                                        ? slotProps.data[1].months[8].totalcoststd_volum
+                                        ? (slotProps.data[1].months[8].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[8].totalcoststd
-                                        ? slotProps.data[1].months[8].totalcoststd
+                                        ? (slotProps.data[1].months[8].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2505,16 +2491,16 @@
                             <td @click="showContent(slotProps.data[0], 8, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[8].totalcosteff_volum
-                                        ? slotProps.data[1].months[8].totalcosteff_volum
+                                        ? (slotProps.data[1].months[8].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[8].totalcosteff
-                                        ? slotProps.data[1].months[8].totalcosteff
+                                        ? (slotProps.data[1].months[8].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2524,17 +2510,16 @@
                                 {{
                                     slotProps.data[1].months[8]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[8]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[8].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[8].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[8].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[8].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2544,18 +2529,17 @@
                                 {{
                                     slotProps.data[1].months[8]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[8]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[8].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[8].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[8].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[8].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2564,16 +2548,16 @@
                             <td @click="showContent(slotProps.data[0], 8, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[8].dtc_volum
-                                        ? slotProps.data[1].months[8].dtc_volum
+                                        ? (slotProps.data[1].months[8].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 8, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[8].dtc
-                                        ? slotProps.data[1].months[8].dtc
+                                        ? (slotProps.data[1].months[8].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2586,16 +2570,16 @@
                             <td @click="showContent(slotProps.data[0], 9, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[9].amount_used_eff_volum
-                                        ? slotProps.data[1].months[9].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[9].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[9].amount_used_eff
-                                        ? slotProps.data[1].months[9].amount_used_eff
+                                        ? (slotProps.data[1].months[9].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2604,16 +2588,16 @@
                             <td @click="showContent(slotProps.data[0], 9, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[9].totalcoststd_volum
-                                        ? slotProps.data[1].months[9].totalcoststd_volum
+                                        ? (slotProps.data[1].months[9].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[9].totalcoststd
-                                        ? slotProps.data[1].months[9].totalcoststd
+                                        ? (slotProps.data[1].months[9].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2622,16 +2606,16 @@
                             <td @click="showContent(slotProps.data[0], 9, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[9].totalcosteff_volum
-                                        ? slotProps.data[1].months[9].totalcosteff_volum
+                                        ? (slotProps.data[1].months[9].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[9].totalcosteff
-                                        ? slotProps.data[1].months[9].totalcosteff
+                                        ? (slotProps.data[1].months[9].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2641,17 +2625,16 @@
                                 {{
                                     slotProps.data[1].months[9]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[9]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[9].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[9].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[9].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[9].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2661,18 +2644,17 @@
                                 {{
                                     slotProps.data[1].months[9]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[9]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[9].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[9].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[9].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[9].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2681,16 +2663,16 @@
                             <td @click="showContent(slotProps.data[0], 9, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[9].dtc_volum
-                                        ? slotProps.data[1].months[9].dtc_volum
+                                        ? (slotProps.data[1].months[9].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 9, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[9].dtc
-                                        ? slotProps.data[1].months[9].dtc
+                                        ? (slotProps.data[1].months[9].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2703,16 +2685,16 @@
                             <td @click="showContent(slotProps.data[0], 10, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[10].amount_used_eff_volum
-                                        ? slotProps.data[1].months[10].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[10].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[10].amount_used_eff
-                                        ? slotProps.data[1].months[10].amount_used_eff
+                                        ? (slotProps.data[1].months[10].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2721,16 +2703,16 @@
                             <td @click="showContent(slotProps.data[0], 10, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[10].totalcoststd_volum
-                                        ? slotProps.data[1].months[10].totalcoststd_volum
+                                        ? (slotProps.data[1].months[10].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[10].totalcoststd
-                                        ? slotProps.data[1].months[10].totalcoststd
+                                        ? (slotProps.data[1].months[10].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2739,16 +2721,16 @@
                             <td @click="showContent(slotProps.data[0], 10, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[10].totalcosteff_volum
-                                        ? slotProps.data[1].months[10].totalcosteff_volum
+                                        ? (slotProps.data[1].months[10].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[10].totalcosteff
-                                        ? slotProps.data[1].months[10].totalcosteff
+                                        ? (slotProps.data[1].months[10].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2758,17 +2740,16 @@
                                 {{
                                     slotProps.data[1].months[10]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[10]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[10].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[10].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[10].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[10].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2778,18 +2759,17 @@
                                 {{
                                     slotProps.data[1].months[10]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[10]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[10].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[10].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[10].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[10].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2798,16 +2778,16 @@
                             <td @click="showContent(slotProps.data[0], 10, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[10].dtc_volum
-                                        ? slotProps.data[1].months[10].dtc_volum
+                                        ? (slotProps.data[1].months[10].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 10, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[10].dtc
-                                        ? slotProps.data[1].months[10].dtc
+                                        ? (slotProps.data[1].months[10].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2820,16 +2800,16 @@
                             <td @click="showContent(slotProps.data[0], 11, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[11].amount_used_eff_volum
-                                        ? slotProps.data[1].months[11].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[11].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[11].amount_used_eff
-                                        ? slotProps.data[1].months[11].amount_used_eff
+                                        ? (slotProps.data[1].months[11].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2838,16 +2818,16 @@
                             <td @click="showContent(slotProps.data[0], 11, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[11].totalcoststd_volum
-                                        ? slotProps.data[1].months[11].totalcoststd_volum
+                                        ? (slotProps.data[1].months[11].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[11].totalcoststd
-                                        ? slotProps.data[1].months[11].totalcoststd
+                                        ? (slotProps.data[1].months[11].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2856,16 +2836,16 @@
                             <td @click="showContent(slotProps.data[0], 11, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[11].totalcosteff_volum
-                                        ? slotProps.data[1].months[11].totalcosteff_volum
+                                        ? (slotProps.data[1].months[11].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[11].totalcosteff
-                                        ? slotProps.data[1].months[11].totalcosteff
+                                        ? (slotProps.data[1].months[11].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2875,17 +2855,16 @@
                                 {{
                                     slotProps.data[1].months[11]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[11]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[11].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[11].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[11].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[11].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2895,18 +2874,17 @@
                                 {{
                                     slotProps.data[1].months[11]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[11]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[11].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[11].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[11].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[11].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2915,16 +2893,16 @@
                             <td @click="showContent(slotProps.data[0], 11, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[11].dtc_volum
-                                        ? slotProps.data[1].months[11].dtc_volum
+                                        ? (slotProps.data[1].months[11].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 11, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[11].dtc
-                                        ? slotProps.data[1].months[11].dtc
+                                        ? (slotProps.data[1].months[11].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2937,16 +2915,16 @@
                             <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[12].amount_used_eff_volum
-                                        ? slotProps.data[1].months[12].amount_used_eff_volum
+                                        ? (slotProps.data[1].months[12].amount_used_eff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].amount_used_eff
-                                    ? slotProps.data[1].months[0].amount_used_eff
+                                    ? (slotProps.data[1].months[0].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[12].amount_used_eff
-                                        ? slotProps.data[1].months[12].amount_used_eff
+                                        ? (slotProps.data[1].months[12].amount_used_eff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2955,16 +2933,16 @@
                             <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[12].totalcoststd_volum
-                                        ? slotProps.data[1].months[12].totalcoststd_volum
+                                        ? (slotProps.data[1].months[12].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcoststd
-                                    ? slotProps.data[1].months[0].totalcoststd
+                                    ? (slotProps.data[1].months[0].totalcoststd).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[12].totalcoststd
-                                        ? slotProps.data[1].months[12].totalcoststd
+                                        ? (slotProps.data[1].months[12].totalcoststd).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2973,16 +2951,16 @@
                             <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[12].totalcosteff_volum
-                                        ? slotProps.data[1].months[12].totalcosteff_volum
+                                        ? (slotProps.data[1].months[12].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].totalcosteff
-                                    ? slotProps.data[1].months[0].totalcosteff
+                                    ? (slotProps.data[1].months[0].totalcosteff).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[12].totalcosteff
-                                        ? slotProps.data[1].months[12].totalcosteff
+                                        ? (slotProps.data[1].months[12].totalcosteff).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -2992,17 +2970,16 @@
                                 {{
                                     slotProps.data[1].months[12]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[12]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[12].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_standard
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_standard
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[12].material_cost_1_tire_standard
-                                        ? slotProps.data[1].months[12].material_cost_1_tire_standard
+                                        ? (slotProps.data[1].months[12].material_cost_1_tire_standard).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -3012,18 +2989,17 @@
                                 {{
                                     slotProps.data[1].months[12]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[12]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[12].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
 
                             <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].material_cost_1_tire_effective
-                                    ? slotProps.data[1].months[0].material_cost_1_tire_effective
+                                    ? (slotProps.data[1].months[0].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[12].material_cost_1_tire_effective
-                                        ? slotProps.data[1].months[12].material_cost_1_tire_effective
+                                        ? (slotProps.data[1].months[12].material_cost_1_tire_effective).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -3032,16 +3008,16 @@
                             <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[12].dtc_volum
-                                        ? slotProps.data[1].months[12].dtc_volum
+                                        ? (slotProps.data[1].months[12].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <TableRaw @click="showContent(slotProps.data[0], 12, 0)" v-else :value="{
                                 std: slotProps.data[1].months[0].dtc
-                                    ? slotProps.data[1].months[0].dtc
+                                    ? (slotProps.data[1].months[0].dtc).toFixed(fixed.value)
                                     : 0,
                                 eff: slotProps.data[1].months[12].dtc
-                                        ? slotProps.data[1].months[12].dtc
+                                        ? (slotProps.data[1].months[12].dtc).toFixed(fixed.value)
                                     : 0,
                             }">
                             </TableRaw>
@@ -3054,14 +3030,14 @@
                             <td v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[14].amount_in_tire_kg_volum
-                                        ? slotProps.data[1].months[14].amount_in_tire_kg_volum
+                                        ? (slotProps.data[1].months[14].amount_in_tire_kg_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <td v-else>
                                 {{
                                     slotProps.data[1].months[13].totalAmount
-                                        ? slotProps.data[1].months[13].totalAmount
+                                        ? (slotProps.data[1].months[13].totalAmount).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -3070,14 +3046,14 @@
                             <td v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[14].totalcoststd_volum
-                                        ? slotProps.data[1].months[14].totalcoststd_volum
+                                        ? (slotProps.data[1].months[14].totalcoststd_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <td v-else>
                                 {{
                                     slotProps.data[1].months[13].totalCostStd
-                                        ? slotProps.data[1].months[13].totalCostStd
+                                        ? (slotProps.data[1].months[13].totalCostStd).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -3086,14 +3062,14 @@
                             <td v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[14].totalcosteff_volum
-                                        ? slotProps.data[1].months[14].totalcosteff_volum
+                                        ? (slotProps.data[1].months[14].totalcosteff_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <td v-else>
                                 {{
                                     slotProps.data[1].months[13].totalCostEff
-                                        ? slotProps.data[1].months[13].totalCostEff
+                                        ? (slotProps.data[1].months[13].totalCostEff).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -3103,15 +3079,14 @@
                                 {{
                                     slotProps.data[1].months[14]
                                         .material_cost_1_tire_standard_volum
-                                        ? slotProps.data[1].months[14]
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[14].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <td v-else>
                                 {{
                                     slotProps.data[1].months[13].totalStd
-                                        ? slotProps.data[1].months[13].totalStd
+                                        ? (slotProps.data[1].months[13].totalStd).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -3121,15 +3096,14 @@
                                 {{
                                     slotProps.data[1].months[14]
                                         .material_cost_1_tire_effective_volum
-                                        ? slotProps.data[1].months[14]
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[14].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <td v-else>
                                 {{
                                     slotProps.data[1].months[13].totalEff
-                                        ? slotProps.data[1].months[13].totalEff
+                                        ? (slotProps.data[1].months[13].totalEff).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -3138,14 +3112,14 @@
                             <td v-if="showTotalValue">
                                 {{
                                     slotProps.data[1].months[14].dtc_volum
-                                        ? slotProps.data[1].months[14].dtc_volum
+                                        ? (slotProps.data[1].months[14].dtc_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
                             <td v-else>
                                 {{
                                     slotProps.data[1].months[13].totalDtc
-                                        ? slotProps.data[1].months[13].totalDtc
+                                        ? (slotProps.data[1].months[13].totalDtc).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -3167,11 +3141,11 @@
                             <template #content>
                                 <tr>
                                     <td>Total Cost Std</td>
-                                    <td>{{ slotProps.data.card.totalCostStd }}</td>
+                                    <td>{{ (slotProps.data.card.totalCostStd.toFixed(fixed.value)) }}</td>
                                 </tr>
                                 <tr>
                                     <td>Total Cost Eff</td>
-                                    <td>{{ slotProps.data.card.totalCostEff }}</td>
+                                    <td>{{ (slotProps.data.card.totalCostEff.toFixed(fixed.value)) }}</td>
                                 </tr>
                             </template>
                         </Card>
@@ -3184,11 +3158,11 @@
                             <template #content>
                                 <tr>
                                     <td>Cost per KG Std</td>
-                                    <td>{{ slotProps.data.card.costPerKgStd }}</td>
+                                    <td>{{ (slotProps.data.card.costPerKgStd.toFixed(fixed.value)) }}</td>
                                 </tr>
                                 <tr>
                                     <td>Cost per KG Eff</td>
-                                    <td>{{ slotProps.data.card.costPerKgEff }}</td>
+                                    <td>{{ (slotProps.data.card.costPerKgEff.toFixed(fixed.value)) }}</td>
                                 </tr>
                             </template>
                         </Card>
@@ -3201,11 +3175,11 @@
                             <template #content>
                                 <tr>
                                     <td>Cost per Liter Std</td>
-                                    <td>{{ slotProps.data.card.costPerLiterStd }}</td>
+                                    <td>{{ (slotProps.data.card.costPerLiterStd.toFixed(fixed.value)) }}</td>
                                 </tr>
                                 <tr>
                                     <td>Cost per Liter Eff</td>
-                                    <td>{{ slotProps.data.card.costPerLiterEff }}</td>
+                                    <td>{{ (slotProps.data.card.costPerLiterEff.toFixed(fixed.value)) }}</td>
                                 </tr>
                             </template>
                         </Card>
@@ -3218,11 +3192,11 @@
                             <template #content>
                                 <tr>
                                     <td>Total</td>
-                                    <td>{{ slotProps.data.card.totalRawMaterials }}</td>
+                                    <td>{{ (slotProps.data.card.totalRawMaterials.toFixed(fixed.value)) }}</td>
                                 </tr>
                                 <tr>
                                     <td>Density</td>
-                                    <td>{{ slotProps.data.card.density }}</td>
+                                    <td>{{ (slotProps.data.card.density.toFixed(fixed.value)) }}</td>
                                 </tr>
                             </template>
                         </Card>
@@ -3278,42 +3252,42 @@
                 <Column header="Cost per Unit (STD)">
                     <template #body="slotProps">
                         <tr v-for="(el, index) in slotProps.data.table" :key="index">
-                            <td>{{ el.cost_per_unit_std }}</td>
+                            <td>{{ (el.cost_per_unit_std).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
                 <Column header="Cost per Unit (EFF)">
                     <template #body="slotProps">
                         <tr v-for="(el, index) in slotProps.data.table" :key="index">
-                            <td>{{ el.cost_per_unit_eff }}</td>
+                            <td>{{ (el.cost_per_unit_eff).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
                 <Column header="Raw Weight">
                     <template #body="slotProps">
                         <tr v-for="(el, index) in slotProps.data.table" :key="index">
-                            <td>{{ el.raw_weight }}</td>
+                            <td>{{ (el.raw_weight).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
                 <Column header="Raw Weight %">
                     <template #body="slotProps">
                         <tr v-for="(el, index) in slotProps.data.table" :key="index">
-                            <td>{{ el.raw_weight_percent }}</td>
+                            <td>{{ (el.raw_weight_percent).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
                 <Column header="Total Cost (STD)">
                     <template #body="slotProps">
                         <tr v-for="(el, index) in slotProps.data.table" :key="index">
-                            <td>{{ el.total_cost_std }}</td>
+                            <td>{{ (el.total_cost_std).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
                 <Column header="Total Cost (EFF)">
                     <template #body="slotProps">
                         <tr v-for="(el, index) in slotProps.data.table" :key="index">
-                            <td>{{ el.total_cost_eff }}</td>
+                            <td>{{ (el.total_cost_eff).toFixed(fixed.value) }}</td>
                         </tr>
                     </template>
                 </Column>
@@ -3381,6 +3355,7 @@ const graph = ref([
         ]);
 
 const showContent = async (rawMaterial, mo) => {
+    recycleFilter.value = 0
     modalTable.value = []
     display.value = true;
     mat.value = rawMaterial;
