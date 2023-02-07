@@ -47,11 +47,11 @@
             <div style="display: flex"  v-if="typeSelected.value === 'material'">
                 <InputSwitch v-model="showDesc"/>
                 <h3 style="margin: 0 10px;">Description</h3>
-            </div>
+            </div>            
             <DataTable v-if="typeSelected.value === 'material'" :value="[0]" responsiveLayout="scroll">
-                <Column field="total" v-for="el in tableTotal" :key=el>
+                <Column field="total" v-for="el in 12" :key=el :header="month[el-1]">
                     <template #body="slotProps">
-                        <td>{{ tableTotal[el] ? (tableTotal[el].total).toFixed(fixed.value) : '-'}}</td>
+                        <td>{{ tableTotal[el-1] ? (tableTotal[el-1].total).toFixed(fixed.value) : '-'}}</td>
                     </template>
                 </Column>
             </DataTable>
@@ -437,6 +437,7 @@
     const progress = ref(false)
     const toast = useToast();
     const showDesc = ref(false)
+    const month = ref(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Alg', 'Sep', 'Oct', 'Nov', 'Dec'])
     
     const exportCSV = () => {
         dt.value.exportCSV();
