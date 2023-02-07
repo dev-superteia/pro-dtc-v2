@@ -1820,8 +1820,7 @@
                                 {{
                                     slotProps.data[1].months[2]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[2]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[2].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1840,8 +1839,7 @@
                                 {{
                                     slotProps.data[1].months[2]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[2]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[2].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1937,8 +1935,7 @@
                                 {{
                                     slotProps.data[1].months[3]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[3]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[3].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -1957,8 +1954,7 @@
                                 {{
                                     slotProps.data[1].months[3]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[3]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[3].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2054,8 +2050,7 @@
                                 {{
                                     slotProps.data[1].months[4]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[4]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[4].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2074,8 +2069,7 @@
                                 {{
                                     slotProps.data[1].months[4]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[4]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[4].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2171,8 +2165,7 @@
                                 {{
                                     slotProps.data[1].months[5]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[5]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[5].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2191,8 +2184,7 @@
                                 {{
                                     slotProps.data[1].months[5]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[5]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[5].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2288,8 +2280,7 @@
                                 {{
                                     slotProps.data[1].months[6]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[6]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[6].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2308,8 +2299,7 @@
                                 {{
                                     slotProps.data[1].months[6]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[6]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[6].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2405,8 +2395,7 @@
                                 {{
                                     slotProps.data[1].months[7]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[7]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[7].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2425,8 +2414,7 @@
                                 {{
                                     slotProps.data[1].months[7]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[7]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[7].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2522,8 +2510,7 @@
                                 {{
                                     slotProps.data[1].months[8]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[8]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[8].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2542,8 +2529,7 @@
                                 {{
                                     slotProps.data[1].months[8]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[8]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[8].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2639,8 +2625,7 @@
                                 {{
                                     slotProps.data[1].months[9]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[9]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[9].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2659,8 +2644,7 @@
                                 {{
                                     slotProps.data[1].months[9]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[9]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[9].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2756,8 +2740,7 @@
                                 {{
                                     slotProps.data[1].months[10]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[10]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[10].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2776,8 +2759,7 @@
                                 {{
                                     slotProps.data[1].months[10]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[10]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[10].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2873,8 +2855,7 @@
                                 {{
                                     slotProps.data[1].months[11]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[11]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[11].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2893,8 +2874,7 @@
                                 {{
                                     slotProps.data[1].months[11]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[11]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[11].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -2990,8 +2970,7 @@
                                 {{
                                     slotProps.data[1].months[12]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[12]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[12].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -3010,8 +2989,7 @@
                                 {{
                                     slotProps.data[1].months[12]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[12]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[12].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -3101,8 +3079,7 @@
                                 {{
                                     slotProps.data[1].months[14]
                                         .material_cost_1_tire_standard_volum
-                                        ? (slotProps.data[1].months[14]).toFixed(fixed.value)
-                                            .material_cost_1_tire_standard_volum
+                                        ? (slotProps.data[1].months[14].material_cost_1_tire_standard_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
@@ -3119,8 +3096,7 @@
                                 {{
                                     slotProps.data[1].months[14]
                                         .material_cost_1_tire_effective_volum
-                                        ? (slotProps.data[1].months[14]).toFixed(fixed.value)
-                                            .material_cost_1_tire_effective_volum
+                                        ? (slotProps.data[1].months[14].material_cost_1_tire_effective_volum).toFixed(fixed.value)
                                         : "-"
                                 }}
                             </td>
