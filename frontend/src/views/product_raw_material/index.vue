@@ -31,7 +31,7 @@
                 <InputText placeholder="Year" v-model="year"/>
             </div>
         </div>
-        <div class="col-2 mt-3">
+        <div class="col-3 mt-3">
             <Button v-if="!progress" :label="$t('message.search')" @click="submit()" icon="pi pi-send" iconPos="right" ></Button>
             <ProgressSpinner v-if="progress" style="width:50px;height:50px" strokeWidth="8" fill="var(--surface-ground)"
                     animationDuration=".5s" aria-label="Custom ProgressSpinner" />
@@ -709,38 +709,38 @@
                 </template>
             </Column>
         </DataTable>
-        <div style="display: flex; margin: 50px 0; justify-content: center;">
-            <div style="display: flex">
+        <div class="grid p-fluid" style="margin: 50px 0;">
+            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
                 <InputSwitch v-model="showTotalValue"/>
                 <h3 style="margin: 0 10px;">Total Value</h3>
             </div>
-            <div style="display: flex">
+            <div  class="col-12 md:col-6 lg:col-3" style="display: flex ">
                 <InputSwitch v-model="showMaterial"/>
                 <h3 style="margin: 0 10px;">Material</h3>
             </div>
-            <div style="display: flex">
+            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
                 <InputSwitch v-model="showTotalMaterial"/>
                 <h3 style="margin: 0 10px;">Total Material</h3>
             </div>
-            <div style="display: flex">
+            <div  class="col-12 md:col-6 lg:col-3" style="display: flex">
                 <InputSwitch v-model="showRawWeight"/>
                 <h3 style="margin: 0 10px;">Raw Weight</h3>
             </div>
         </div>
-        <div style="display: flex; margin: 50px 0; justify-content: center;">
-            <div style="display: flex">
+        <div class="grid p-fluid" style="margin: 50px 0;">
+            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
                 <InputSwitch v-model="showCostStd"/>
                 <h3 style="margin: 0 10px;">Cost per Unit Std</h3>
             </div>
-            <div style="display: flex">
+            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
                 <InputSwitch v-model="showCostEff"/>
                 <h3 style="margin: 0 10px;">Cost per Unit Eff</h3>
             </div>
-            <div style="display: flex">
+            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
                 <InputSwitch v-model="showTotalCostStd"/>
                 <h3 style="margin: 0 10px;">Total Cost Standard</h3>
             </div>
-            <div style="display: flex">
+            <div class="col-12 md:col-6 lg:col-3" style="display: flex">
                 <InputSwitch v-model="showTotalCostEff"/>
                 <h3 style="margin: 0 10px;">Total Cost Effective</h3>
             </div>

@@ -1,5 +1,10 @@
 <template>
-    <h3>Product One-Level</h3>
+       <div class="flex align-items-center justify-content-between">
+        <div class="flex">
+        <h1 class="page-title">Product One-Level</h1>       
+        </div>
+        <div><Breadcrumb :home="home" :model="items" /></div>
+    </div>
     <div class="grid p-fluid">
         <div class="col-12">
             <h3>{{ $t("dtc.plant") }}</h3>
@@ -31,7 +36,7 @@
                 <InputText placeholder="Year" v-model="year" />
             </div>
         </div>
-        <div class="col-2 mt-3">
+        <div class="col-3 lg:col-2 mt-3">
             <Button v-if="!progress" :label="$t('message.search')" @click="submit()" icon="pi pi-send"
                 iconPos="right"></Button>
             <ProgressSpinner v-if="progress" style="width: 50px; height: 50px" strokeWidth="8"
@@ -1427,15 +1432,9 @@
                                         slotProps.data.values[13].volum).toFixed(fixed.value)
                                 }}
                             </td>
-                            <TableRaw v-else :value="{
-                                std: slotProps.data.values[0].totalWeightStd
-                                    ? slotProps.data.values[0].totalWeightStd
-                                    : 0,
-                                eff: slotProps.data.values[13].totalWeightStd
+                            <td v-else>{{slotProps.data.values[13].totalWeightStd
                                     ? (slotProps.data.values[13].totalWeightStd).toFixed(fixed.value)
-                                    : 0,
-                            }">
-                            </TableRaw>
+                                    : 0}}</td>
                         </tr>
                         <tr v-if="showMatCostStd">
                             <td v-if="showTotalValue">
@@ -1444,15 +1443,11 @@
                                         slotProps.data.values[13].volum).toFixed(fixed.value)
                                 }}
                             </td>
-                            <TableRaw v-else :value="{
-                                std: slotProps.data.values[0].materialCostStd
-                                    ? slotProps.data.values[0].materialCostStd
-                                    : 0,
-                                eff: slotProps.data.values[13].materialCostStd
+                            <td v-else>
+                                {{ slotProps.data.values[13].materialCostStd
                                     ? (slotProps.data.values[13].materialCostStd).toFixed(fixed.value)
-                                    : 0,
-                            }">
-                            </TableRaw>
+                                    : 0 }}
+                            </td>
                         </tr>
                         <tr v-if="showMatCostEff">
                             <td v-if="showTotalValue">
@@ -1461,15 +1456,9 @@
                                         slotProps.data.values[13].volum).toFixed(fixed.value)
                                 }}
                             </td>
-                            <TableRaw v-else :value="{
-                                std: slotProps.data.values[0].materialCostEff
-                                    ? slotProps.data.values[0].materialCostEff
-                                    : 0,
-                                eff: slotProps.data.values[13].materialCostEff
+                            <td v-else>{{ slotProps.data.values[13].materialCostEff
                                     ? (slotProps.data.values[13].materialCostEff).toFixed(fixed.value)
-                                    : 0,
-                            }">
-                            </TableRaw>
+                                    : 0 }}</td>
                         </tr>
                         <tr v-if="showTotalCostStd">
                             <td v-if="showTotalValue">
@@ -1478,48 +1467,35 @@
                                         slotProps.data.values[13].volum).toFixed(fixed.value)
                                 }}
                             </td>
-                            <TableRaw v-else :value="{
-                                std: slotProps.data.values[0].totalCostStd
-                                    ? slotProps.data.values[0].totalCostStd
-                                    : 0,
-                                eff: slotProps.data.values[13].totalCostStd
+                            <td v-else>{{slotProps.data.values[13].totalCostStd
                                     ? (slotProps.data.values[13].totalCostStd.toFixed(fixed.value))
-                                    : 0,
-                            }">
-                            </TableRaw>
+                                    : 0}}
+                            </td>
                         </tr>
                         <tr v-if="showTotalCostEff">
                             <td v-if="showTotalValue">
                                 {{
                                     (slotProps.data.values[13].totalCostEff *
-                                        slotProps.data.values[13].volum.toFixed(fixed.value))
+                                        slotProps.data.values[13].volum).toFixed(fixed.value)
                                 }}
                             </td>
-                            <TableRaw v-else :value="{
-                                std: slotProps.data.values[0].totalCostEff
-                                    ? slotProps.data.values[0].totalCostEff
-                                    : 0,
-                                eff: slotProps.data.values[13].totalCostEff
+                            <td v-else>
+                                {{ slotProps.data.values[13].totalCostEff
                                     ? (slotProps.data.values[13].totalCostEff.toFixed(fixed.value))
-                                    : 0,
-                            }">
-                            </TableRaw>
+                                    : 0 }}
+                            </td>
                         </tr>
                         <tr>
                             <td v-if="showTotalValue">
                                 {{
-                                    (slotProps.data.values[13].dtc * slotProps.data.values[13].volum.toFixed(fixed.value))
+                                    (slotProps.data.values[13].dtc * slotProps.data.values[13].volum).toFixed(fixed.value)
                                 }}
                             </td>
-                            <TableRaw v-else :value="{
-                                std: slotProps.data.values[0].dtc
-                                    ? slotProps.data.values[0].dtc
-                                    : 0,
-                                eff: slotProps.data.values[13].dtc
+                            <td v-else>
+                                {{ slotProps.data.values[13].dtc
                                     ? (slotProps.data.values[13].dtc.toFixed(fixed.value))
-                                    : 0,
-                            }">
-                            </TableRaw>
+                                    : 0 }}
+                            </td>
                         </tr>
                         <tr v-if="showTotalValue">
                             <td>{{ (slotProps.data.values[13].volum.toFixed(fixed.value)) }}</td>
@@ -3345,6 +3321,14 @@ let items_materials = ref([]);
 let volumTotals = ref([]);
 let graphselected = ref({ value: 1, text: 'Total' });
 const volumTotais = ref([]);
+const home = ref({
+            icon: 'pi pi-home',
+            to: '/',
+        });
+const items = ref([
+    {label: 'DTC'},
+    {label: 'Product One-Level'},
+    ]);
 const graph = ref([
         { value: 1, text: 'Total' },
         { value: 2, text: 'Total Value' },

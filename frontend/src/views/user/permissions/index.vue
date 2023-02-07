@@ -26,14 +26,14 @@
 <script setup>
 import axios from "axios";
 import Column from "primevue/column";
-import { ref, onMounted } from "vue";
 import ConfirmDialog from 'primevue/confirmdialog';
-import { useConfirm } from "primevue/useconfirm";
-import { useI18n } from 'vue-i18n'
-import { useToast } from "primevue/usetoast";
 import Toast from 'primevue/toast';
 import Dialog from 'primevue/dialog';
 import FormPermission from './form-permission/index.vue';
+import { ref, onMounted } from "vue";
+import { useConfirm } from "primevue/useconfirm";
+import { useToast } from "primevue/usetoast";
+import { useI18n } from 'vue-i18n'
 const { t } = useI18n({})
 const display = ref(false);
 const permissions = ref([]);

@@ -1,5 +1,10 @@
 <template>
-<h3>Raw Material Without Cost</h3>
+<div class="flex align-items-center justify-content-between">
+        <div class="flex">
+        <h1 class="page-title">{{$t('dtc.raw_material_without_cost')}}</h1>       
+        </div>
+        <div><Breadcrumb :home="home" :model="items" /></div>
+    </div>
 <div class="grid p-fluid">
     <div class="col-12">
         <h3>{{$t('dtc.plant')}}</h3>
@@ -36,9 +41,9 @@
                 </div>
             </div>
             </template>
-    <Column field="component" header="Material"></Column>
-    <Column field="plant" header="Plant"></Column>
-    <Column field="year" header="Year"></Column>
+    <Column field="component" header="Material" :sortable="true"></Column>
+    <Column field="plant" :header="$t('dtc.plant')" :sortable="true"></Column>
+    <Column field="year" :header="$t('dtc.year')" :sortable="true"></Column>
 </DataTable>
 <Toast />
 </template>
@@ -52,7 +57,8 @@ import { FilterMatchMode } from 'primevue/api';
 import ProgressSpinner from 'primevue/progressspinner';
 import Toast from 'primevue/toast';
 import { useToast } from "primevue/usetoast";
-
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n({})
 const dt = ref();
 const filters = ref({
     'global': { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -68,7 +74,14 @@ const year = ref([]);
 const material = ref([]);
 const progress = ref(false)
 const toast = useToast();
-
+const home = ref({
+            icon: 'pi pi-home',
+            to: '/',
+        });
+const items = ref([
+    {label: 'DTC'},
+    {label: t('dtc.raw_material_without_cost')},
+    ]);
 const getPlant = async () => {
   plant.value = await dtc.setPlant()
 };

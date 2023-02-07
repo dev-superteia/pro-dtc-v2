@@ -19,7 +19,7 @@ import Toolbar from 'primevue/toolbar';
 import ConfirmationService from 'primevue/confirmationservice';
 import ToastService from 'primevue/toastservice';
 import Tooltip from 'primevue/tooltip';
-
+import Breadcrumb from 'primevue/breadcrumb';
 const pinia = createPinia()
 const app = createApp(App);
 const i18n = createI18n({
@@ -40,5 +40,6 @@ app.component('InputText', InputText);
 app.component('Password', Password);
 app.component('Toolbar', Toolbar);
 app.component('DataTable', DataTable);
+app.component('Breadcrumb', Breadcrumb);
 app.use(ConfirmationService);
 app.mount('#app');

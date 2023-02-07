@@ -10,6 +10,7 @@ import  BaseLayout from '@/layout/BaseLayout.vue'
 <style>
 html {
   font-size: 14px !important;
+  font-family: sans-serif;
 }
 body {
   margin: 0 !important;

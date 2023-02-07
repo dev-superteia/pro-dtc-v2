@@ -64,11 +64,7 @@ export default {
   position: fixed;
   padding: 0 12px;
   min-height: 50px;
-  background: linear-gradient(
-    145deg,
-    rgb(32, 106, 80) 15%,
-    rgb(21, 57, 102) 70%
-  );
+  background: linear-gradient( 145deg, rgb(33 43 89) 15%, rgb(21, 57, 102) 70% );
   top: 0;
   right: 0;
   left: 200px;

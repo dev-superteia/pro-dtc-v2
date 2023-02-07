@@ -28,7 +28,7 @@
                     :options="itemsMaterialBreakdown" :selectOnFocus="true" />
             </div>
         </div>
-        <div class="col-2 mt-3">
+        <div class="col-3 mt-3">
             <Button v-if="!progress" :label="$t('message.search')" @click="getComponents()" icon="pi pi-send"
                 iconPos="right"></Button>
             <ProgressSpinner v-if="progress" style="width:50px;height:50px" strokeWidth="8" fill="var(--surface-ground)"

@@ -49,7 +49,8 @@ const messages = {
         raw_material_compoound: 'Raw Material and Compound',
         volume: 'Volume',
         total_volume: 'Total Volume',
-        material_volume: 'Material Volume'
+        material_volume: 'Material Volume',
+        raw_material_without_cost:'Raw Material Without Cost'
       }
     },
     pt: {
