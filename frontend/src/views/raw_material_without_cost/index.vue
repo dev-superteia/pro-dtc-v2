@@ -1,7 +1,7 @@
 <template>
 <div class="flex align-items-center justify-content-between">
         <div class="flex">
-        <h1 class="page-title">{{$t('dtc.raw_material_without_cost')}}</h1>       
+        <h1 class="page-title">{{$t('dtc.tissue_month')}} Raw Material Without Cost</h1>       
         </div>
         <div><Breadcrumb :home="home" :model="items" /></div>
     </div>
@@ -80,7 +80,7 @@ const home = ref({
         });
 const items = ref([
     {label: 'DTC'},
-    {label: t('dtc.raw_material_without_cost')},
+    {label: t('dtc.tissue_month')},
     ]);
 const getPlant = async () => {
   plant.value = await dtc.setPlant()
