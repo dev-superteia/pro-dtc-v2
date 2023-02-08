@@ -33,7 +33,7 @@ class rawMaterial:
         self.month = month
         self.year = year
 
-    async def get_raw_material_list_explosion(db: AsyncSession, plant, materialName, filterType, month, year):
+    async def get_raw_material_list_explosion(db, plant, materialName, filterType, month, year):
 
         result = []
 

@@ -474,7 +474,7 @@ class MdMaterialRepository():
                 result = Decimal(0)
         return result    
 
-    async def find_by_materialtm(db: AsyncSession, plant, material, year) -> Optional[Material]:
+    async def find_by_materialtm(db: AsyncSession, plant, material, year) -> Optional[MaterialEspecStdTm]:
         stmt = select(MaterialEspecStdTm).filter(MaterialEspecStdTm.plant == plant, 
                                                  MaterialEspecStdTm.material == material, 
                                                  MaterialEspecStdTm.year == year)

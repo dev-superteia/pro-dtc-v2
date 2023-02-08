@@ -25,25 +25,27 @@ class Tissue:
         self.cost_mp_std = Decimal(0)
 
 
-async def table_presentation_convert_in_card(self, db):
-    description = await MaterialCostRepository.description(db, self.mat_mp)[0][0]
+async def table_presentation_convert_in_card(cloth, db):    
+    print(cloth.mat_mp,"novo")
+    description = await MaterialCostRepository.description(db, cloth.mat_mp)
+    description = description[0][0]
     card = {
-        'compound_name': self.mat_me,
-        'compound_weight': self.mat_me_weight,
-        'me_total_raw_materials': len(self.mat_me_explode['table']),
-        'me_total_cost_std': self.mat_me_cost_std,
-        'me_total_cost_eff': self.mat_me_cost_eff,
-        'coupound_cost_std': Decimal(self.mat_me_weight*self.mat_me_cost_std),
-        'coupound_cost_eff': Decimal(self.mat_me_weight*self.mat_me_cost_eff),
-        'fabric_name': self.mat_mp  + ' - ' + str(description),
-        'fabric_weight': self.weight_mp,
-        'mat_mp_cost_std': self.cost_mp_std,
-        'mat_mp_cost_eff': self.cost_mp_eff,
-        'fabric_cost_std': Decimal(self.cost_mp_std * self.weight_mp),
-        'fabric_cost_eff': Decimal(self.cost_mp_eff * self.weight_mp),
-        'total_weight':Decimal(self.mat_me_weight + self.weight_mp),
-        'total_cost_std': Decimal((self.mat_me_weight*self.mat_me_cost_std)+(self.cost_mp_std * self.weight_mp)),
-        'total_cost_eff': Decimal((self.mat_me_weight*self.mat_me_cost_eff)+(self.cost_mp_eff * self.weight_mp)),
+        'compound_name': cloth.mat_me,
+        'compound_weight': cloth.mat_me_weight,
+        'me_total_raw_materials': len(cloth.mat_me_explode['table']),
+        'me_total_cost_std': cloth.mat_me_cost_std,
+        'me_total_cost_eff': cloth.mat_me_cost_eff,
+        'coupound_cost_std': Decimal(cloth.mat_me_weight*cloth.mat_me_cost_std),
+        'coupound_cost_eff': Decimal(cloth.mat_me_weight*cloth.mat_me_cost_eff),
+        'fabric_name': cloth.mat_mp  + ' - ' + str(description),
+        'fabric_weight': cloth.weight_mp,
+        'mat_mp_cost_std': cloth.cost_mp_std,
+        'mat_mp_cost_eff': cloth.cost_mp_eff,
+        'fabric_cost_std': Decimal(cloth.cost_mp_std * cloth.weight_mp),
+        'fabric_cost_eff': Decimal(cloth.cost_mp_eff * cloth.weight_mp),
+        'total_weight':Decimal(cloth.mat_me_weight + cloth.weight_mp),
+        'total_cost_std': Decimal((cloth.mat_me_weight*cloth.mat_me_cost_std)+(cloth.cost_mp_std * cloth.weight_mp)),
+        'total_cost_eff': Decimal((cloth.mat_me_weight*cloth.mat_me_cost_eff)+(cloth.cost_mp_eff * cloth.weight_mp)),
         }
     return card
 def table_presentation_convert_in_list(self):
@@ -76,7 +78,7 @@ async def get_cloth_month(self, db):
     # se for std busco em especstdtm
     if (self.month == 0):
         cloth_content = await MdMaterialRepository.find_by_materialtm(db,self.plant, self.cloth, self.year)
-        print(cloth_content.comp_material,"teste")
+        print(cloth_content,"teste")
         if (cloth_content == None):
             return {'status': False, 'msg': 'Not reciple in this month'}
         self.mat_me = cloth_content.comp_material
@@ -115,13 +117,11 @@ async def get_cloth_month(self, db):
 
     # insiro os mp
     raw_materials = rawMaterial()
-    raw_materials_explosion = await raw_materials.get_raw_material_list_explosion(db, self.plant, self.mat_me, 1, self.month, self.year)
-    raw_materials_explosion_calculate = await raw_materials.get_calculate_totals_raw_material_list(db, raw_materials_explosion, self.plant, self.mat_me, self.year, self.month)
+    raw_materials_explosion = await rawMaterial.get_raw_material_list_explosion(db=db,plant=self.plant, materialName=self.mat_me, filterType=1, month=self.month, year=self.year)
+    raw_materials_explosion_calculate = await rawMaterial.get_calculate_totals_raw_material_list(db, raw_materials_explosion, self.plant, self.mat_me, self.year, self.month)
     self.mat_me_explode = raw_materials_explosion_calculate
     self.mat_me_cost_eff = raw_materials_explosion_calculate['card']['totalCostEff']
     self.mat_me_cost_std = raw_materials_explosion_calculate['card']['totalCostStd']
     return {'status': True, 'msg': 'success'}
-
-    
     
 tissue = Tissue()
