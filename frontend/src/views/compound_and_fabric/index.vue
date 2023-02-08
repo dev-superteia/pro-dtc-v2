@@ -34,7 +34,7 @@
             <ProgressSpinner v-if="progress" style="width:50px;height:50px" strokeWidth="8" fill="var(--surface-ground)"
                 animationDuration=".5s" aria-label="Custom ProgressSpinner" />
         </div>
-        <div class="col-12">
+        <!-- <div class="col-12">
             <Card class="w-full">
             <template #header>
                 <div style="display: flex; align-items: center; justify-content: space-evenly;padding: 20px;">
@@ -64,10 +64,13 @@
                 <Chart type="line" :data="datasets" class="w-full p-5" />
             </template>
         </Card>
-        </div>
-        <div class="col-12">
+        </div> -->
+        <!-- <div class="col-12">
             <TableCuston :tableValue=table></TableCuston>
-        </div>      
+        </div>       -->
+        <div class="col-12">
+            
+        </div>
     </div>
     <Toast />
 </template>
