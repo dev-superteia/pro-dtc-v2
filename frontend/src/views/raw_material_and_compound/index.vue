@@ -463,6 +463,7 @@
         type.value = dtc.type
     };
     const getTypeList = async () => {
+        tableTotal.value = []
         listSelected.value = []
         if (typeSelected.value.value === 'material') {
             await dtc.setTypeListMat()

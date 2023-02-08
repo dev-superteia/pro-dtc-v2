@@ -356,8 +356,6 @@
                     <div style="text-align: left; width: 200px;">
                         <Button icon="pi pi-external-link" label="Export" @click="exportCSV($event)" />
                     </div>
-                    {{ fixed.value }}
-
                 </div>
             </div>
         </template>
@@ -388,7 +386,6 @@
             <template #body="slotProps">
                 <tr>
                     <td>{{ (slotProps.data.months[1].raw_weight !== "--" ? (slotProps.data.months[1].raw_weight).toFixed(fixed) : "--") }}</td>
-                    <!-- <td>{{ (slotProps.data.months[1].raw_weight).toFixed(fixed) }}</td> -->
                 </tr>
                 <tr>
                     <td>{{ (slotProps.data.months[1].raw_weight / tableValue.weights[0]).toFixed(fixed.value) }}</td>

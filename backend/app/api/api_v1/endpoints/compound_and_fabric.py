@@ -44,7 +44,6 @@ async def get_raw(
                     total_weights[0] += months['raw_weight']
                 elif idx >= 2:
                     months['cost_standard'] = await repositories.MaterialCostRepository.find_by_material(db,material=months['material'], cost='cost_std')
-                    print("oiiii",idx)
                     months['cost_effective'] = await repositories.MaterialCostRepository.find_by_material(db,material=months['material'], cost=cost_list[idx-3])
                     months['total_cost_standard'] = Decimal(months['cost_standard']) * Decimal(months['raw_weight']) 
                     months['total_cost_effective'] = Decimal(months['cost_effective']) * Decimal(months['raw_weight']) 
