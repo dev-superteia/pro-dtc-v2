@@ -87,21 +87,21 @@ async def get_cloth_month(self, db):
         self.weight_mp = Decimal(cloth_content.raw_weight)
     else:
         if re.search("^(S|Y)TM.+$",self.cloth):
-            cloth_content = await MdMaterialRepository.find_by_material58(db, self.plant, self.cloth, self.month, self.year)
-            if (cloth_content == None):
-                return {'status': False, 'msg': 'Not reciple in this month'}
-            self.mat_me = cloth_content.mat_me
-            self.mat_me_weight = Decimal(cloth_content.me_weight)
-            self.mat_mp = cloth_content.componente
-            self.weight_mp = Decimal(cloth_content.mp_weight)
-
-        elif re.search("^(S|Y)TT.+$",self.cloth):
             cloth_content = await MdMaterialRepository.find_by_material78(db, self.plant, self.cloth, self.month, self.year)
             if (cloth_content == None):
                 return {'status': False, 'msg': 'Not reciple in this month'}
             self.mat_me = cloth_content.mat_me
             self.mat_me_weight = Decimal(cloth_content.me_weight)
             self.mat_mp = cloth_content.mat_mp
+            self.weight_mp = Decimal(cloth_content.mp_weight)
+
+        elif re.search("^(S|Y)TT.+$",self.cloth):
+            cloth_content = await MdMaterialRepository.find_by_material58(db, self.plant, self.cloth, self.month, self.year)
+            if (cloth_content == None):
+                return {'status': False, 'msg': 'Not reciple in this month'}
+            self.mat_me = cloth_content.mat_me
+            self.mat_me_weight = Decimal(cloth_content.me_weight)
+            self.mat_mp = cloth_content.componente
             self.weight_mp = Decimal(cloth_content.mp_weight)
 
     # insiro o custo self.cost_mp

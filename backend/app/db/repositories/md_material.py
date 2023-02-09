@@ -482,6 +482,7 @@ class MdMaterialRepository():
         return result.scalars().first()
     
     async def find_by_material58(db: AsyncSession, plant, material,month, year) -> Optional[MaterialEspecZp58]:
+        print(month,"tetstt")
         stmt = select(MaterialEspecZp58).filter(MaterialEspecZp58.plant == plant, MaterialEspecZp58.material == material,MaterialEspecZp58.month == month,  MaterialEspecZp58.year == year)
         result = await db.execute(stmt)
         return result.scalars().first()

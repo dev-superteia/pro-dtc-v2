@@ -52,7 +52,7 @@ class MaterialEspecStdRepository():
                      mesm.plant,
                      mesm.material,
                      mesm.raw_material,
-                     case when mesm.raw_material like 'RG%' then 0 else mesm.raw_weight * componentes.weight end raw_weight,
+                     case when mesm.raw_material like 'RG%' then mesm.raw_weight * componentes.weight else mesm.raw_weight * componentes.weight end raw_weight,
                      cost_std,
                      '1' as type
                     from componentes
@@ -66,7 +66,7 @@ class MaterialEspecStdRepository():
                     mest.plant,
                     mest.material,
                     mest.raw_material,
-                    case when mest.raw_material like 'RG%' then 0 else mest.raw_weight * componentes.weight end raw_weight,
+                    case when mest.raw_material like 'RG%' then mest.raw_weight * componentes.weight else mest.raw_weight * componentes.weight end raw_weight,
                     cost_std,
                     '2' as type
                     from componentes
@@ -92,7 +92,7 @@ class MaterialEspecStdRepository():
                      mesm.plant,
                      mesm.material,
                      mesm.raw_material,
-                     case when mesm.raw_material like 'RG%' then 0 else mesm.raw_weight * componentes.weight end raw_weight,
+                     case when mesm.raw_material like 'RG%' then mesm.raw_weight * componentes.weight else mesm.raw_weight * componentes.weight end raw_weight,
                      cost_std,
                      '4' as type
                     from componentes
