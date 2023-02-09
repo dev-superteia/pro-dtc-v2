@@ -1315,7 +1315,7 @@
                         </tr>
                     </template>
                 </Column>
-                <Column header="Dez" style="min-width:200px">
+                <Column header="Dec" style="min-width:200px">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
                             <td v-if="showTotalValue">
@@ -2885,7 +2885,7 @@
                         </tr>
                     </template>
                 </Column>
-                <Column header="Dez" style="min-width: 200px;">
+                <Column header="Dec" style="min-width: 200px;">
                     <template #body="slotProps">
                         <tr v-if="showAmount">
                             <td @click="showContent(slotProps.data[0], 12, 0)" v-if="showTotalValue">
@@ -3456,6 +3456,7 @@ const getTire = async () => {
 
 
 const submit = async () => {
+    recycleFilter.value = 0
     progress.value = true;
     if (plantSelected.value.value === undefined) {
         plantSelected.value.value = "";

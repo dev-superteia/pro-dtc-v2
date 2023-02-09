@@ -304,7 +304,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Dez">
+        <Column header="Dec">
             <template #body="slotProps">
                 <tr>
                     <td>{{ (slotProps.data[11].raw_weight).toFixed(fixed.value) }}</td>

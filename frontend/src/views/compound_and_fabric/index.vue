@@ -5,7 +5,7 @@
             <h3>{{ $t('dtc.plant') }}</h3>
             <div class="p-inputgroup">
                 <Dropdown optionLabel="text" v-model="plantSelected" :options="plant" placeholder="Select a plant"
-                    @click="getPlant" />
+                    />
             </div>
         </div>
         <div class="col-12">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="col-3 mt-3">
-            <Button v-if="!progress" :label="$t('message.search')" @click="getComponents()" icon="pi pi-send"
+            <Button v-if="!progress" :label="$t('message.search')" @click="getMaterial(materialSelected.value)" icon="pi pi-send"
                 iconPos="right"></Button>
             <ProgressSpinner v-if="progress" style="width:50px;height:50px" strokeWidth="8" fill="var(--surface-ground)"
                 animationDuration=".5s" aria-label="Custom ProgressSpinner" />
@@ -65,11 +65,11 @@
             </template>
         </Card>
         </div> -->
-        <!-- <div class="col-12">
-            <TableCuston :tableValue=table></TableCuston>
-        </div>       -->
-        <div class="col-12">
-            
+        <div class="col-12" v-if="component">
+            <TableComponent :tableValue=table></TableComponent>
+        </div>
+        <div class="col-12" v-if="tissue">
+            <TableTissue :tableValue="table" :plantSelected="plantSelected" :year="year"></TableTissue>
         </div>
     </div>
     <Toast />
@@ -80,13 +80,16 @@ import axios from "axios";
 import { useDtcStore } from '../../store/dtc';
 import { ref, onMounted } from "vue";
 import { useToast } from "primevue/usetoast";
-import TableCuston from './table/mass.vue'
+import TableComponent from './table/mass.vue'
+import TableTissue from './table/tissue.vue'
 import ProgressSpinner from 'primevue/progressspinner';
 import Toast from 'primevue/toast';
 import Chart from 'primevue/chart';
 import RadioButton from 'primevue/radiobutton';
 const city = ref('weight');
 const dtc = useDtcStore()
+const component = ref(true)
+const tissue = ref(false)
 const plant = ref([]);
 const toast = useToast();
 const material = ref([]);
@@ -109,6 +112,19 @@ const getMassAll = async () => {
     await dtc.setMassAll()
     material.value = dtc.mass_all
 };
+
+const getMaterial = async (materialVmodel) => {
+    if(materialVmodel.match(('^C.+$'))) {
+        component.value = true
+        tissue.value = false
+        getComponents()
+    } else {
+        component.value = false
+        tissue.value = true
+        submit()
+    }
+}
+
 const getComponents = async () => {
     progress.value = true
     const response = await axios.get('http://localhost:8000/api/v1/compound_and_fabric?plant=' + plantSelected.value.value + '&material=' + materialSelected.value.value + '&year=' + year.value + '&type=' + selectMaterialBreakdown.value.id)
@@ -159,8 +175,16 @@ const getComponents = async () => {
     }
     table.value.total.push(arr.value)
     console.log(table.value)
-
 };
+
+const submit = async() => {
+    progress.value = true
+    const response = await axios.get('http://localhost:8000/api/v1/tissue/report_raw_material_month_tissue?plant=' + plantSelected.value.value + '&material=' + materialSelected.value.value + '&year=' + year.value + '&type=' + selectMaterialBreakdown.value.id)
+    table.value = {table: response.data}
+    console.log(table.value);
+    progress.value = false
+}
+
 const changeGraph = (type) => {
     const lines = desserts.value
     const seriesLines = []
