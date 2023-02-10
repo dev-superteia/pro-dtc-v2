@@ -28,6 +28,9 @@ class Tissue:
 async def table_presentation_convert_in_card(cloth, db):    
     print(cloth.mat_mp,"novo")
     description = await MaterialCostRepository.description(db, cloth.mat_mp)
+    print(description,"bate")
+    if (description == []):
+        return []
     description = description[0][0]
     card = {
         'compound_name': cloth.mat_me,
