@@ -126,6 +126,7 @@ const getMaterial = async (materialVmodel) => {
 }
 
 const getComponents = async () => {
+    table.value = []
     progress.value = true
     const response = await axios.get('http://localhost:8000/api/v1/compound_and_fabric?plant=' + plantSelected.value.value + '&material=' + materialSelected.value.value + '&year=' + year.value + '&type=' + selectMaterialBreakdown.value.id)
     table.value = response.data
@@ -178,6 +179,7 @@ const getComponents = async () => {
 };
 
 const submit = async() => {
+    table.value = []
     progress.value = true
     const response = await axios.get('http://localhost:8000/api/v1/tissue/report_raw_material_month_tissue?plant=' + plantSelected.value.value + '&material=' + materialSelected.value.value + '&year=' + year.value + '&type=' + selectMaterialBreakdown.value.id)
     table.value = {table: response.data}

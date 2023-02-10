@@ -1,7 +1,11 @@
 <template>
-    <DataTable :value='props.tableValue' responsiveLayout="scroll">
+    <DataTable :value='props.tableValue' responsiveLayout="scroll" :filters="filters">
         <template #header>
             <div class="flex justify-content-between flex-wrap">
+                <div class="flex">
+                    <InputSwitch v-model="showDetails" />
+                    <h4 style="margin: 0 10px">Show Details</h4>
+                </div>
                 <div class="flex justify-content-between flex-wrap align-items-center gap-2">
                     <Dropdown optionLabel="text" v-model="fixed" placeholder="Precission value" style="max-width: 200px; float: right;"
                         :options="[
@@ -14,17 +18,13 @@
                             { value: 6, text: '6 - precision' },
                             { value: 7, text: '7 - precision' }
                         ]" @change="changeFixed"/>
-                    <div style="text-align: left; width: 200px;">
+                    <div style="text-align: left; width: 200px; float: right;">
                         <Button icon="pi pi-external-link" label="Export" @click="exportCSV($event)" />
                     </div>
                 </div>
             </div>
         </template>
-        <div class="mb-2 flex">
-            <InputSwitch v-model="showDetails" />
-            <h4 style="margin: 0 10px">Show Details</h4>
-        </div>
-        <Column field="items" header="Value" style="min-width:200px">
+        <Column field="items" header="Value" style="min-width: 200px;">
             <template #body="slotProps">
                 <tr>
                     <td>Compound Name</td>
@@ -76,7 +76,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="STD">
+        <Column header="STD" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[0].card.compound_name, 0, 0)">
@@ -115,7 +115,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[0].card.fabric_name ? (slotProps.data[0].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[0].card.fabric_name ? (slotProps.data[0].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -160,7 +160,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Jan">
+        <Column header="Jan" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[1].card.compound_name, 1, 0)">
@@ -199,7 +199,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[1].card.fabric_name ? (slotProps.data[1].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[1].card.fabric_name ? (slotProps.data[1].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -244,7 +244,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Feb">
+        <Column header="Feb" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[2].card.compound_name, 2, 0)">
@@ -283,7 +283,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[2].card.fabric_name ? (slotProps.data[2].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[2].card.fabric_name ? (slotProps.data[2].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -328,7 +328,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Mar">
+        <Column header="Mar" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[3].card.compound_name, 3, 0)">
@@ -367,7 +367,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[3].card.fabric_name ? (slotProps.data[3].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[3].card.fabric_name ? (slotProps.data[3].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -412,7 +412,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Apr">
+        <Column header="Apr" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[4].card.compound_name, 4, 0)">
@@ -451,7 +451,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[4].card.fabric_name ? (slotProps.data[4].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[4].card.fabric_name ? (slotProps.data[4].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -496,7 +496,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="May">
+        <Column header="May" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[5].card.compound_name, 5, 0)">
@@ -535,7 +535,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[5].card.fabric_name ? (slotProps.data[5].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[5].card.fabric_name ? (slotProps.data[5].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -580,7 +580,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Jun">
+        <Column header="Jun" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[6].card.compound_name, 6, 0)">
@@ -619,7 +619,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[6].card.fabric_name ? (slotProps.data[6].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[6].card.fabric_name ? (slotProps.data[6].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -664,7 +664,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Jul">
+        <Column header="Jul" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[7].card.compound_name, 7, 0)">
@@ -703,7 +703,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[7].card.fabric_name ? (slotProps.data[7].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[7].card.fabric_name ? (slotProps.data[7].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -748,7 +748,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Aug">
+        <Column header="Aug" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[8].card.compound_name, 8, 0)">
@@ -787,7 +787,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[8].card.fabric_name ? (slotProps.data[8].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[8].card.fabric_name ? (slotProps.data[8].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -832,7 +832,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Sep">
+        <Column header="Sep" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[9].card.compound_name, 9, 0)">
@@ -871,7 +871,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[9].card.fabric_name ? (slotProps.data[9].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[9].card.fabric_name ? (slotProps.data[9].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -916,7 +916,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="OCt">
+        <Column header="OCt" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[10].card.compound_name, 10, 0)">
@@ -955,7 +955,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[10].card.fabric_name ? (slotProps.data[10].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[10].card.fabric_name ? (slotProps.data[10].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -1000,7 +1000,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Nov">
+        <Column header="Nov" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[11].card.compound_name, 11, 0)">
@@ -1039,7 +1039,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[11].card.fabric_name ? (slotProps.data[11].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[11].card.fabric_name ? (slotProps.data[11].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>
@@ -1084,7 +1084,7 @@
                 </tr>
             </template>
         </Column>
-        <Column header="Dec">
+        <Column header="Dec" style="min-width: 300px;">
             <template #body="slotProps">
                 <tr>
                     <td @click="showContent(slotProps.data[12].card.compound_name, 12, 0)">
@@ -1123,7 +1123,7 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ (slotProps.data[12].card.fabric_name ? (slotProps.data[12].card.fabric_name).slice(0, -2) : '-') }}
+                        {{ (slotProps.data[12].card.fabric_name ? (slotProps.data[12].card.fabric_name) : '-') }}
                     </td>
                 </tr>
                 <tr>

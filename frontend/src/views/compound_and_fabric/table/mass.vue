@@ -7,7 +7,7 @@
                 </tr>
             </template>
         </Column>
-        <Column field="value" :header="$t('dtc.values')" style="min-width:200px">
+        <Column field="value" :header="$t('dtc.values')" style="min-width:100px">
             <template #body="slotProps">
                 <tr>
                     <td>Weight</td>
@@ -382,7 +382,7 @@
                 </tr>
             </template>
         </Column>
-        <Column field="months" :header="$t('dtc.values')">
+        <Column field="months" header="Standard">
             <template #body="slotProps">
                 <tr>
                     <td>{{ (slotProps.data.months[1].raw_weight !== "--" ? (slotProps.data.months[1].raw_weight).toFixed(fixed) : "--") }}</td>
