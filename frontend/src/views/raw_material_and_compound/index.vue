@@ -437,7 +437,7 @@
     const progress = ref(false)
     const toast = useToast();
     const showDesc = ref(false)
-    const month = ref(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Alg', 'Sep', 'Oct', 'Nov', 'Dec'])
+    const month = ref(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
     
     const exportCSV = () => {
         dt.value.exportCSV();
